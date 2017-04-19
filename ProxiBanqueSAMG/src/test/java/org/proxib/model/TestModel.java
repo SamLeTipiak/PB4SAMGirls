@@ -10,6 +10,7 @@ public class TestModel {
 	public void test() {
 		fail("Not yet implemented");
 		System.out.println("test push");
+		System.out.println("test aurelie");
 	}
 
 }
