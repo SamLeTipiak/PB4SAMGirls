@@ -66,6 +66,7 @@ public class ApplicationConfig {
 		entityManagerFactory.setDataSource(dataSource());
 		entityManagerFactory.setJpaVendorAdapter(jpaVendorAdapter());
 		entityManagerFactory.setPackagesToScan("org.proxib");
+		entityManagerFactory.setPersistenceUnitName("persistenceUnit");
 
 		Properties jpaProperties = new Properties();
 		jpaProperties.setProperty("hibernate.hbm2ddl.auto", "update");

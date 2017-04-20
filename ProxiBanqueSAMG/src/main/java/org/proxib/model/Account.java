@@ -10,12 +10,12 @@ import javax.persistence.ManyToOne;
 
 import org.springframework.stereotype.Component;
 
-//@Entity
-//@Component
+@Entity
+@Component
 public class Account {
 
-//	@Id
-//	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	private double balance;
 	private double rate;
