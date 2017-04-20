@@ -33,7 +33,7 @@ public class Client {
 	
 //	@OneToMany(mappedBy="client", cascade={CascadeType.ALL}, fetch=FetchType.EAGER)
 //	private List<Account> comptes;
-	
+	 
 	
 	
 	public String getFirstName() {
