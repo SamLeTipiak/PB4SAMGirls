@@ -91,6 +91,15 @@ public class Client {
 		this.adviser = adviser;
 		this.comptes = comptes;
 	}
+	
+	public Client(String firstName, String lastName, String adresse, String email) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.adresse = adresse;
+		this.email = email;
+	}
+	
 	public Client() {
 		super();
 	}
