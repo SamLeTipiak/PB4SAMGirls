@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.proxib.model.Client;
 
-public interface IClient {
+public interface IClientService {
 
 	void persist(Client client) throws Exception;
 
