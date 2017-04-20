@@ -68,7 +68,7 @@ public class ApplicationConfig {
 		entityManagerFactory.setPackagesToScan("org.proxib");
 
 		Properties jpaProperties = new Properties();
-		jpaProperties.setProperty("hibernate.hbm2ddl.auto", "create-drop");
+		jpaProperties.setProperty("hibernate.hbm2ddl.auto", "update");
 
 		entityManagerFactory.setJpaProperties(jpaProperties);
 
