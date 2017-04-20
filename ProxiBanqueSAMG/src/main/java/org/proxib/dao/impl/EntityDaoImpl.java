@@ -16,7 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class EntityDaoImpl<E> implements IEntityDao<E> {
 
 	@PersistenceContext(unitName = "persistenceUnit")
-	protected EntityManager entityManager;
+	EntityManager entityManager;
 
 	protected E instance;
 	private Class<E> entityClass;
