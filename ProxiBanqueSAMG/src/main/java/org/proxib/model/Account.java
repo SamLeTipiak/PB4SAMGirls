@@ -1,15 +1,33 @@
 package org.proxib.model;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+import org.springframework.stereotype.Component;
+
+@Entity
+@Component
 public class Account {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	private double balance;
 	private double rate;
 	private Account.typeAccount typeAccount;
+	
+	@ManyToOne(cascade = { CascadeType.ALL })
+	@JoinColumn(name = "client_id")
+	private Client client;
 
 	public static enum typeAccount {
 		CURRENT, SAVING
-	}
+	};
 
 	public Account() {
 		super();

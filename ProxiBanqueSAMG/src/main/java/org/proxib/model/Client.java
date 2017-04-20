@@ -2,14 +2,35 @@ package org.proxib.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
+import org.springframework.stereotype.Component;
+
+@Entity
+@Component
 public class Client {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	private String firstName;
 	private String lastName;
 	private String adresse;
 	private String email;
+	
+//	@ManyToOne(cascade={CascadeType.ALL})
+//	@JoinColumn(name="adviser_id")
 	private Adviser adviser;
+	
+	@OneToMany(mappedBy="client", cascade={CascadeType.ALL}, fetch=FetchType.EAGER)
 	private List<Account> comptes;
 	
 	
