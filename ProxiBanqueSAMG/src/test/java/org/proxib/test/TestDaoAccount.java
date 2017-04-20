@@ -35,7 +35,9 @@ public class TestDaoAccount {
 		List<Account> listAccounts = new ArrayList<>();
 		try {
 			accountDao.persist(account1);
+			System.out.println("persistance okay");
 			listAccounts =  accountDao.findAll();
+			System.out.println("list okay");
 		} catch (Exception e) {
 			System.out.println("Pb. dans le test");
 			e.printStackTrace();
