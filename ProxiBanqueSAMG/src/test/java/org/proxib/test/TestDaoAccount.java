@@ -14,7 +14,6 @@ import org.proxib.model.Account;
 import org.proxib.model.Account.typeAccount;
 import org.proxib.service.IAccountService;
 import org.proxib.service.ServiceAccount;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
