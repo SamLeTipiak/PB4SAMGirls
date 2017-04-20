@@ -20,12 +20,12 @@
 
 	<!-- The Bootstrap listener to start up and shut down Spring's root WebApplicationContext. 
 		It is registered to Servlet Container -->
-	<listener>
-		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-	</listener>
-	<listener>
-		<listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
-	</listener>
+<!-- 	<listener> -->
+<!-- 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class> -->
+<!-- 	</listener> -->
+<!-- 	<listener> -->
+<!-- 		<listener-class>org.springframework.web.context.request.RequestContextListener</listener-class> -->
+<!-- 	</listener> -->
 
 	<context-param>
 		<param-name>javax.faces.FACELETS_SKIP_COMMENTS</param-name>
@@ -49,7 +49,7 @@
 
 	<!-- Welcome Page -->
 	<welcome-file-list>
-		<welcome-file>/home.xhtml</welcome-file>
+		<welcome-file>home.xhtml</welcome-file>
 	</welcome-file-list>
 
 	<!-- JSF Servlet is defined to container -->
