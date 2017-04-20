@@ -20,7 +20,7 @@ public class TestMain {
 		try {
 			serviceClient.persist(new Client("Paul", "Leroy", "17 rue des oliviers 75001 Paris", "paul.leroy@gmail.com") );
 			serviceClient.persist(new Client("Paula", "Lis", "18 rue des oliviers 75001 Paris", "paula.lis@gmail.com") );
-			List<Client>
+//			List<Client>
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
