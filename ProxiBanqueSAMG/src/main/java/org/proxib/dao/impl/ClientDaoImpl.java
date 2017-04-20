@@ -1,7 +1,5 @@
 package org.proxib.dao.impl;
 
-
-
 import org.proxib.dao.ClientDao;
 import org.proxib.model.Client;
 import org.springframework.stereotype.Component;

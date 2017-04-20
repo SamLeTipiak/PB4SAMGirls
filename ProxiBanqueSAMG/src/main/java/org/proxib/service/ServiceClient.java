@@ -5,11 +5,13 @@ import java.util.List;
 import org.proxib.dao.ClientDao;
 import org.proxib.model.Client;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service("serviceClient")
 public class ServiceClient implements IClient {
 
 	@Autowired
-	ClientDao clientDao;
+	IClientDao clientDao;
 	
 	@Override
 	public void persist(Client client) throws Exception {
