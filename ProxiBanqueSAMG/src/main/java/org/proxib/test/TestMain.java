@@ -19,6 +19,7 @@ public class TestMain {
 		
 		IClientService serviceClient = context.getBean("serviceClient", ServiceClient.class);
 		try {
+
 			Client c1 = new Client("Paul", "Leroy", "17 rue des oliviers 75001 Paris", "paul.leroy@gmail.com" );
 			Client c2 = new Client("Paula", "Lis", "18 rue des oliviers 75001 Paris", "paula.lis@gmail.com");
 			List<Client> clients = new ArrayList<>();
@@ -29,6 +30,7 @@ public class TestMain {
 			System.out.println(clients);
 			
 			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
