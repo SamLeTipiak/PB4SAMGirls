@@ -2,14 +2,19 @@ package org.proxib.service;
 
 import java.util.List;
 
-import org.proxib.dao.AccountDao;
+import org.proxib.dao.IAccountDao;
 import org.proxib.model.Account;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+
+@Service("serviceAccount")
 public class ServiceAccount implements IAccount {
 
 	@Autowired
-	private AccountDao accountDao;
+	private IAccountDao accountDao;
+
+
 	
 	@Override
 	public void persist(Account account) throws Exception {

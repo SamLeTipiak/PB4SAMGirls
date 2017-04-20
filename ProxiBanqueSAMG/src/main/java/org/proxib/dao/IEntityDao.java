@@ -2,7 +2,7 @@ package org.proxib.dao;
 
 import java.util.List;
 
-public interface EntityDao<E> {
+public interface IEntityDao<E> {
 	
 	void persist(E e) throws Exception;
 	
