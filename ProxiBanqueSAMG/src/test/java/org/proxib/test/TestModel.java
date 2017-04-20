@@ -1,4 +1,4 @@
-package org.proxib.model;
+package org.proxib.test;
 
 import static org.junit.Assert.*;
 
