@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 
 @Service("serviceAccount")
-public class ServiceAccount implements IAccount {
+public class ServiceAccount implements IAccountService {
 
 	@Autowired
 	private IAccountDao accountDao;

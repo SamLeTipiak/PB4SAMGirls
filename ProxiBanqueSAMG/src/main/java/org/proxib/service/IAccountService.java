@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.proxib.model.Account;
 
-public interface IAccount {
+public interface IAccountService {
 
 	void persist(Account account) throws Exception;
 	

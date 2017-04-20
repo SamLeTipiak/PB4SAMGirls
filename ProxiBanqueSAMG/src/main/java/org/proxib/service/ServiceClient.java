@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service("serviceClient")
-public class ServiceClient implements IClient {
+public class ServiceClient implements IClientService {
 
 	@Autowired
 	IClientDao clientDao;
