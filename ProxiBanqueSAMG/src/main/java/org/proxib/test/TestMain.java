@@ -13,17 +13,13 @@ public class TestMain {
 	public static void main(String[] args) {
 		
 		ApplicationContext context = new AnnotationConfigApplicationContext(ApplicationConfig.class);
-		
-		Client c1 = context.getBean("client", Client.class); 
-		System.out.println(c1);
-		
-//		IClientService serviceClient = context.getBean("serviceClient", ServiceClient.class);
-//		try {
-//			serviceClient.persist(new Client("Paul", "Leroy", "17 rue des oliviers 75001 Paris", "paul.leroy@gmail.com") );
-//			
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
+		IClientService serviceClient = context.getBean("serviceClient", ServiceClient.class);
+		try {
+			serviceClient.persist(new Client("Paul", "Leroy", "17 rue des oliviers 75001 Paris", "paul.leroy@gmail.com") );
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 
 	}

@@ -8,10 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
-@Service("serviceAccount")
+//@Service("serviceAccount")
 public class ServiceAccount implements IAccountService {
 
-	@Autowired
+//	@Autowired
 	private IAccountDao accountDao;
 
 

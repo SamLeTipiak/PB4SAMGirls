@@ -12,12 +12,12 @@ import javax.persistence.OneToMany;
 
 import org.springframework.stereotype.Component;
 
-@Entity
-@Component
+//@Entity
+//@Component
 public class Adviser {
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+//	@Id
+//	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	private String firstName;
 	private String lastName;

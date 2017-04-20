@@ -12,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Entity
@@ -28,10 +29,10 @@ public class Client {
 	
 //	@ManyToOne(cascade={CascadeType.ALL})
 //	@JoinColumn(name="adviser_id")
-	private Adviser adviser;
+//	private Adviser adviser;
 	
-	@OneToMany(mappedBy="client", cascade={CascadeType.ALL}, fetch=FetchType.EAGER)
-	private List<Account> comptes;
+//	@OneToMany(mappedBy="client", cascade={CascadeType.ALL}, fetch=FetchType.EAGER)
+//	private List<Account> comptes;
 	
 	
 	
@@ -59,39 +60,40 @@ public class Client {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public Adviser getAdviser() {
-		return adviser;
-	}
-	public void setAdviser(Adviser adviser) {
-		this.adviser = adviser;
-	}
-	public List<Account> getComptes() {
-		return comptes;
-	}
-	public void setComptes(List<Account> comptes) {
-		this.comptes = comptes;
-	}
+//	public Adviser getAdviser() {
+//		return adviser;
+//	}
+//	public void setAdviser(Adviser adviser) {
+//		this.adviser = adviser;
+//	}
+//	public List<Account> getComptes() {
+//		return comptes;
+//	}
+//	public void setComptes(List<Account> comptes) {
+//		this.comptes = comptes;
+//	}
 	public Long getId() {
 		return id;
 	}
 	
-	@Override
-	public String toString() {
-		return "Client [firstName=" + firstName + ", lastName=" + lastName + ", adresse=" + adresse + ", email=" + email
-				+ ", adviser=" + adviser + ", comptes=" + comptes + "]";
-	}
+//	@Override
+//	public String toString() {
+//		return "Client [firstName=" + firstName + ", lastName=" + lastName + ", adresse=" + adresse + ", email=" + email
+//				+ ", adviser=" + adviser + ", comptes=" + comptes + "]";
+//	}
+//	
+//	public Client(String firstName, String lastName, String adresse, String email, Adviser adviser,
+//			List<Account> comptes) {
+//		super();
+//		this.firstName = firstName;
+//		this.lastName = lastName;
+//		this.adresse = adresse;
+//		this.email = email;
+//		this.adviser = adviser;
+//		this.comptes = comptes;
+//	}
 	
-	public Client(String firstName, String lastName, String adresse, String email, Adviser adviser,
-			List<Account> comptes) {
-		super();
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.adresse = adresse;
-		this.email = email;
-		this.adviser = adviser;
-		this.comptes = comptes;
-	}
-	
+	@Autowired
 	public Client(String firstName, String lastName, String adresse, String email) {
 		super();
 		this.firstName = firstName;
@@ -102,6 +104,10 @@ public class Client {
 	
 	public Client() {
 		super();
+	}
+	@Override
+	public String toString() {
+		return "Client [firstName=" + firstName + ", lastName=" + lastName + "]";
 	}
 	
 	
