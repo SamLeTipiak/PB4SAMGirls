@@ -93,7 +93,7 @@ public class Client {
 //		this.comptes = comptes;
 //	}
 	
-	@Autowired
+	
 	public Client(String firstName, String lastName, String adresse, String email) {
 		super();
 		this.firstName = firstName;

@@ -13,6 +13,7 @@ public class TestMain {
 	public static void main(String[] args) {
 		
 		ApplicationContext context = new AnnotationConfigApplicationContext(ApplicationConfig.class);
+		
 		IClientService serviceClient = context.getBean("serviceClient", ServiceClient.class);
 		try {
 			serviceClient.persist(new Client("Paul", "Leroy", "17 rue des oliviers 75001 Paris", "paul.leroy@gmail.com") );
