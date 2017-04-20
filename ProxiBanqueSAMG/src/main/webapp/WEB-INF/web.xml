@@ -6,26 +6,24 @@
 
 	<display-name>ProxiBanqueSAMG</display-name>
 
-
 	<!-- Prime FACES -->
 	<context-param>
 		<param-name>primefaces.THEME</param-name>
-		<param-value>hot-sneaks</param-value>
+		<param-value>glass-x</param-value>
 	</context-param>
-	
-<!-- 	<context-param> -->
-<!-- 		<param-name>contextConfigLocation</param-name> -->
-<!-- 		<param-value>org.proxib.config.ApplicationConfig.java</param-value> -->
-<!-- 	</context-param> -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>/WEB-INF/spring/applicationContext.xml</param-value>
+	</context-param>
 
 	<!-- The Bootstrap listener to start up and shut down Spring's root WebApplicationContext. 
 		It is registered to Servlet Container -->
-<!-- 	<listener> -->
-<!-- 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class> -->
-<!-- 	</listener> -->
-<!-- 	<listener> -->
-<!-- 		<listener-class>org.springframework.web.context.request.RequestContextListener</listener-class> -->
-<!-- 	</listener> -->
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	<listener>
+		<listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
+	</listener>
 
 	<context-param>
 		<param-name>javax.faces.FACELETS_SKIP_COMMENTS</param-name>
@@ -45,11 +43,9 @@
 		<param-value>false</param-value>
 	</context-param>
 
-
-
 	<!-- Welcome Page -->
 	<welcome-file-list>
-		<welcome-file>home.xhtml</welcome-file>
+		<welcome-file>/index.xhtml</welcome-file>
 	</welcome-file-list>
 
 	<!-- JSF Servlet is defined to container -->
@@ -64,4 +60,7 @@
 		<servlet-name>Faces Servlet</servlet-name>
 		<url-pattern>*.xhtml</url-pattern>
 	</servlet-mapping>
+
+
+
 </web-app>
