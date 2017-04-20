@@ -98,7 +98,7 @@ public class Client {
 		this.lastName = lastName;
 		this.adresse = adresse;
 		this.email = email;
-	}
+	} 
 	
 	public Client() {
 		super();
