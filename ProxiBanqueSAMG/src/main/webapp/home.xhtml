@@ -5,7 +5,8 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
 <f:metadata>
 	<f:event type="preRenderView"
@@ -23,14 +24,17 @@
 </h:head>
 
 <h:body>
-<h:form>
-	<p:dataTable value="#{clientController.listClient}" var="client">
-		<h:column>
-			<f:facet name="header">Liste des clients</f:facet>
-			<h:outputLabel value="#{client}"></h:outputLabel>
-		</h:column>
-	</p:dataTable>
-</h:form>
+
+
+	
+		<h:dataTable value="#{clientController.listClient}" var="tempclient">
+			<h:column>
+				<f:facet name="header">Liste des clients</f:facet>
+				<h:outputText value="#{tempclient}"></h:outputText>
+			</h:column>
+		</h:dataTable>
+	
+	
 
 </h:body>
 </html>

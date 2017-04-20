@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 
 import org.primefaces.component.api.UIData;
@@ -11,10 +12,9 @@ import org.proxib.model.Client;
 import org.proxib.service.IClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Controller;
 
 @Component(value="clientController")
-@ViewScoped
+@SessionScoped
 public class ClientController implements Serializable {
 
 	/**
@@ -23,7 +23,7 @@ public class ClientController implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Autowired
-	IClientService iClientService;
+	IClientService clientService;
 
 	private static List<Client> listClient = new ArrayList<>();
 	
@@ -38,7 +38,7 @@ public class ClientController implements Serializable {
 	}
 
 	public ClientController() throws Exception {
-		listClient = new ArrayList<>();
+		this.listClient = new ArrayList<>();
 
 	}
 	
@@ -51,7 +51,7 @@ public class ClientController implements Serializable {
 	public void loadClient() {
 		listClient.clear();
 		try {
-			listClient = iClientService.findAll();
+			listClient = clientService.findAll();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
