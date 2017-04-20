@@ -2,14 +2,14 @@ package org.proxib.service;
 
 import java.util.List;
 
-import org.proxib.dao.ClientDao;
+import org.proxib.dao.IClientDao;
 import org.proxib.model.Client;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public class ServiceClient implements IClient {
 
 	@Autowired
-	ClientDao clientDao;
+	IClientDao clientDao;
 	
 	@Override
 	public void persist(Client client) throws Exception {

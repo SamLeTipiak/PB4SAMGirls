@@ -9,11 +9,11 @@ import javassist.bytecode.SignatureAttribute.TypeVariable;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import org.proxib.dao.EntityDao;
+import org.proxib.dao.IEntityDao;
 import org.hibernate.HibernateException;
 import org.springframework.transaction.annotation.Transactional;
 
-public class EntityDaoImpl<E> implements EntityDao<E> {
+public class EntityDaoImpl<E> implements IEntityDao<E> {
 
 	@PersistenceContext(unitName = "persistenceUnit")
 	protected EntityManager entityManager;
