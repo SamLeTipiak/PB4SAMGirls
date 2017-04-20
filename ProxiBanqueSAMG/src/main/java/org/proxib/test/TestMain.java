@@ -1,6 +1,8 @@
 package org.proxib.test;
 
 
+import java.util.List;
+
 import org.proxib.config.ApplicationConfig;
 import org.proxib.model.Client;
 import org.proxib.service.IClientService;
@@ -17,7 +19,8 @@ public class TestMain {
 		IClientService serviceClient = context.getBean("serviceClient", ServiceClient.class);
 		try {
 			serviceClient.persist(new Client("Paul", "Leroy", "17 rue des oliviers 75001 Paris", "paul.leroy@gmail.com") );
-			
+			serviceClient.persist(new Client("Paula", "Lis", "18 rue des oliviers 75001 Paris", "paula.lis@gmail.com") );
+			List<Client>
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
