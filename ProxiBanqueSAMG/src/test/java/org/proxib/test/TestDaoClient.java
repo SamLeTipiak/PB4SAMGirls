@@ -1,13 +1,13 @@
 package org.proxib.test;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.proxib.config.ApplicationConfig;
-import org.proxib.model.Account;
 import org.proxib.model.Client;
+import org.proxib.model.CurrentAccount;
+import org.proxib.model.SavingAccount;
 import org.proxib.service.IClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
@@ -20,20 +20,17 @@ public class TestDaoClient {
 	@Autowired
 	IClientService clientService;
 
-	
-	Account account1 = new Account(2000, 0.5);
-	Account account2 = new Account(10000, 1.5);
+	CurrentAccount account1 = new CurrentAccount(2000, 0.5);
+	SavingAccount account2 = new SavingAccount(10000, 1.5);
 	Client client1 = new Client("Bob", "Le Bricoleur", "rue des btp", "bob@trav.aux");
-
-
 
 
 	@Test
 	public void testServiceAddClient() {
 		try {
 			int sizeBefore = clientService.findAll().size();
-			client1.addSavingAccountToClient(account1);
-			client1.addCurrentAccountToClient(account2);
+			client1.addSavingAccountToClient(account2);
+			client1.addCurrentAccountToClient(account1);
 			
 			clientService.persist(client1);
 			assertEquals(sizeBefore + 1, clientService.findAll().size());

@@ -8,22 +8,19 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
-
-import org.springframework.stereotype.Component;
 
 @Entity
 //@Component
 public class Account {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.TABLE)
 	private Long id;
-	private double balance;
-	private double rate;
+	protected double balance;
+	protected double rate;
 
 	
-	@OneToOne( cascade = { CascadeType.ALL }, fetch = FetchType.EAGER)
+	@ManyToOne( cascade = { CascadeType.ALL }, fetch = FetchType.EAGER)
 	@JoinColumn(name="client_id")
 	private Client client;
 
@@ -36,6 +33,11 @@ public class Account {
 		super();
 		this.balance = balance;
 		this.rate = rate;
+	}
+	
+	public Account(double balance) {
+		super();
+		this.balance = balance;
 	}
 	
 	public Long getId() {

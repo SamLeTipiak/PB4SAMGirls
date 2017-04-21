@@ -18,7 +18,7 @@ public class Client implements Serializable {
 
 	/**
 	 * 
-	 */ 
+	 */
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -33,11 +33,11 @@ public class Client implements Serializable {
 	 @JoinColumn(name="adviser_id")
 	 private Adviser adviser;
 
-	@OneToOne(mappedBy="client" , cascade={CascadeType.ALL})
-	private Account savingAccount;
-	
-	@OneToOne(mappedBy="client" , cascade={CascadeType.ALL})
-	private Account currentAccount;
+	@OneToOne(cascade = CascadeType.ALL)
+	private SavingAccount savingAccount;
+
+	@OneToOne(cascade = CascadeType.ALL)
+	private CurrentAccount currentAccount;
 	
 
 	public String getFirstName() {
@@ -106,7 +106,7 @@ public class Client implements Serializable {
 		return savingAccount;
 	}
 
-	public void setSavingAccount(Account savingAccount) {
+	public void setSavingAccount(SavingAccount savingAccount) {
 		this.savingAccount = savingAccount;
 	}
 
@@ -114,7 +114,7 @@ public class Client implements Serializable {
 		return currentAccount;
 	}
 
-	public void setCurrentAccount(Account currentAccount) {
+	public void setCurrentAccount(CurrentAccount currentAccount) {
 		this.currentAccount = currentAccount;
 	}
 
@@ -137,7 +137,7 @@ public class Client implements Serializable {
 			this.email = email;
 		}
 	 
-	public Client(String firstName, String lastName, String address, String email, Account savingAccount) {
+	public Client(String firstName, String lastName, String address, String email, SavingAccount savingAccount) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -155,12 +155,12 @@ public class Client implements Serializable {
 //		return "Client [firstName=" + firstName + ", lastName=" + lastName + "]";
 //	}
 
-	public void addCurrentAccountToClient(Account account) {
+	public void addCurrentAccountToClient(CurrentAccount account) {
 		account.setClient(this);
 		this.setCurrentAccount(account);
 	}
 	
-	public void addSavingAccountToClient(Account account) {
+	public void addSavingAccountToClient(SavingAccount account) {
 		account.setClient(this);
 		this.setSavingAccount(account);
 	}

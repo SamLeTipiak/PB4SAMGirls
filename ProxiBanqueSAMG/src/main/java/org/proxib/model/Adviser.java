@@ -11,8 +11,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-import org.springframework.stereotype.Component;
-
 @Entity
 //@Component
 public class Adviser {
@@ -23,8 +21,10 @@ public class Adviser {
 	private String firstName;
 	private String lastName;
 	
+
 	@OneToMany(mappedBy="adviser",cascade={CascadeType.ALL}, fetch=FetchType.EAGER)
 	private List<Client> clients = new ArrayList<Client>();
+
 	
 	
 	

@@ -16,7 +16,7 @@
 <h:head>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>Mon petit cllient</title>
+	<title>Espace Conseiller</title>
 </h:head>
 
 <h:body>
@@ -52,23 +52,16 @@
 						<h:outputText value="#{tempclient.email}" />
 					</p:column>
 
-					<p:column headerText="Compte courant" sortBy="#{tempclient.c}"
-						filterBy="#{tempclient.email}" filterMatchMode="contains">
-						<h:outputText value="#{tempclient.currentAccount}" />
-					</p:column>
-
-					<p:column headerText="Compte d'épargne" sortBy="#{tempclient.c}"
+					<p:column headerText="Comptes" sortBy="#{tempclient.accounts}"
 						filterBy="#{tempclient.email}" filterMatchMode="contains">
 						<h:outputText value="#{tempclient.savingAccount}" />
 					</p:column>
-					<!-- 					<p:column headerText="Solde"> -->
-					<!-- 						<ui:repeat var="accountsPro" value="#{tempclient.accounts}"> -->
-					<!-- 						<h:outputText value="#{accountsPro.typeAccount}" /> -->
-					<!-- 							<ui:repeat var="typeDdd" value="#{accountsPro.typeAccount}"> -->
-					<!-- 							<h:outputText value="#{typeDdd}" /> -->
-					<!-- 							</ui:repeat> -->
-					<!-- 						</ui:repeat> -->
-					<!-- 					</p:column> -->
+
+
+					<p:column headerText="Comptes" sortBy="#{tempclient.accounts}"
+						filterBy="#{tempclient.email}" filterMatchMode="contains">
+						<h:outputText value="#{tempclient.savingAccount}" />
+					</p:column>
 
 
 					<p:column headerText="Delete" style="width:8%">
