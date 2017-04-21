@@ -14,6 +14,8 @@ import org.primefaces.event.RowEditEvent;
 import org.proxib.model.Account;
 import org.proxib.model.Client;
 import org.proxib.service.IClientService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -25,6 +27,8 @@ public class ClientController implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+
+	private static Logger LOGGER = LoggerFactory.getLogger(ClientController.class);
 
 	@Autowired
 	IClientService clientService;
@@ -105,19 +109,23 @@ public class ClientController implements Serializable {
 	}
 
 	public void notificationSuccess(String operation) {
-		// Logger.getLogger(this.getClass().getName()).log(Level.INFO,
-		// "Operation "+operation+" success");
+
+		LOGGER.info("Operation " + operation + " success");
 		FacesMessage msg = null;
 		msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Notification", "Success");
 		FacesContext.getCurrentInstance().addMessage(null, msg);
+
 	}
 
 	public void notificationError(Exception e, String operation) {
+
+		LOGGER.error("Error");
 		// Logger.getLogger(this.getClass().getName()).log(Level.ERROR,
 		// "Operation "+operation+" Error ",e);
 		FacesMessage msg = null;
 		msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Notification", "Une erreur est survenue");
 		FacesContext.getCurrentInstance().addMessage(null, msg);
+
 	}
 
 	public IClientService getClientService() {
