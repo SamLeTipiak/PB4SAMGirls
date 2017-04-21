@@ -4,17 +4,20 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.annotation.PostConstruct;
 import javax.faces.bean.ViewScoped;
 
+import org.primefaces.component.api.UIData;
+import org.proxib.model.Account;
 import org.proxib.model.Client;
+import org.proxib.service.IAccountService;
 import org.proxib.service.IClientService;
+import org.proxib.service.ServiceClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-@Component(value ="clientControll")
+@Component(value ="accountController")
 @ViewScoped
-public class ClientControll implements Serializable {
+public class AccountController implements Serializable {
 
 	/**
 	 * 
@@ -22,70 +25,61 @@ public class ClientControll implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Autowired
+	private IAccountService accountService;
+	
+	@Autowired
 	private IClientService clientService;
 
-	private Client client;
-	private Client clientSelected;
+	private static List<Account> listAccount;
+	
+	private UIData dataTable;
 
-	private List<Client> listClient;
-	private List<Client> listSelected;
-
-	@PostConstruct
-	public void init() {
-		refreshList();
+	public UIData getDataTable() {
+		return dataTable;
 	}
 
-	public IClientService getiClientService() {
-		return clientService;
+	public void setDataTable(UIData dataTable) {
+		this.dataTable = dataTable;
 	}
 
-	public void setiClientService(IClientService iClientService) {
-		this.clientService = iClientService;
+	public AccountController() throws Exception {
+		this.listAccount = new ArrayList<>();
 	}
-
-	public Client getClient() {
-		return client;
+	
+	public List<Account> getListAccount() {
+		loadAccount();
+		System.out.println("******************************************************************" +listAccount);
+		return listAccount;
 	}
-
-	public void setClient(Client client) {
-		this.client = client;
-	}
-
-	public Client getClientSelected() {
-		return clientSelected;
-	}
-
-	public void setClientSelected(Client clientSelected) {
-		this.clientSelected = clientSelected;
-	}
-
-	public List<Client> getListClient() {
-		return listClient;
-	}
-
-	public void setListClient(List<Client> listClient) {
-		this.listClient = listClient;
-	}
-
-	public List<Client> getListSelected() {
-		return listSelected;
-	}
-
-	public void setListSelected(List<Client> listSelected) {
-		this.listSelected = listSelected;
-	}
-
-	public void refreshList() {
-		this.client = new Client();
-		this.clientSelected = new Client();
-		this.listClient = new ArrayList<Client>();
-		this.listSelected = new ArrayList<Client>();
+	
+	public void loadAccount() {
+		listAccount.clear();
 		try {
-			this.listClient.addAll(clientService.findAll());
-			this.listSelected.addAll(listClient);
+			listAccount = accountService.findAll();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
 	}
+	
+	
+	public String createAccount(Long idClient){
+		try {
+			Client c = clientService.findById(idClient);int nbAccount = 0; 
+//			nbAccount = c.getComptes().size(); // a verifier syntaxe une fois les comtpes branchés au client
+			if (nbAccount == 2) {
+				return "Le client a déjà 1 compte courant et un compte épargne. Vous ne pouvez pas en créer plus.";
+			}
+			else {
+				return "createAccount";
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "";
+		}
+		
+				
+	}
+	
 
 }

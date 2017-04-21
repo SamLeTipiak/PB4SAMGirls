@@ -21,11 +21,11 @@ public class TestMain {
 		
 		ApplicationContext context = new AnnotationConfigApplicationContext(ApplicationConfig.class);
 		
-//		IClientService serviceClient = context.getBean("serviceClient", IClientService.class);
-//		IAccountService serviceAccount = context.getBean("serviceAccount", ServiceAccount.class);
-//		try {
+		IClientService serviceClient = context.getBean("serviceClient", IClientService.class);
+		IAccountService serviceAccount = context.getBean("serviceAccount", ServiceAccount.class);
+		try {
 
-//			Client c1 = new Client("Paul", "Leroy", "17 rue des oliviers 75001 Paris", "paul.leroy@gmail.com" );
+			Client c1 = new Client("Paul", "Leroy", "17 rue des oliviers 75001 Paris", "paul.leroy@gmail.com" );
 //			Client c2 = new Client("Paula", "Lis", "18 rue des oliviers 75001 Paris", "paula.lis@gmail.com");
 //			List<Client> clients = new ArrayList<>();
 //			clients.add(c1);
@@ -34,15 +34,17 @@ public class TestMain {
 //			serviceClient.persist(c2);
 //			System.out.println(clients);
 //			
-//			Account compte1 = new Account(541, 456.3, typeAccount.CURRENT);
-//			serviceAccount.persist(compte1);
+			Account compte1 = new Account(541, 456.3, typeAccount.CURRENT);
 			
+			serviceAccount.persist(compte1);
 			
+
+			serviceClient.persist(c1);
 			 
 
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 		
 
