@@ -115,7 +115,13 @@
 			<artifactId>hot-sneaks</artifactId>
 			<version>1.0.10</version>
 		</dependency>
-
+		<dependency>
+			<groupId>net.bootsfaces</groupId>
+			<artifactId>bootsfaces</artifactId>
+			<version>0.9.1</version>
+			<scope>compile</scope>
+		</dependency>
+	
 		<!-- **************** Spring module ************************ -->
 
 		<!-- Spring TX -->

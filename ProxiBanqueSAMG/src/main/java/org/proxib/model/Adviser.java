@@ -54,15 +54,23 @@ public class Adviser {
 		this.lastName = lastName;
 		this.clients = clients;
 	}
+	
+	public Adviser(String firstName, String lastName) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+	}
+	
 	public Adviser() {
 		super();
 	}
+	
 	@Override
 	public String toString() {
-		return "Adviser [firstName=" + firstName + ", lastName=" + lastName + ", clients=" + clients + "]";
+		return "Adviser [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", clients=" + clients
+				+ "]";
 	}
-	
-	
+
 	
 	
 

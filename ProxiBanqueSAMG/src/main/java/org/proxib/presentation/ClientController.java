@@ -38,32 +38,26 @@ public class ClientController implements Serializable {
 
 	private List<Client> listClient;
 	private List<Client> listClientSelected;
-	private List<Account> listAccountClient;
-
+	
 	@PostConstruct
 	public void init() {
 		refreshList();
 	}
 
-	public List<Account> getListAccountClient() {
-		return listAccountClient;
-	}
-
-	public void setListAccountClient(List<Account> listAccountClient) {
-		this.listAccountClient = listAccountClient;
-	}
-
+	
 	public void refreshList() {
 		this.client = new Client();
 		this.selectedClient = new Client();
 		this.listClient = new ArrayList<>();
 		this.listClientSelected = new ArrayList<>();
-		this.listAccountClient = new ArrayList<>();
+	
 		try {
 			this.listClient.addAll(clientService.findAll());
 			this.listClientSelected.addAll(listClient);
-			this.listAccountClient = this.client.getAccounts();
-			System.out.println("****************************" + listAccountClient);
+			
+		System.out.println(listClient);
+			System.out.println("*");
+			System.out.println("*");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

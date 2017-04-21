@@ -2,42 +2,42 @@ package org.proxib.model;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import org.springframework.stereotype.Component;
-
 @Entity
-@Component
+//@Component
 public class Account {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.TABLE)
 	private Long id;
-	private double balance;
-	private double rate;
-	private Account.typeAccount typeAccount;
+	protected double balance;
+	protected double rate;
+
 	
-	@ManyToOne(cascade = { CascadeType.ALL })
-	@JoinColumn(name = "client_id")
+	@ManyToOne( cascade = { CascadeType.ALL }, fetch = FetchType.EAGER)
+	@JoinColumn(name="client_id")
 	private Client client;
 
-	public static enum typeAccount {
-		CURRENT, SAVING
-	};
 
 	public Account() {
 		super();
 	}
 
-	public Account(double balance, double rate, org.proxib.model.Account.typeAccount typeAccount) {
+	public Account(double balance, double rate) {
 		super();
 		this.balance = balance;
 		this.rate = rate;
-		this.typeAccount = typeAccount;
+	}
+	
+	public Account(double balance) {
+		super();
+		this.balance = balance;
 	}
 	
 	public Long getId() {
@@ -64,13 +64,7 @@ public class Account {
 		this.rate = rate;
 	}
 
-	public Account.typeAccount getTypeAccount() {
-		return typeAccount;
-	}
 
-	public void setTypeAccount(Account.typeAccount typeAccount) {
-		this.typeAccount = typeAccount;
-	}
 
 	public Client getClient() {
 		return client;
@@ -82,7 +76,7 @@ public class Account {
 
 	@Override
 	public String toString() {
-		return "Compte " + typeAccount +" : " + balance + " €\n";
+		return "Compte  : " + balance + " €\n";
 	}
 
 	

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+
+<h:head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Mon petit cllient</title>
+</h:head>
+
+<h:body>
+	<ui:composition template="/WEB-INF/template/template.xhtml">
+		<ui:define name="content">
+
+			<h:form id="form1" style="">
+				<p:growl id="messages" showDetail="true" />
+
+				<p:panel id="panel">
+					<br />
+
+					<h:panelGrid id="display" columns="2" cellpadding="4">
+
+						<h:outputText value="Nom" for="lastName"
+							style="padding-left: 30px; padding-right: 30px;" />
+						<p:inputText id="product"
+							value="#{clientController.client.lastName}" required="true"
+							label="Product" requiredMessage="Required" />
+
+						<h:outputText value="Prénom" for="firstName"
+							style="padding-left: 30px; padding-right: 30px;" />
+						<p:inputText id="price"
+							value="#{clientController.client.firstName}" required="true"
+							label="Price" requiredMessage="Required" />
+
+						<p:outputPanel layout="block" style="text-align:center">
+							<br />
+							<br />
+
+							<p:commandButton value="Créer" styleClass=""
+								actionListener="#{clientController.save}"
+								update=":form1:messages, :form1:panel" />
+							<p:commandButton value="Effacer" styleClass=""
+								update=":form1:panel" process="@this"
+								actionListener="#{clientController.reset}" />
+						</p:outputPanel>
+
+
+					</h:panelGrid>
+
+		</p:panel>
+
+			</h:form>
+
+		</ui:define>
+	</ui:composition>
+
+</h:body>
+</html>
