@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -27,9 +29,9 @@ public class Client implements Serializable {
 	private String address;
 	private String email;
 
-	// @ManyToOne(cascade={CascadeType.ALL})
-	// @JoinColumn(name="adviser_id")
-//	private Adviser adviser;
+	 @ManyToOne(cascade={CascadeType.ALL})
+	 @JoinColumn(name="adviser_id")
+	 private Adviser adviser;
 
 	@OneToOne(mappedBy="client" , cascade={CascadeType.ALL})
 	private Account savingAccount;
@@ -69,14 +71,14 @@ public class Client implements Serializable {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-//
-//	public Adviser getAdviser() {
-//		return adviser;
-//	}
-//
-//	public void setAdviser(Adviser adviser) {
-//		this.adviser = adviser;
-//	}
+
+	public Adviser getAdviser() {
+		return adviser;
+	}
+
+	public void setAdviser(Adviser adviser) {
+		this.adviser = adviser;
+	}
 
 
 	public Long getId() {
@@ -124,7 +126,7 @@ public class Client implements Serializable {
 	 this.lastName = lastName;
 	 this.address = address;
 	 this.email = email;
-//	 this.adviser = adviser;
+	 this.adviser = adviser;
 	 }
 
 	 public Client(String firstName, String lastName, String address, String email) {
@@ -162,5 +164,7 @@ public class Client implements Serializable {
 		account.setClient(this);
 		this.setSavingAccount(account);
 	}
+	
+	
 	
 }

@@ -1,5 +1,6 @@
 package org.proxib.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -23,7 +24,7 @@ public class Adviser {
 	private String lastName;
 	
 	@OneToMany(mappedBy="adviser",cascade={CascadeType.ALL}, fetch=FetchType.EAGER)
-	private List<Client> clients;
+	private List<Client> clients = new ArrayList<Client>();
 	
 	
 	
@@ -72,6 +73,10 @@ public class Adviser {
 	}
 
 	
-	
+
+	public void addClientToAdviser(Client client) {
+		client.setAdviser(this);
+		clients.add(client);
+	}
 
 }
