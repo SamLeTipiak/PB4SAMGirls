@@ -31,13 +31,13 @@ public class TestDaoAccount {
 	@Test
 	public void testAddAccount() {
 		System.out.println("entrée dans le test addAccount");
-		Account account1 = new Account(2000, 0.5, typeAccount.CURRENT);
+		Account account1 = new Account(2000, 0.5);
 		List<Account> listAccounts = new ArrayList<>();
 		try {
 			accountDao.persist(account1);
 			System.out.println("persistance okay");
-			listAccounts =  accountDao.findAll();
-			System.out.println("list okay");
+			//listAccounts =  accountDao.findAll();
+			//System.out.println("list okay");
 		} catch (Exception e) {
 			System.out.println("Pb. dans le test");
 			e.printStackTrace();

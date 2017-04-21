@@ -10,16 +10,16 @@ import javax.persistence.ManyToOne;
 
 import org.springframework.stereotype.Component;
 
-//@Entity
-//@Component
+@Entity
+@Component
 public class Account {
 
-//	@Id
-//	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	private double balance;
 	private double rate;
-	private Account.typeAccount typeAccount;
+	//private Account.typeAccount typeAccount;
 	
 //	@ManyToOne(cascade = { CascadeType.ALL })
 //	@JoinColumn(name = "client_id")
@@ -37,7 +37,13 @@ public class Account {
 		super();
 		this.balance = balance;
 		this.rate = rate;
-		this.typeAccount = typeAccount;
+//		this.typeAccount = typeAccount;
+	}
+	
+	public Account(double balance, double rate) {
+		super();
+		this.balance = balance;
+		this.rate = rate;
 	}
 
 	public Long getId() {
@@ -64,12 +70,12 @@ public class Account {
 		this.rate = rate;
 	}
 
-	public Account.typeAccount getTypeAccount() {
-		return typeAccount;
-	}
-
-	public void setTypeAccount(Account.typeAccount typeAccount) {
-		this.typeAccount = typeAccount;
-	}
+//	public Account.typeAccount getTypeAccount() {
+//		return typeAccount;
+//	}
+//
+//	public void setTypeAccount(Account.typeAccount typeAccount) {
+//		this.typeAccount = typeAccount;
+//	}
 
 }
