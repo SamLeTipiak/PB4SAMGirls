@@ -45,8 +45,10 @@
 
 	<!-- Welcome Page -->
 	<welcome-file-list>
-		<welcome-file>/index.xhtml</welcome-file>
+		<welcome-file>home2.xhtml</welcome-file>
 	</welcome-file-list>
+
+
 
 	<!-- JSF Servlet is defined to container -->
 	<servlet>
@@ -59,30 +61,63 @@
 	<servlet-mapping>
 		<servlet-name>Faces Servlet</servlet-name>
 		<url-pattern>*.xhtml</url-pattern>
+		<url-pattern>/home2.xhtml</url-pattern>
+
 	</servlet-mapping>
 
-	<security-constraint>
-		<web-resource-collection>
-			<web-resource-name></web-resource-name>
-			<url-pattern>/conseillers/*</url-pattern>
-			<http-method>GET</http-method>
-			<http-method>POST</http-method>
-			<http-method>PUT</http-method>
-			<http-method>DELETE</http-method>
-		</web-resource-collection>
-		<auth-constraint>
-			<role-name>Conseiller</role-name>
-		</auth-constraint>
-	</security-constraint>
-	<login-config>
-		<auth-method>FORM</auth-method>
-		<form-login-config>
-			<form-login-page>/login.xhtml</form-login-page>
-			<form-error-page>/error.xhtml</form-error-page>
-		</form-login-config>
-
-	</login-config>
 
 
+<!-- 	<security-constraint> -->
+<!-- 		<web-resource-collection> -->
+<!-- 			<web-resource-name></web-resource-name> -->
+<!-- 			<url-pattern>/home2.xhtml</url-pattern> -->
+<!-- 			<http-method>GET</http-method> -->
+<!-- 			<http-method>POST</http-method> -->
+<!-- 			<http-method>PUT</http-method> -->
+<!-- 			<http-method>DELETE</http-method> -->
+<!-- 		</web-resource-collection> -->
+<!-- 		<auth-constraint> -->
+<!-- 			<role-name>adviser</role-name> -->
+<!-- 		</auth-constraint> -->
+<!-- 	</security-constraint> -->
+
+<!-- 	<security-constraint> -->
+<!-- 		<web-resource-collection> -->
+<!-- 			<web-resource-name></web-resource-name> -->
+<!-- 			<url-pattern>/list-account.xhtml</url-pattern> -->
+<!-- 			<url-pattern>/home2.xhtml</url-pattern> -->
+
+<!-- 			<http-method>GET</http-method> -->
+<!-- 			<http-method>POST</http-method> -->
+<!-- 			<http-method>PUT</http-method> -->
+<!-- 			<http-method>DELETE</http-method> -->
+<!-- 		</web-resource-collection> -->
+
+
+<!-- 		<auth-constraint> -->
+<!-- 			<role-name>director</role-name> -->
+<!-- 		</auth-constraint> -->
+<!-- 	</security-constraint> -->
+
+<!-- 	<security-role> -->
+<!-- 		<role-name>adviser</role-name> -->
+<!-- 	</security-role> -->
+<!-- 	<security-role> -->
+<!-- 		<role-name>director</role-name> -->
+<!-- 	</security-role> -->
+
+<!-- 	<login-config> -->
+<!-- 		<auth-method>FORM</auth-method> -->
+<!-- 		<form-login-config> -->
+<!-- 			<form-login-page>/login.xhtml</form-login-page> -->
+<!-- 			<form-error-page>/error.xhtml</form-error-page> -->
+<!-- 		</form-login-config> -->
+
+
+
+<!-- 	</login-config> -->
+
+
+	<!-- <session-config><session-timeout>30</session-timeout></session-config> -->
 
 </web-app>
