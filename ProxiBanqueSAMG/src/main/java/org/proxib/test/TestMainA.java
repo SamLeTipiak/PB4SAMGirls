@@ -1,14 +1,21 @@
 package org.proxib.test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.proxib.config.ApplicationConfig;
 import org.proxib.model.Account;
 import org.proxib.model.Account.typeAccount;
+import org.proxib.model.Adviser;
 import org.proxib.model.Client;
+import org.proxib.service.IAccountService;
+import org.proxib.service.IAdviserService;
 import org.proxib.service.IClientService;
+import org.proxib.service.ServiceAdviser;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-public class TestMain {
+public class TestMainA {
 
 	public static void main(String[] args) {
  
@@ -47,7 +54,30 @@ public class TestMain {
 		c2.addAccountToClient(a3);
 		c2.addAccountToClient(a4);
 
-
+		List<Client> clients= new ArrayList<>();
+		clients.add(c1);
+		clients.add(c2);
+		Adviser ad1 = new Adviser("El", "Castador");
+		Adviser ad2 = new Adviser("m", "C");
+		Adviser ad3 = new Adviser("ma", "Co");
+		List<Adviser> advisers = new ArrayList<>();
+		
+		
+		IAdviserService adviserService = context.getBean("serviceAdviser", IAdviserService.class);
+		
+		try {
+			adviserService.persist(ad1);
+			adviserService.persist(ad2);
+			adviserService.persist(ad3);
+			
+			advisers = adviserService.findAll();
+			System.out.println(advisers);
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 
 
 
