@@ -36,7 +36,7 @@ public class TestMainA {
 
 		// } catch (Exception e) {
 		// e.printStackTrace();
-		// }
+		// } 
 
 		Client c1 = new Client("Paul", "Leroy", "17 rue des oliviers 75001 Paris", "paul.leroy@gmail.com" );
 		IClientService clientService = context.getBean("serviceClient", IClientService.class);
