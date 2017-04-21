@@ -11,7 +11,7 @@ public class TestMainA {
 	public static void main(String[] args) {
  
 		ApplicationContext context = new AnnotationConfigApplicationContext(ApplicationConfig.class);
-
+ 
 
 		// IClientService serviceClient = context.getBean("serviceClient",
 		// IClientService.class);
