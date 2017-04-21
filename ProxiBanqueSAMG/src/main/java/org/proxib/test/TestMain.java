@@ -15,9 +15,43 @@ public class TestMain {
  
 		ApplicationContext context = new AnnotationConfigApplicationContext(ApplicationConfig.class);
 
+<<<<<<< HEAD
+		// IClientService serviceClient = context.getBean("serviceClient",
+		// IClientService.class);
+		// IAccountService serviceAccount = context.getBean("serviceAccount",
+		// ServiceAccount.class);
+		// try {
+
+		// Client c1 = new Client("Paul", "Leroy", "17 rue des oliviers 75001
+		// Paris", "paul.leroy@gmail.com" );
+		// Client c2 = new Client("Paula", "Lis", "18 rue des oliviers 75001
+		// Paris", "paula.lis@gmail.com");
+		// List<Client> clients = new ArrayList<>();
+		// clients.add(c1);
+		// clients.add(c2);
+		// serviceClient.persist(c1);
+		// serviceClient.persist(c2);
+		// System.out.println(clients);
+		//
+		// Account compte1 = new Account(541, 456.3, typeAccount.CURRENT);
+		// serviceAccount.persist(compte1);
+
+		// } catch (Exception e) {
+		// e.printStackTrace();
+		// }
+
+		IClientService clientService = context.getBean("serviceClient", IClientService.class);
+		Client c2 = new Client("Paula", "Lis", "18 rue des oliviers 75001 Paris", "paula.lis@gmail.com");
+		Account a3 = new Account(2, 0.2, typeAccount.CURRENT);
+		Account a4 = new Account(2000, 0.2, typeAccount.SAVING);
+		c2.addAccountToClient(a3);
+		c2.addAccountToClient(a4);
+
+=======
 		
 		IClientService serviceClient = context.getBean("serviceClient", IClientService.class);
 		IAccountService serviceAccount = context.getBean("serviceAccount", IAccountService.class);
+>>>>>>> 1c4d1e814747b2b5b0516db85171a70f8d6346d3
 		try {
 
 			Client c1 = new Client("Paul", "Leroy", "17 rue des oliviers 75001 Paris", "paul.leroy@gmail.com" );
