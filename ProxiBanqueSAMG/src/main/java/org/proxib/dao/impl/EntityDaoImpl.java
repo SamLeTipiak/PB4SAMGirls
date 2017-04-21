@@ -48,14 +48,15 @@ public class EntityDaoImpl<E> implements IEntityDao<E> {
 		return getEntityManager().createQuery("Select t from " + getEntityClass().getSimpleName() + " t")
 				.getResultList();
 	}
+	
 
-//	@Transactional(readOnly = true)
-//	@SuppressWarnings("unchecked")
-//	public List<E> findByProperty(String prop, Object val) throws Exception {
-//		return (List<E>) getEntityManager()
-//				.createQuery("select x from " + getEntityClass().getSimpleName() + " x where x." + prop + " = ?1")
-//				.setParameter(1, val).getResultList();
-//	}
+	@Transactional(readOnly = true)
+	@SuppressWarnings("unchecked")
+	public List<E> findByProperty(String prop, Object val) throws Exception {
+		return (List<E>) getEntityManager()
+				.createQuery("select x from " + getEntityClass().getSimpleName() + " x where x." + prop + " = ?1")
+				.setParameter(1, val).getResultList();
+	}
 //
 //	@Transactional(readOnly = true)
 //	@SuppressWarnings("unchecked")
@@ -99,5 +100,7 @@ public class EntityDaoImpl<E> implements IEntityDao<E> {
 		}
 		return entityClass;
 	}
+
+
 
 }

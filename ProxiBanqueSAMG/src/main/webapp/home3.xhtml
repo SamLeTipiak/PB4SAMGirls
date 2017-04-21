@@ -16,7 +16,7 @@
 <h:head>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>Mon petit cllient</title>
+	<title>Mon petit client</title>
 </h:head>
 
 <h:body>
@@ -52,23 +52,8 @@
 						<h:outputText value="#{tempclient.email}" />
 					</p:column>
 
-					<p:column headerText="Email" sortBy="#{tempclient.accounts}"
-						filterBy="#{tempclient.email}" filterMatchMode="contains">
-						<h:outputText value="#{tempclient.accounts}" />
-					</p:column>
 
 
-					<p:column headerText="Solde">
-						<ui:repeat var="accountsPro" value="#{tempclient.accounts}">
-							
-							<ui:repeat var="typeDdd" value="#{accountsPro.typeAccount}">
-							<h:outputText value="#{saving.balance}" />
-							</ui:repeat>
-						
-
-
-						</ui:repeat>
-					</p:column>
 
 
 					<p:column headerText="Delete" style="width:8%">
@@ -93,6 +78,7 @@
 
 				</p:dataTable>
 
+
 				<p:dialog header="Supprimer le client" widgetVar="confirmDeleteDlg"
 					resizable="false" width="400" height="60" showEffect="clip"
 					hideEffect="clip" modal="true">
@@ -106,6 +92,14 @@
 							onclick="PF('confirmDeleteDlg').hide()" type="button" />
 					</p:outputPanel>
 				</p:dialog>
+
+
+
+
+
+
+
+
 
 				<p:dialog header="Update" widgetVar="detailsDlg" resizable="false"
 					width="750" height="400" showEffect="clip" hideEffect="clip"
@@ -124,7 +118,7 @@
 
 						<h:outputText value="Adresse"
 							style="padding-left: 30px; padding-right: 30px;" />
-						<p:inputText value="#{clientController.selectedClient.address}" />
+						<p:inputText value="#{clientController.selectedClient.adresse}" />
 
 						<h:outputText value="Email"
 							style="padding-left: 30px; padding-right: 30px;" />

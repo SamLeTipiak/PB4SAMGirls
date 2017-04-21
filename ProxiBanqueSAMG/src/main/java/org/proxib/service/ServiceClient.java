@@ -39,4 +39,9 @@ public class ServiceClient implements IClientService {
 		return clientDao.findAll();
 	}
 
+	@Override
+	public List<Client> findByProperty(String prop, Object val) throws Exception {
+		return clientDao.findByProperty(prop, val);
+	}
+
 }

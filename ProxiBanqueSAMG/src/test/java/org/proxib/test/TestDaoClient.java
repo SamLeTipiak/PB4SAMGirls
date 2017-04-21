@@ -6,7 +6,9 @@ import static org.junit.Assert.assertNotNull;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.proxib.config.ApplicationConfig;
+import org.proxib.model.Account;
 import org.proxib.model.Client;
+import org.proxib.model.Account.typeAccount;
 import org.proxib.service.IClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
@@ -19,40 +21,64 @@ public class TestDaoClient {
 	@Autowired
 	IClientService clientService;
 
-	Client client1 = new Client("bob", "marley", "b@m", "paris");
 	
+	Account account1 = new Account(2000, 0.5, typeAccount.CURRENT);
+	Client client1 = new Client("Bob", "Le Bricoleur", "rue des btp", "bob@trav.aux");
+
+
+
+
 	@Test
-	public void addClientNotNullTest() {
-
-		
+	public void testServiceAddClient() {
 		try {
-			clientService.persist(client1);
-			assertNotNull(clientService.findAll());
-			assertEquals(1, clientService.findAll().size());
-			assertEquals("bob", clientService.findAll().get(0).getFirstName());
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
-	}
-	
-	@Test
-	public void updateTest() {
-
-//		Client client1 = new Client("bob", "marley", "b@m", "paris");
-//		Client client1 = new Client();
-		try {
+			int sizeBefore = clientService.findAll().size();
+			client1.addAccountToClient(account1);
 			
-//			clientService.persist(client1);
-			client1.setFirstName("bobby");
-			clientService.merge(client1);
-			assertEquals("bobby", clientService.findAll().get(0).getFirstName());
-
+			clientService.persist(client1);
+			assertEquals(sizeBefore + 1, clientService.findAll().size());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
 	}
+
+	@Test
+	public void testServiceReadClient() {
+		try {
+			assertEquals("bob@trav.aux",
+					clientService.findAll().get(clientService.findAll().size() - 1).getEmail());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+	
+	@Test
+	public void testServiceUpdateClient(){
+		
+	
+		try {
+			client1=clientService.findAll().get(clientService.findAll().size()-1);
+			client1.setaddress("Avenue des Travaux");
+			clientService.merge(client1);
+			assertEquals("Avenue des Travaux", clientService.findById(client1.getId()).getaddress());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+
+	@Test
+	public void testServiceDeleteClient() {
+		try {
+			int sizeBefore = clientService.findAll().size();
+			clientService.remove(clientService.findAll().get(clientService.findAll().size() - 1).getId());
+			assertEquals(sizeBefore - 1, clientService.findAll().size());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+
 
 }

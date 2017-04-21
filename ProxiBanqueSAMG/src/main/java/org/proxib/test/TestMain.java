@@ -2,7 +2,9 @@ package org.proxib.test;
 
 import org.proxib.config.ApplicationConfig;
 import org.proxib.model.Account;
+import org.proxib.model.Account.typeAccount;
 import org.proxib.model.Client;
+import org.proxib.service.IAccountService;
 import org.proxib.service.IClientService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -10,8 +12,9 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 public class TestMain {
 
 	public static void main(String[] args) {
-
+ 
 		ApplicationContext context = new AnnotationConfigApplicationContext(ApplicationConfig.class);
+
 
 		// IClientService serviceClient = context.getBean("serviceClient",
 		// IClientService.class);
@@ -39,15 +42,15 @@ public class TestMain {
 
 		IClientService clientService = context.getBean("serviceClient", IClientService.class);
 		Client c2 = new Client("Paula", "Lis", "18 rue des oliviers 75001 Paris", "paula.lis@gmail.com");
-		Account a2 = new Account(200, 0.5);
-		c2.addAccountToClient(a2);
+		Account a3 = new Account(2, 0.2, typeAccount.CURRENT);
+		Account a4 = new Account(2000, 0.2, typeAccount.SAVING);
+		c2.addAccountToClient(a3);
+		c2.addAccountToClient(a4);
 
-		try {
-			clientService.persist(c2);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+
+		 
+
+
 
 	}
 
