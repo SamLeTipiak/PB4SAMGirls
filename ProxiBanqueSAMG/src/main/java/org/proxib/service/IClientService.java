@@ -15,5 +15,12 @@ public interface IClientService {
 	Client findById(Long id) throws Exception;
 
 	List<Client> findAll() throws Exception;
+	
+	List<Client> findByProperty(String prop, Object val) throws Exception;
+	
+//	List<Client> findInRange(int firstResult, int maxResults) throws Exception;
+//	
+//	long count() throws Exception;
+	
 
 }

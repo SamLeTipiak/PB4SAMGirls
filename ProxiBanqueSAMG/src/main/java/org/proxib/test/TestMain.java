@@ -4,6 +4,7 @@ import org.proxib.config.ApplicationConfig;
 import org.proxib.model.Account;
 import org.proxib.model.Account.typeAccount;
 import org.proxib.model.Client;
+import org.proxib.service.IAccountService;
 import org.proxib.service.IClientService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -11,9 +12,10 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 public class TestMain {
 
 	public static void main(String[] args) {
-
+ 
 		ApplicationContext context = new AnnotationConfigApplicationContext(ApplicationConfig.class);
 
+<<<<<<< HEAD
 		// IClientService serviceClient = context.getBean("serviceClient",
 		// IClientService.class);
 		// IAccountService serviceAccount = context.getBean("serviceAccount",
@@ -45,12 +47,37 @@ public class TestMain {
 		c2.addAccountToClient(a3);
 		c2.addAccountToClient(a4);
 
+=======
+		
+		IClientService serviceClient = context.getBean("serviceClient", IClientService.class);
+		IAccountService serviceAccount = context.getBean("serviceAccount", IAccountService.class);
+>>>>>>> 1c4d1e814747b2b5b0516db85171a70f8d6346d3
 		try {
-			clientService.persist(c2);
+
+			Client c1 = new Client("Paul", "Leroy", "17 rue des oliviers 75001 Paris", "paul.leroy@gmail.com" );
+//			Client c2 = new Client("Paula", "Lis", "18 rue des oliviers 75001 Paris", "paula.lis@gmail.com");
+//			List<Client> clients = new ArrayList<>();
+//			clients.add(c1);
+//			clients.add(c2);
+//			serviceClient.persist(c1);
+//			serviceClient.persist(c2);
+//			System.out.println(clients);
+//			
+			Account compte1 = new Account(541, 456.3, typeAccount.CURRENT);
+			
+			serviceAccount.persist(compte1);
+			
+
+			serviceClient.persist(c1);
+			 
+
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		
+
+
 
 	}
 

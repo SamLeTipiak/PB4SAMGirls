@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+<h:head>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+	<title>Créer un nouveau compte</title>
+
+
+</h:head>
+
+<h:body>
+
+
+	<h:messages />
+
+	<h1>Créer un compte pour #{client.firstName} #{client.lastName} :</h1>
+
+
+	<h:form id="form" style="margin-top: 10px;">
+		<h:panelGrid columns="3">
+
+			<h:outputLabel>Créer  un compte :</h:outputLabel>
+			<h:selectOneRadio value="#{account.typeAccount}">
+				<f:selectItem itemValue="#{account.typeAccount.CURRENT}"
+					itemLabel="Compte Courant" />
+				</br>
+				<f:selectItem itemValue="#{account.typeAccount.SAVING}"
+					itemLabel="Compte Epargne" />
+			</h:selectOneRadio>
+
+			<h:outputLabel>Solde initial :</h:outputLabel>
+			<h:inputText value="#{account.balance}" id="balance" required="true"
+				requiredMessage="Un solde initial de 100 euros minimum est nécessaire." />
+			<h:message for="balance" />
+
+
+		</h:panelGrid>
+
+
+		<br />
+		<br />
+		<h:commandButton action="#{AccountController.addAccompte(account)}"
+			value="Créer" />
+
+
+		<br />
+
+
+
+	</h:form>
+	<h:form>
+		<h:commandButton action="home?faces-redirect=true" value="Annuler" />
+	</h:form>
+
+
+
+</h:body>
+</html>
