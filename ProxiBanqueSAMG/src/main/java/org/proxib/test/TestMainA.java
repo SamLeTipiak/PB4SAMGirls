@@ -4,14 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.proxib.config.ApplicationConfig;
-import org.proxib.model.Account;
-import org.proxib.model.Account.typeAccount;
 import org.proxib.model.Adviser;
 import org.proxib.model.Client;
-import org.proxib.service.IAccountService;
+import org.proxib.model.CurrentAccount;
+import org.proxib.model.SavingAccount;
 import org.proxib.service.IAdviserService;
 import org.proxib.service.IClientService;
-import org.proxib.service.ServiceAdviser;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -49,10 +47,10 @@ public class TestMainA {
 		Client c1 = new Client("Paul", "Leroy", "17 rue des oliviers 75001 Paris", "paul.leroy@gmail.com" );
 		IClientService clientService = context.getBean("serviceClient", IClientService.class);
 		Client c2 = new Client("Paula", "Lis", "18 rue des oliviers 75001 Paris", "paula.lis@gmail.com");
-		Account a3 = new Account(2, 0.2, typeAccount.CURRENT);
-		Account a4 = new Account(2000, 0.2, typeAccount.SAVING);
-		c2.addAccountToClient(a3);
-		c2.addAccountToClient(a4);
+		CurrentAccount a3 = new CurrentAccount(2, 0.2);
+		SavingAccount a4 = new SavingAccount(2000, 0.2);
+		c2.addCurrentAccountToClient(a3);
+		c2.addSavingAccountToClient(a4);
 
 		List<Client> clients= new ArrayList<>();
 		clients.add(c1);

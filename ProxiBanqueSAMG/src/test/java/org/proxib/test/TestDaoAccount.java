@@ -2,12 +2,11 @@ package org.proxib.test;
 
 import static org.junit.Assert.assertEquals;
 
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.proxib.config.ApplicationConfig;
 import org.proxib.model.Account;
+import org.proxib.model.CurrentAccount;
 import org.proxib.service.IAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
@@ -17,14 +16,10 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @ContextConfiguration(classes = { ApplicationConfig.class })
 public class TestDaoAccount {
 
-
 	@Autowired
 	IAccountService accountService;
 
-	Account account1 = new Account(2000, 0.5);
-
-
-
+	Account account1 = new CurrentAccount(2000, 0.5);
 
 	@Test
 	public void testServiceAddAccount() {
@@ -61,18 +56,18 @@ public class TestDaoAccount {
 		}
 		
 	}
-//
-//	@Test
-//	public void testServiceDeleteAccount() {
-//		try {
-//			int sizeBefore = accountService.findAll().size();
-//			accountService.remove(accountService.findAll().get(accountService.findAll().size() - 1).getId());
-//			assertEquals(sizeBefore - 1, accountService.findAll().size());
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//
-//	}
+
+	@Test
+	public void testServiceDeleteAccount() {
+		try {
+			int sizeBefore = accountService.findAll().size();
+			accountService.remove(accountService.findAll().get(accountService.findAll().size() - 1).getId());
+			assertEquals(sizeBefore-1, accountService.findAll().size());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
 
 
 }

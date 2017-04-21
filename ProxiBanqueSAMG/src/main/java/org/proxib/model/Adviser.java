@@ -12,17 +12,17 @@ import javax.persistence.OneToMany;
 
 import org.springframework.stereotype.Component;
 
-@Entity
+//@Entity
 //@Component
 public class Adviser {
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+//	@Id
+//	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	private String firstName;
 	private String lastName;
 	
-	@OneToMany(mappedBy="adviser",cascade={CascadeType.ALL}, fetch=FetchType.EAGER)
+//	@OneToMany(mappedBy="adviser",cascade={CascadeType.ALL}, fetch=FetchType.EAGER)
 	private List<Client> clients;
 	
 	
