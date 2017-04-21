@@ -58,7 +58,7 @@ public class ClientController implements Serializable {
 		try {
 			this.listClient.addAll(clientService.findAll());
 			this.listClientSelected.addAll(listClient);
-			this.listAccountClient = this.client.getAccounts();
+			
 			System.out.println("****************************" + listAccountClient);
 		} catch (Exception e) {
 			e.printStackTrace();

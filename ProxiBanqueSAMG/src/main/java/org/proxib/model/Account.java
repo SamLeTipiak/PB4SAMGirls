@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 import org.springframework.stereotype.Component;
 
@@ -19,25 +20,23 @@ public class Account {
 	private Long id;
 	private double balance;
 	private double rate;
-	private Account.typeAccount typeAccount;
+//	private Account.typeAccount typeAccount;
 	
-	@ManyToOne(cascade = { CascadeType.ALL })
-	@JoinColumn(name = "client_id")
+	@OneToOne(mappedBy="account")
 	private Client client;
 
-	public static enum typeAccount {
-		CURRENT, SAVING
-	};
+//	public static enum typeAccount {
+//		CURRENT, SAVING
+//	};
 
 	public Account() {
 		super();
 	}
 
-	public Account(double balance, double rate, org.proxib.model.Account.typeAccount typeAccount) {
+	public Account(double balance, double rate) {
 		super();
 		this.balance = balance;
 		this.rate = rate;
-		this.typeAccount = typeAccount;
 	}
 	
 	public Long getId() {
@@ -64,13 +63,7 @@ public class Account {
 		this.rate = rate;
 	}
 
-	public Account.typeAccount getTypeAccount() {
-		return typeAccount;
-	}
 
-	public void setTypeAccount(Account.typeAccount typeAccount) {
-		this.typeAccount = typeAccount;
-	}
 
 	public Client getClient() {
 		return client;
@@ -82,7 +75,7 @@ public class Account {
 
 	@Override
 	public String toString() {
-		return "Compte " + typeAccount +" : " + balance + " €\n";
+		return "Compte  : " + balance + " €\n";
 	}
 
 	

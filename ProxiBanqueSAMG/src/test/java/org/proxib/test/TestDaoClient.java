@@ -8,7 +8,6 @@ import org.junit.runner.RunWith;
 import org.proxib.config.ApplicationConfig;
 import org.proxib.model.Account;
 import org.proxib.model.Client;
-import org.proxib.model.Account.typeAccount;
 import org.proxib.service.IClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
@@ -22,7 +21,7 @@ public class TestDaoClient {
 	IClientService clientService;
 
 	
-	Account account1 = new Account(2000, 0.5, typeAccount.CURRENT);
+	Account account1 = new Account(2000, 0.5);
 	Client client1 = new Client("Bob", "Le Bricoleur", "rue des btp", "bob@trav.aux");
 
 
@@ -32,7 +31,7 @@ public class TestDaoClient {
 	public void testServiceAddClient() {
 		try {
 			int sizeBefore = clientService.findAll().size();
-			client1.addAccountToClient(account1);
+			client1.addCurrentAccountToClient(account1);
 			
 			clientService.persist(client1);
 			assertEquals(sizeBefore + 1, clientService.findAll().size());

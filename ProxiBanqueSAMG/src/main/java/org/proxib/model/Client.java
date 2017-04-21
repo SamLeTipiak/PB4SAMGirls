@@ -10,7 +10,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 import org.springframework.stereotype.Component;
 
@@ -35,8 +36,14 @@ public class Client implements Serializable {
 	// @JoinColumn(name="adviser_id")
 //	private Adviser adviser;
 
-	@OneToMany(mappedBy = "client", cascade = { CascadeType.ALL }, fetch = FetchType.EAGER)
-	private List<Account> accounts = new ArrayList<>();
+	@OneToOne( cascade = { CascadeType.ALL }, fetch = FetchType.EAGER)
+	@JoinColumn(name="account_id")
+	private Account savingAccount;
+	
+	@OneToOne( cascade = { CascadeType.ALL }, fetch = FetchType.EAGER)
+	@JoinColumn(name="account_id")
+	private Account currentAccount;
+	
 
 	public String getFirstName() {
 		return firstName;
@@ -78,18 +85,13 @@ public class Client implements Serializable {
 //		this.adviser = adviser;
 //	}
 
-	public List<Account> getAccounts() {
-		return accounts;
-	}
-
-	public void setAccounts(List<Account> accounts) {
-		this.accounts = accounts;
-	}
 
 	public Long getId() {
 		return id;
 	}
 
+	
+	
 //	 @Override
 //	 public String toString() {
 //	 return "Client [firstName=" + firstName + ", lastName=" + lastName + 
@@ -97,7 +99,31 @@ public class Client implements Serializable {
 //	 + ", adviser=" + adviser + ", accounts=" + accounts + "]";
 //	 }
 	
-	 public Client(String firstName, String lastName, String address, String
+	 public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public Account getSavingAccount() {
+		return savingAccount;
+	}
+
+	public void setSavingAccount(Account savingAccount) {
+		this.savingAccount = savingAccount;
+	}
+
+	public Account getCurrentAccount() {
+		return currentAccount;
+	}
+
+	public void setCurrentAccount(Account currentAccount) {
+		this.currentAccount = currentAccount;
+	}
+
+	public Client(String firstName, String lastName, String address, String
 	 email, Adviser adviser,
 	 List<Account> accounts) {
 	 super();
@@ -106,10 +132,17 @@ public class Client implements Serializable {
 	 this.address = address;
 	 this.email = email;
 //	 this.adviser = adviser;
-	 this.accounts = accounts;
 	 }
 
-	public Client(String firstName, String lastName, String address, String email) {
+	 public Client(String firstName, String lastName, String address, String email) {
+			super();
+			this.firstName = firstName;
+			this.lastName = lastName;
+			this.address = address;
+			this.email = email;
+		}
+	 
+	public Client(String firstName, String lastName, String address, String email, Account currentAccount, Account savingAccount) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -126,10 +159,14 @@ public class Client implements Serializable {
 //		return "Client [firstName=" + firstName + ", lastName=" + lastName + "]";
 //	}
 
-	public void addAccountToClient(Account account) {
+	public void addCurrentAccountToClient(Account account) {
 		account.setClient(this);
-		this.accounts.add(account);
-		
+		this.setCurrentAccount(account);
+	}
+	
+	public void addSavingAccountToClient(Account account) {
+		account.setClient(this);
+		this.setSavingAccount(account);
 	}
 	
 }

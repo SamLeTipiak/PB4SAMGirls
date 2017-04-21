@@ -2,7 +2,6 @@ package org.proxib.test;
 
 import org.proxib.config.ApplicationConfig;
 import org.proxib.model.Account;
-import org.proxib.model.Account.typeAccount;
 import org.proxib.model.Client;
 import org.proxib.service.IAccountService;
 import org.proxib.service.IClientService;
@@ -42,11 +41,18 @@ public class TestMain {
 
 		IClientService clientService = context.getBean("serviceClient", IClientService.class);
 		Client c2 = new Client("Paula", "Lis", "18 rue des oliviers 75001 Paris", "paula.lis@gmail.com");
-		Account a3 = new Account(2, 0.2, typeAccount.CURRENT);
-		Account a4 = new Account(2000, 0.2, typeAccount.SAVING);
-		c2.addAccountToClient(a3);
-		c2.addAccountToClient(a4);
-
+		Account a3 = new Account(2, 0.2);
+		Account a4 = new Account(2000, 0.2);
+		c2.addCurrentAccountToClient(a3);
+		c2.addSavingAccountToClient(a4);
+		
+		try {
+			clientService.persist(c2);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 
 		 
 
