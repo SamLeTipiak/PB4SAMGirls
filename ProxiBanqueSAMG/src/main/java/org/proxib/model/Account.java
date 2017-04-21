@@ -40,12 +40,6 @@ public class Account {
 		this.typeAccount = typeAccount;
 	}
 	
-	public Account(double balance, double rate) {
-		super();
-		this.balance = balance;
-		this.rate = rate;
-	}
-
 	public Long getId() {
 		return id;
 	}
@@ -84,6 +78,11 @@ public class Account {
 
 	public void setClient(Client client) {
 		this.client = client;
+	}
+
+	@Override
+	public String toString() {
+		return "B " + balance + "R " + rate + "T " + typeAccount;
 	}
 
 	
