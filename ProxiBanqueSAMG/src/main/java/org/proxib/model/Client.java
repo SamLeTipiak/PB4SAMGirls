@@ -1,19 +1,14 @@
 package org.proxib.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
-
-import org.springframework.stereotype.Component;
 
 @Entity
 // @Component
@@ -36,12 +31,10 @@ public class Client implements Serializable {
 	// @JoinColumn(name="adviser_id")
 //	private Adviser adviser;
 
-	@OneToOne( cascade = { CascadeType.ALL }, fetch = FetchType.EAGER)
-	@JoinColumn(name="account_id")
+	@OneToOne(mappedBy="client" , cascade={CascadeType.ALL})
 	private Account savingAccount;
 	
-	@OneToOne( cascade = { CascadeType.ALL }, fetch = FetchType.EAGER)
-	@JoinColumn(name="account_id")
+	@OneToOne(mappedBy="client" , cascade={CascadeType.ALL})
 	private Account currentAccount;
 	
 
@@ -142,12 +135,13 @@ public class Client implements Serializable {
 			this.email = email;
 		}
 	 
-	public Client(String firstName, String lastName, String address, String email, Account currentAccount, Account savingAccount) {
+	public Client(String firstName, String lastName, String address, String email, Account savingAccount) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.address = address;
 		this.email = email;
+		this.savingAccount = savingAccount;
 	}
 
 	public Client() {

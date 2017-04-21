@@ -2,6 +2,7 @@ package org.proxib.model;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -12,7 +13,7 @@ import javax.persistence.OneToOne;
 import org.springframework.stereotype.Component;
 
 @Entity
-@Component
+//@Component
 public class Account {
 
 	@Id
@@ -20,14 +21,12 @@ public class Account {
 	private Long id;
 	private double balance;
 	private double rate;
-//	private Account.typeAccount typeAccount;
+
 	
-	@OneToOne(mappedBy="account")
+	@OneToOne( cascade = { CascadeType.ALL }, fetch = FetchType.EAGER)
+	@JoinColumn(name="client_id")
 	private Client client;
 
-//	public static enum typeAccount {
-//		CURRENT, SAVING
-//	};
 
 	public Account() {
 		super();
