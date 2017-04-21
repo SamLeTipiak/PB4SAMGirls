@@ -23,7 +23,7 @@ public class Client implements Serializable{
 	private Long id;
 	private String firstName;
 	private String lastName;
-	private String adresse;
+	private String address;
 	private String email;
 
 	// @ManyToOne(cascade={CascadeType.ALL})
@@ -50,12 +50,12 @@ public class Client implements Serializable{
 		this.lastName = lastName;
 	}
 
-	public String getAdresse() {
-		return adresse;
+	public String getaddress() {
+		return address;
 	}
 
-	public void setAdresse(String adresse) {
-		this.adresse = adresse;
+	public void setaddress(String address) {
+		this.address = address;
 	}
 
 	public String getEmail() {
@@ -85,27 +85,27 @@ public class Client implements Serializable{
 	// @Override
 	// public String toString() {
 	// return "Client [firstName=" + firstName + ", lastName=" + lastName + ",
-	// adresse=" + adresse + ", email=" + email
+	// address=" + address + ", email=" + email
 	// + ", adviser=" + adviser + ", comptes=" + comptes + "]";
 	// }
 	//
-	// public Client(String firstName, String lastName, String adresse, String
+	// public Client(String firstName, String lastName, String address, String
 	// email, Adviser adviser,
 	// List<Account> comptes) {
 	// super();
 	// this.firstName = firstName;
 	// this.lastName = lastName;
-	// this.adresse = adresse;
+	// this.address = address;
 	// this.email = email;
 	// this.adviser = adviser;
 	// this.comptes = comptes;
 	// }
 
-	public Client(String firstName, String lastName, String adresse, String email) {
+	public Client(String firstName, String lastName, String address, String email) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
-		this.adresse = adresse;
+		this.address = address;
 		this.email = email;
 	}
 
