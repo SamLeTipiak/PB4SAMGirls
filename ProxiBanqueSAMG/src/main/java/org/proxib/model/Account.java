@@ -19,10 +19,10 @@ public class Account {
 	private Long id;
 	private double balance;
 	private double rate;
-	//private Account.typeAccount typeAccount;
+	private Account.typeAccount typeAccount;
 	
-//	@ManyToOne(cascade = { CascadeType.ALL })
-//	@JoinColumn(name = "client_id")
+	@ManyToOne(cascade = { CascadeType.ALL })
+	@JoinColumn(name = "client_id")
 	private Client client;
 
 	public static enum typeAccount {
@@ -37,7 +37,7 @@ public class Account {
 		super();
 		this.balance = balance;
 		this.rate = rate;
-//		this.typeAccount = typeAccount;
+		this.typeAccount = typeAccount;
 	}
 	
 	public Account(double balance, double rate) {
@@ -70,12 +70,21 @@ public class Account {
 		this.rate = rate;
 	}
 
-//	public Account.typeAccount getTypeAccount() {
-//		return typeAccount;
-//	}
-//
-//	public void setTypeAccount(Account.typeAccount typeAccount) {
-//		this.typeAccount = typeAccount;
-//	}
+	public Account.typeAccount getTypeAccount() {
+		return typeAccount;
+	}
 
+	public void setTypeAccount(Account.typeAccount typeAccount) {
+		this.typeAccount = typeAccount;
+	}
+
+	public Client getClient() {
+		return client;
+	}
+
+	public void setClient(Client client) {
+		this.client = client;
+	}
+
+	
 }
