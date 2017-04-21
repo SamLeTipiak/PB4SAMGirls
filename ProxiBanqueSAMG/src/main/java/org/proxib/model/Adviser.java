@@ -12,17 +12,17 @@ import javax.persistence.OneToMany;
 
 import org.springframework.stereotype.Component;
 
-//@Entity
+@Entity
 //@Component
 public class Adviser {
 	
-//	@Id
-//	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	private String firstName;
 	private String lastName;
 	
-//	@OneToMany(mappedBy="adviser",cascade={CascadeType.ALL}, fetch=FetchType.EAGER)
+	@OneToMany(mappedBy="adviser",cascade={CascadeType.ALL}, fetch=FetchType.EAGER)
 	private List<Client> clients;
 	
 	
@@ -54,15 +54,23 @@ public class Adviser {
 		this.lastName = lastName;
 		this.clients = clients;
 	}
+	
+	public Adviser(String firstName, String lastName) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+	}
+	
 	public Adviser() {
 		super();
 	}
+	
 	@Override
 	public String toString() {
-		return "Adviser [firstName=" + firstName + ", lastName=" + lastName + ", clients=" + clients + "]";
+		return "Adviser [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", clients=" + clients
+				+ "]";
 	}
-	
-	
+
 	
 	
 
