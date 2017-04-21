@@ -10,7 +10,7 @@
 
 <f:metadata>
 	<f:event type="preRenderView"
-		listener="#{AccountController.loadAccount()}" />
+		listener="#{accountController.loadAccount()}" />
 </f:metadata>
 
 <h:head>
@@ -36,7 +36,7 @@
 	
 	
 	
-	<h:commandButton value="Créer un compte" action="#{AccountController.createAccount(idClient)}"></h:commandButton>
+	<h:commandButton value="Créer un compte" action="#{accountController.createAccount(idClient)}"></h:commandButton>
 	
 
 </h:body>

@@ -21,7 +21,7 @@ public class TestMain {
 		try {
 
 			Client c1 = new Client("Paul", "Leroy", "17 rue des oliviers 75001 Paris", "paul.leroy@gmail.com" );
-//			Client c2 = new Client("Paula", "Lis", "18 rue des oliviers 75001 Paris", "paula.lis@gmail.com");
+			Client c2 = new Client("Paula", "Lis", "18 rue des oliviers 75001 Paris", "paula.lis@gmail.com");
 //			List<Client> clients = new ArrayList<>();
 //			clients.add(c1);
 //			clients.add(c2);
@@ -30,8 +30,13 @@ public class TestMain {
 //			System.out.println(clients);
 //			
 			Account compte1 = new Account(541, 456.3, typeAccount.CURRENT);
+			Account compte2 = new Account(777, 0.2, typeAccount.SAVING);
 			
-			serviceAccount.persist(compte1);
+			c1.addAccountToClient(compte1);
+			c1.addAccountToClient(compte2);
+			
+//			
+//			serviceAccount.persist(compte1);
 			
 
 			serviceClient.persist(c1);
