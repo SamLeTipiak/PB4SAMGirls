@@ -20,7 +20,7 @@ import org.springframework.stereotype.Component;
 public class AccountController implements Serializable {
 
 	/**
-	 * 
+	 *  
 	 */
 	private static final long serialVersionUID = 1L;
 
