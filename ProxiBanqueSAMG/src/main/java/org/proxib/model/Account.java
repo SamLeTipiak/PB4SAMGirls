@@ -82,7 +82,7 @@ public class Account {
 
 	@Override
 	public String toString() {
-		return "B " + balance + "R " + rate + "T " + typeAccount;
+		return "Compte " + typeAccount +" : " + balance + " €\n";
 	}
 
 	
