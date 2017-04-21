@@ -8,7 +8,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.proxib.config.ApplicationConfig;
 import org.proxib.model.Account;
-import org.proxib.model.Account.typeAccount;
 import org.proxib.service.IAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
@@ -22,7 +21,7 @@ public class TestDaoAccount {
 	@Autowired
 	IAccountService accountService;
 
-	Account account1 = new Account(2000, 0.5, typeAccount.CURRENT);
+	Account account1 = new Account(2000, 0.5);
 
 
 
@@ -41,8 +40,8 @@ public class TestDaoAccount {
 	@Test
 	public void testServiceReadAccount() {
 		try {
-			assertEquals(typeAccount.CURRENT,
-					accountService.findAll().get(accountService.findAll().size() - 1).getTypeAccount());
+			assertEquals(2000,
+					accountService.findAll().get(accountService.findAll().size() - 1).getBalance(),0);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
