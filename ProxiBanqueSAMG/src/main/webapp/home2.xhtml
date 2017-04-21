@@ -52,7 +52,7 @@
 						<h:outputText value="#{tempclient.email}" />
 					</p:column>
 
-					<p:column headerText="Email" sortBy="#{tempclient.accounts}"
+					<p:column headerText="Comptes" sortBy="#{tempclient.accounts}"
 						filterBy="#{tempclient.email}" filterMatchMode="contains">
 						<h:outputText value="#{tempclient.accounts}" />
 					</p:column>
@@ -60,9 +60,9 @@
 
 					<p:column headerText="Solde">
 						<ui:repeat var="accountsPro" value="#{tempclient.accounts}">
-							
+<!-- 							<h:outputText value="#{accountsPro.typeAccount}" /> -->
 							<ui:repeat var="typeDdd" value="#{accountsPro.typeAccount}">
-							<h:outputText value="#{saving.balance}" />
+							<h:outputText value="#{typeDdd}" />
 							</ui:repeat>
 						
 
