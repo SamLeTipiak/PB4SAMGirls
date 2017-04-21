@@ -33,10 +33,10 @@ public class Client implements Serializable {
 	 @JoinColumn(name="adviser_id")
 	 private Adviser adviser;
 
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = {CascadeType.ALL})
 	private SavingAccount savingAccount;
 
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = {CascadeType.ALL})
 	private CurrentAccount currentAccount;
 	
 
@@ -107,6 +107,7 @@ public class Client implements Serializable {
 	}
 
 	public void setSavingAccount(SavingAccount savingAccount) {
+		savingAccount.setClient(this);
 		this.savingAccount = savingAccount;
 	}
 
@@ -115,6 +116,7 @@ public class Client implements Serializable {
 	}
 
 	public void setCurrentAccount(CurrentAccount currentAccount) {
+		currentAccount.setClient(this);
 		this.currentAccount = currentAccount;
 	}
 

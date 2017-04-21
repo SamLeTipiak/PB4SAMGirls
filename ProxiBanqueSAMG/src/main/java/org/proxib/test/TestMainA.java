@@ -2,6 +2,7 @@ package org.proxib.test;
 
 import org.proxib.config.ApplicationConfig;
 import org.proxib.model.Client;
+import org.proxib.model.CurrentAccount;
 import org.proxib.service.IClientService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -47,6 +48,15 @@ public class TestMainA {
 //		c2.addCurrentAccountToClient(a3);
 //		c2.addSavingAccountToClient(a4);
 
+		CurrentAccount curenta1 = new CurrentAccount(1000, 0.2);
+		c1.addCurrentAccountToClient(curenta1);
+		
+		try {
+			clientService.persist(c1);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 	}
 
