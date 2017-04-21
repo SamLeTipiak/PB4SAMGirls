@@ -13,20 +13,19 @@ import javax.persistence.ManyToOne;
 
 
 
-@Entity
-@Inheritance(strategy= InheritanceType.JOINED)
+//@Entity
 //@Component
 public class Account {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.TABLE)
+//	@Id
+//	@GeneratedValue(strategy = GenerationType.TABLE)
 	private Long id;
 	protected double balance;
 	protected double rate;
 
 	
-	@ManyToOne( cascade = { CascadeType.ALL }, fetch = FetchType.EAGER)
-	@JoinColumn(name="client_id")
+//	@ManyToOne( cascade = { CascadeType.ALL }, fetch = FetchType.EAGER)
+//	@JoinColumn(name="client_id")
 	private Client client;
 
 

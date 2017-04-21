@@ -11,19 +11,19 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-@Entity
+//@Entity
 //@Component
 public class Adviser {
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+//	@Id
+//	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	private String firstName;
 	private String lastName;
 	
 
-	@OneToMany(mappedBy="adviser",cascade={CascadeType.ALL}, fetch=FetchType.EAGER)
-	private List<Client> clients = new ArrayList<Client>();
+//	@OneToMany(mappedBy="adviser",cascade={CascadeType.ALL}, fetch=FetchType.EAGER)
+//	private List<Client> clients = new ArrayList<Client>();
 
 	
 	
@@ -40,12 +40,12 @@ public class Adviser {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-	public List<Client> getClients() {
-		return clients;
-	}
-	public void setClients(List<Client> clients) {
-		this.clients = clients;
-	}
+//	public List<Client> getClients() {
+//		return clients;
+//	}
+//	public void setClients(List<Client> clients) {
+//		this.clients = clients;
+//	}
 	public Long getId() {
 		return id;
 	}
@@ -53,7 +53,7 @@ public class Adviser {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
-		this.clients = clients;
+//		this.clients = clients;
 	}
 	
 	public Adviser(String firstName, String lastName) {
@@ -66,17 +66,17 @@ public class Adviser {
 		super();
 	}
 	
-	@Override
-	public String toString() {
-		return "Adviser [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", clients=" + clients
-				+ "]";
-	}
+//	@Override
+//	public String toString() {
+//		return "Adviser [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", clients=" + clients
+//				+ "]";
+//	}
 
 	
 
-	public void addClientToAdviser(Client client) {
-		client.setAdviser(this);
-		clients.add(client);
-	}
+//	public void addClientToAdviser(Client client) {
+//		client.setAdviser(this);
+//		clients.add(client);
+//	}
 
 }

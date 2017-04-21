@@ -29,14 +29,16 @@ public class Client implements Serializable {
 	private String address;
 	private String email;
 
-	 @ManyToOne(cascade={CascadeType.ALL})
-	 @JoinColumn(name="adviser_id")
-	 private Adviser adviser;
+//	 @ManyToOne(cascade={CascadeType.ALL})
+//	 @JoinColumn(name="adviser_id")
+//	 private Adviser adviser;
 
 	@OneToOne(cascade = {CascadeType.ALL})
+	@JoinColumn(name="savingAccount_id")
 	private SavingAccount savingAccount;
 
 	@OneToOne(cascade = {CascadeType.ALL})
+	@JoinColumn(name="currentAccount_id")
 	private CurrentAccount currentAccount;
 	
 
@@ -72,13 +74,13 @@ public class Client implements Serializable {
 		this.email = email;
 	}
 
-	public Adviser getAdviser() {
-		return adviser;
-	}
-
-	public void setAdviser(Adviser adviser) {
-		this.adviser = adviser;
-	}
+//	public Adviser getAdviser() {
+//		return adviser;
+//	}
+//
+//	public void setAdviser(Adviser adviser) {
+//		this.adviser = adviser;
+//	}
 
 
 	public Long getId() {
@@ -102,21 +104,21 @@ public class Client implements Serializable {
 		this.address = address;
 	}
 
-	public Account getSavingAccount() {
+	public SavingAccount getSavingAccount() {
 		return savingAccount;
 	}
 
 	public void setSavingAccount(SavingAccount savingAccount) {
-		savingAccount.setClient(this);
+//		savingAccount.setClient(this);
 		this.savingAccount = savingAccount;
 	}
 
-	public Account getCurrentAccount() {
+	public CurrentAccount getCurrentAccount() {
 		return currentAccount;
 	}
 
 	public void setCurrentAccount(CurrentAccount currentAccount) {
-		currentAccount.setClient(this);
+//		currentAccount.setClient(this);
 		this.currentAccount = currentAccount;
 	}
 
@@ -128,7 +130,7 @@ public class Client implements Serializable {
 	 this.lastName = lastName;
 	 this.address = address;
 	 this.email = email;
-	 this.adviser = adviser;
+//	 this.adviser = adviser;
 	 }
 
 	 public Client(String firstName, String lastName, String address, String email) {
@@ -139,14 +141,14 @@ public class Client implements Serializable {
 			this.email = email;
 		}
 	 
-	public Client(String firstName, String lastName, String address, String email, SavingAccount savingAccount) {
-		super();
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.address = address;
-		this.email = email;
-		this.savingAccount = savingAccount;
-	}
+//	public Client(String firstName, String lastName, String address, String email, SavingAccount savingAccount) {
+//		super();
+//		this.firstName = firstName;
+//		this.lastName = lastName;
+//		this.address = address;
+//		this.email = email;
+//		this.savingAccount = savingAccount;
+//	}
 
 	public Client() {
 		super();
