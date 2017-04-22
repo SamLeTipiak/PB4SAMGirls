@@ -154,10 +154,10 @@ public class Client implements Serializable {
 		super();
 	}
 
-//	@Override
-//	public String toString() {
-//		return "Client [firstName=" + firstName + ", lastName=" + lastName + "]";
-//	}
+	@Override
+	public String toString() {
+		return "Client [firstName=" + firstName + ", lastName=" + lastName + "]";
+	}
 
 	public void addCurrentAccountToClient(CurrentAccount account) {
 		account.setClient(this);

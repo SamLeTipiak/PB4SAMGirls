@@ -3,20 +3,23 @@ package org.proxib.service;
 import java.util.List;
 
 import org.proxib.model.Account;
+import org.proxib.model.Client;
 
 public interface IAccountService {
 
-	void persist(Account account) throws Exception;
+	public void persist(Account account) throws Exception;
 	
-	void merge(Account account) throws Exception;
+	public void merge(Account account) throws Exception;
 
-	void remove(Long idAccount) throws Exception;
+	public void remove(Long idAccount) throws Exception;
 	
-	Account findById(Long idAccount) throws Exception;
+	public Account findById(Long idAccount) throws Exception;
 	
-	List<Account> findAll() throws Exception;
+	public List<Account> findAll() throws Exception;
 	
-	String transfer(Account accountToWithdraw, Account accountToCredit, double sum);
+	public String transfer(Account accountToWithdraw, Account accountToCredit, double sum);
+	
+	public List<Client> doAudit(double overdraft);
 	
 //	List<Account> findByProperty(String prop, Object val) throws Exception;
 //	

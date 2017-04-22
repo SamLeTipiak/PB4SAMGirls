@@ -1,9 +1,12 @@
 package org.proxib.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.proxib.dao.IAccountDao;
+import org.proxib.dao.IClientDao;
 import org.proxib.model.Account;
+import org.proxib.model.Client;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +17,8 @@ public class ServiceAccount implements IAccountService {
 	@Autowired
 	private IAccountDao accountDao;
 
+	@Autowired
+	private IClientDao clientDao;
 
 	
 	@Override
@@ -67,6 +72,30 @@ public class ServiceAccount implements IAccountService {
 			}
 			
 		}
+	}
+
+	@Override
+	public List<Client> doAudit(double overdraft) {
+		
+		List<Client> clientsOverdraft = new ArrayList<>();
+		try {
+			List<Client> clients = clientDao.findAll();
+			for (Client client : clients) {
+				if (client.getCurrentAccount() != null) {
+					if (client.getCurrentAccount().getBalance() <= overdraft) {
+						clientsOverdraft.add(client);
+					}
+				}
+			}
+			
+		} catch (Exception e) {
+			System.out.println("Exception dans doAudit de ServiceAccount");
+			e.printStackTrace();
+		}
+		
+		
+		
+		return clientsOverdraft;
 	}
 
 }
