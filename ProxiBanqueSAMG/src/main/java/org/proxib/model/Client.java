@@ -162,5 +162,13 @@ public class Client implements Serializable {
 		account.setClient(this);
 		this.setSavingAccount(account);
 	}
+
+	@Override
+	public String toString() {
+		return "Client [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", address=" + address
+				+ ", email=" + email + ", savingAccount=" + savingAccount + ", currentAccount=" + currentAccount + "]";
+	}
+	
+	
 	
 }

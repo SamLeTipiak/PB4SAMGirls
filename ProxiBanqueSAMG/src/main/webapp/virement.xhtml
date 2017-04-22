@@ -33,7 +33,7 @@
 					<h:outputText value="Débit" style="text-align: right" />
 
 
-					<b:dataTable value="#{clientController.listClient}"
+					<b:dataTable value="#{virementController.listClient}"
 						var="tempclient" id="client-id"
 						border="#{dataTableSettingsBean.border}"
 						custom-options="#{dataTableSettingsBean.customOptionsValue}"
@@ -71,8 +71,16 @@
 
 				<b:column col-md="5">
 					<h:outputText value="Crédit" />
-					<b:dataTable value="#{clientController.listClient}"
-						var="tempclient" select="true" striped="false">
+					<b:dataTable value="#{virementController.listClient}"
+						var="tempclient" id="client-id2"
+						border="#{dataTableSettingsBean.border}"
+						custom-options="#{dataTableSettingsBean.customOptionsValue}"
+						fixedHeader="#{dataTableSettingsBean.fixedHeader}"
+						multi-column-search="false" page-length="5"
+						page-length-menu="5,10,20"
+						row-highlight="#{dataTableSettingsBean.rowHighlight}"
+						save-state="#{dataTableSettingsBean.saveState}" searching="true"
+						select="true" selectionMode="single" striped="false">
 
 						<b:dataTableColumn value="#{tempclient.lastName}"
 							searchable="true">
