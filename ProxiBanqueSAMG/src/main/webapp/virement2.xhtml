@@ -44,7 +44,7 @@
 							oncomplete="PF('confirmDeleteDlg').show()"
 							image="ui-icon ui-icon-close" title="Supprimer">
 							<f:setPropertyActionListener value="#{tempclient}"
-								target="#{virementController.listClientUpdate}" />
+								target="#{virementController.selectedClient}" />
 							<h:outputText styleClass="ui-icon ui-icon-close" />
 						</p:commandLink>
 					</p:column>

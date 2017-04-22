@@ -38,7 +38,7 @@ public class VirementController implements Serializable {
 	private List<Client> listClient;
 	private List<Client> listClientUpdate;
 	private List<Client> nouvelleliste;
-	
+
 	public List<Client> getNouvelleliste() {
 		return nouvelleliste;
 	}
@@ -63,7 +63,7 @@ public class VirementController implements Serializable {
 		try {
 			this.listClient.addAll(clientService.findAll());
 			this.listClientSelected.addAll(listClient);
-//			this.listClientUpdate.addAll(clientService.findAll());
+			// this.listClientUpdate.addAll(clientService.findAll());
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -108,11 +108,12 @@ public class VirementController implements Serializable {
 		try {
 			this.listClientUpdate = new ArrayList<>();
 			this.listClientUpdate.addAll(listClient);
+			System.err.println("**");
 			System.out.println(selectedClient);
-			System.out.println("********************************before"+ listClientUpdate);
+			System.out.println("********************************before" + listClientUpdate);
 			boolean isdeleted = this.listClientUpdate.remove(this.selectedClient);
 			System.out.println(isdeleted);
-			System.out.println("********************************AFTER"+ listClientUpdate);
+			System.out.println("********************************AFTER" + listClientUpdate);
 			notificationSuccess("Client supprimé");
 		} catch (Exception e) {
 			notificationError(e, "suppression Client");
