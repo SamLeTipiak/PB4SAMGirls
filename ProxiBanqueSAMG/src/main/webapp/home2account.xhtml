@@ -16,7 +16,7 @@
 <h:head>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>Mon petit client</title>
+	<title>Mon petit cllient</title>
 </h:head>
 
 <h:body>
@@ -52,14 +52,20 @@
 						<h:outputText value="#{tempclient.email}" />
 					</p:column>
 
-					<p:column headerText="Comptes" sortBy="#{tempclient.accounts}">
+					<p:column headerText="Comptes" sortBy="#{tempclient.accounts}"
+						filterBy="#{tempclient.email}" filterMatchMode="contains">
 						<h:outputText value="#{tempclient.accounts}" />
 					</p:column>
 
 
-					<p:column headerText="Solde CC">
+					<p:column headerText="Solde">
 						<ui:repeat var="accountsPro" value="#{tempclient.accounts}">
-							<h:outputText value="#{accountPro.solde}" /> 
+<!-- 							<h:outputText value="#{accountsPro.typeAccount}" /> -->
+							<ui:repeat var="typeDdd" value="#{accountsPro.typeAccount}">
+							<h:outputText value="#{typeDdd}" />
+							</ui:repeat>
+						
+
 
 						</ui:repeat>
 					</p:column>
