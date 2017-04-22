@@ -52,10 +52,11 @@ public class TestMain {
 		Client c1 = new Client("Paul", "Leroy", "17 rue des oliviers 75001 Paris", "paul.leroy@gmail.com" );
 		Client c2 = new Client("Paula", "Lis", "18 rue des oliviers 75001 Paris", "paula.lis@gmail.com");
 		
-		CurrentAccount a1 = new CurrentAccount(1232);
+		CurrentAccount a1 = new CurrentAccount(1000);
 		SavingAccount a2 = new SavingAccount(29000);
-		CurrentAccount a3 = new CurrentAccount(2);
+		CurrentAccount a3 = new CurrentAccount(-2);
 		SavingAccount a4 = new SavingAccount(2000);
+		
 		
 		
 		c2.addCurrentAccountToClient(a3);
@@ -67,7 +68,12 @@ public class TestMain {
 		try {
 			clientService.persist(c2);
 			clientService.persist(c1);
+
 			System.out.println(accountService.transfer(a4, a3, 200));
+
+			System.out.println(accountService.transfer(a4, a3, -200));
+			System.out.println(accountService.doAudit(0));
+
 			
 		} catch (Exception e) {
 			e.printStackTrace();
