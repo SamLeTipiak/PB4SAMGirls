@@ -1,4 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+
 <configuration>
+
+<property name="LOG_HOME" value="/logs" />
 
 	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
 		<!-- encoders are assigned the type ch.qos.logback.classic.encoder.PatternLayoutEncoder 
@@ -33,12 +38,12 @@
 	
 	
 <!-- 	<logger name="org.slf4j.simpleLogger.defaultLogLevel" level="ERROR" /> -->
-	<logger name="simpleLogger.MainTest" level="DEBUG">
+	<logger name="simpleLogger.MainTest" level="TRACE">
 		<appender-ref ref="FILE" />
 	</logger>
 	<!-- TRACE, DEBUG, INFO, WARN, ERROR, ALL or OFF -->
 
-	<root level="INFO">
+	<root level="TRACE">
 		<appender-ref ref="STDOUT" />
 		<appender-ref ref="FILE" />
 	</root>

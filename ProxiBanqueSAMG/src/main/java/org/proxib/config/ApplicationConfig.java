@@ -5,10 +5,13 @@ import java.util.Properties;
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
+import org.proxib.service.IAccountService;
+import org.proxib.service.ServiceAccount;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
@@ -24,6 +27,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableJpaRepositories(basePackages = { "org.proxib" })
 @EnableTransactionManagement
 @PropertySource("classpath:application.properties")
+@EnableAspectJAutoProxy
 @ComponentScan(basePackages = { "org.proxib" })
 public class ApplicationConfig {
 
@@ -76,4 +80,9 @@ public class ApplicationConfig {
 		return entityManagerFactory;
 	}
 
+	@Bean
+	public IAccountService accountService() {
+		return new ServiceAccount();
+		
+	}
 }
