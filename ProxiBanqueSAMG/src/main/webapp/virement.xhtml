@@ -20,12 +20,16 @@
 	<ui:composition template="/WEB-INF/template/template.xhtml">
 		<ui:define name="content">
 
-
-
-
-
 			<b:row styleClass="show-grid">
-				<b:column col-md="6">
+				<b:column span="6" offset="3">
+					<h:outputText value="Virement" />
+				</b:column>
+			</b:row>
+
+
+
+			<b:row styleClass="show-grid" tooltip-position="">
+				<b:column col-md="5">
 					<h:outputText value="Débit" style="text-align: right" />
 
 
@@ -34,8 +38,7 @@
 						border="#{dataTableSettingsBean.border}"
 						custom-options="#{dataTableSettingsBean.customOptionsValue}"
 						fixedHeader="#{dataTableSettingsBean.fixedHeader}"
-						multi-column-search="false"
-						page-length="5"
+						multi-column-search="false" page-length="5"
 						page-length-menu="5,10,20"
 						row-highlight="#{dataTableSettingsBean.rowHighlight}"
 						save-state="#{dataTableSettingsBean.saveState}" searching="true"
@@ -54,19 +57,21 @@
 							</f:facet>
 						</b:dataTableColumn>
 
-						<b:dataTableColumn value="#{tempclient.email}">
+						<b:dataTableColumn value="#{tempclient.savingAccount}">
 							<f:facet name="header">
-								<h:outputText value="Compte" />
+								<h:outputText value="Solde" />
 							</f:facet>
 						</b:dataTableColumn>
 
 					</b:dataTable>
 
 				</b:column>
-				
-				<b:column col-md="6">
-						<h:outputText value="Crédit" />
-						<b:dataTable value="#{clientController.listClient}"
+				<b:column col-md="2">
+				</b:column>
+
+				<b:column col-md="5">
+					<h:outputText value="Crédit" />
+					<b:dataTable value="#{clientController.listClient}"
 						var="tempclient" select="true" striped="false">
 
 						<b:dataTableColumn value="#{tempclient.lastName}"
@@ -82,7 +87,7 @@
 							</f:facet>
 						</b:dataTableColumn>
 
-						<b:dataTableColumn value="#{tempclient.email}">
+						<b:dataTableColumn value="#{tempclient.savingAccount}">
 							<f:facet name="header">
 								<h:outputText value="Compte" />
 							</f:facet>
@@ -91,6 +96,30 @@
 					</b:dataTable>
 				</b:column>
 			</b:row>
+
+	
+
+
+			<h:form>
+				<b:row styleClass="show-grid">
+					<b:column col-md="3" offset="3">
+						<b:inputText type="number" class="form-control"
+							style="text-align: right" id="montant" name="montant"
+							placeholder="Montant">
+							<f:facet name="append">
+								<h:outputText value="€" />
+							</f:facet>
+						</b:inputText>
+					</b:column>
+					<b:column col-md="6">
+						<b:buttonGroup>
+							<b:commandButton value="Valider" type="submit" />
+							<b:button value="Annuler" />
+						</b:buttonGroup>
+					</b:column>
+				</b:row>
+
+			</h:form>
 
 
 		</ui:define>

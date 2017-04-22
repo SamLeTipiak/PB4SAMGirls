@@ -39,16 +39,20 @@ public class TestMain {
 		// e.printStackTrace();
 		// }
 
-		Client c1 = new Client("Paul", "Leroy", "17 rue des oliviers 75001 Paris", "paul.leroy@gmail.com" );
 		IClientService clientService = context.getBean("serviceClient", IClientService.class);
+		
+		Client c1 = new Client("Paul", "Leroy", "17 rue des oliviers 75001 Paris", "paul.leroy@gmail.com" );
 		Client c2 = new Client("Paula", "Lis", "18 rue des oliviers 75001 Paris", "paula.lis@gmail.com");
-		CurrentAccount a1 = new CurrentAccount(1232, 0.3);
-		SavingAccount a2 = new SavingAccount(29000, 1.2);
-		CurrentAccount a3 = new CurrentAccount(2, 0.2);
-		SavingAccount a4 = new SavingAccount(2000, 0.2);
+		
+		CurrentAccount a1 = new CurrentAccount(1232);
+		SavingAccount a2 = new SavingAccount(29000);
+		CurrentAccount a3 = new CurrentAccount(2);
+		SavingAccount a4 = new SavingAccount(2000);
+		
+		
 		c2.addCurrentAccountToClient(a3);
 		c2.addSavingAccountToClient(a4);
-		
+//		
 		c1.addCurrentAccountToClient(a1);
 		c1.addSavingAccountToClient(a2);
 		

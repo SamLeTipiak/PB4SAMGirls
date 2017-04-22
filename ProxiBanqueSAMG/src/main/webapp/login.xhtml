@@ -7,7 +7,7 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
-	
+
 <h:head>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -15,19 +15,22 @@
 </h:head>
 <h:body>
 
+	<form action="j_security_check" method="post">
+		<fieldset>
+			<legend>Connectez-vous :</legend>
+			<label>Login</label><input name="j_username" /> <input
+				type="password" name="j_password" />
+			<button type="submit">Valider</button>
+
+		</fieldset>
+
+	</form>
+
 
 	
-	<h:form>
-		<h:outputText value="Login" />
-		<h:inputText value ="#{user.login}" />
-		<br/>
-		<h:outputText value="Mot de passe" />
-		<h:inputSecret value="#{user.password}" />
-		
-		<br/>
-		<h:commandButton value="ok"></h:commandButton>
-	</h:form>
-	
+
+
+
 
 </h:body>
 </html>
