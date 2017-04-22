@@ -6,9 +6,12 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+@Inheritance(strategy=InheritanceType.JOINED)
 @Entity
 //@Component
 public class Account {
@@ -21,7 +24,7 @@ public class Account {
 
 	
 	@ManyToOne( cascade = { CascadeType.ALL }, fetch = FetchType.EAGER)
-	@JoinColumn(name="client_id")
+//	@JoinColumn(name="client_id")
 	private Client client;
 
 

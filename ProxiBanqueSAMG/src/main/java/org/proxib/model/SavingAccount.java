@@ -18,6 +18,7 @@ public class SavingAccount extends Account {
 		super();
 	}
 
+	
 	public SavingAccount(double balance) {
 		super(balance);
 		super.rate = SAVINGRATE;
