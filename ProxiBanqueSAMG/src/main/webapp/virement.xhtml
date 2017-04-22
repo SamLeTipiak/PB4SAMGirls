@@ -26,94 +26,91 @@
 				</b:column>
 			</b:row>
 
-
-			<b:row styleClass="show-grid" tooltip-position="">
-				<b:column col-md="5">
-					<h:outputText value="Débit" style="text-align: right" />
-
-
-					<b:dataTable value="#{virementController.listClient}"
-						var="tempclient" id="client-id"
-						border="#{dataTableSettingsBean.border}"
-						custom-options="#{dataTableSettingsBean.customOptionsValue}"
-						fixedHeader="#{dataTableSettingsBean.fixedHeader}"
-						multi-column-search="false" page-length="5"
-						page-length-menu="5,10,20"
-						row-highlight="#{dataTableSettingsBean.rowHighlight}"
-						save-state="#{dataTableSettingsBean.saveState}" searching="true"
-						select="true" selectionMode="single" striped="false">
-
-						<b:dataTableColumn value="#{tempclient.lastName}"
-							searchable="true">
-							<f:facet name="header" searching="true">
-								<h:outputText value="Nom" />
-							</f:facet>
-						</b:dataTableColumn>
-
-						<b:dataTableColumn value="#{tempclient.firstName}">
-							<f:facet name="header">
-								<h:outputText value="Prénom" />
-							</f:facet>
-						</b:dataTableColumn>
-
-						<b:dataTableColumn value="#{tempclient.savingAccount}">
-							<f:facet name="header">
-								<h:outputText value="SC" />
-							</f:facet>
-						</b:dataTableColumn>
-
-						<b:dataTableColumn value="#{tempclient.currentAccount}">
-							<f:facet name="header">
-								<h:outputText value="CA" />
-							</f:facet>
-						</b:dataTableColumn>
-
-					</b:dataTable>
-
-				</b:column>
-				<b:column col-md="2">
-				</b:column>
-
-				<b:column col-md="5">
-					<h:outputText value="Crédit" />
-					<b:dataTable value="#{virementController.listClient}"
-						var="tempclient" id="client-id2"
-						border="#{dataTableSettingsBean.border}"
-						custom-options="#{dataTableSettingsBean.customOptionsValue}"
-						fixedHeader="#{dataTableSettingsBean.fixedHeader}"
-						multi-column-search="false" page-length="5"
-						page-length-menu="5,10,20"
-						row-highlight="#{dataTableSettingsBean.rowHighlight}"
-						save-state="#{dataTableSettingsBean.saveState}" searching="true"
-						select="true" selectionMode="single" striped="false">
-
-						<b:dataTableColumn value="#{tempclient.lastName}"
-							searchable="true">
-							<f:facet name="header" searching="true">
-								<h:outputText value="Nom" />
-							</f:facet>
-						</b:dataTableColumn>
-
-						<b:dataTableColumn value="#{tempclient.firstName}">
-							<f:facet name="header">
-								<h:outputText value="Prénom" />
-							</f:facet>
-						</b:dataTableColumn>
-
-						<b:dataTableColumn value="#{tempclient.savingAccount}">
-							<f:facet name="header">
-								<h:outputText value="Compte" />
-							</f:facet>
-						</b:dataTableColumn>
-
-					</b:dataTable>
-				</b:column>
-			</b:row>
-
-
-
-
 			<h:form>
+				<b:row styleClass="show-grid" tooltip-position="">
+					<b:column col-md="5">
+						<h:outputText value="Débit" style="text-align: right" />
+
+
+						<b:dataTable value="#{virementController.listClient}"
+							var="tempclient" id="client-id"
+							border="#{dataTableSettingsBean.border}"
+							custom-options="#{dataTableSettingsBean.customOptionsValue}"
+							fixedHeader="#{dataTableSettingsBean.fixedHeader}"
+							multi-column-search="false" page-length="5"
+							page-length-menu="5,10,20"
+							row-highlight="#{dataTableSettingsBean.rowHighlight}"
+							save-state="#{dataTableSettingsBean.saveState}" searching="true"
+							select="true" selectionMode="single" striped="false">
+
+							<b:dataTableColumn value="#{tempclient.lastName}"
+								searchable="true">
+								<f:facet name="header" searching="true">
+									<h:outputText value="Nom" />
+								</f:facet>
+							</b:dataTableColumn>
+
+							<b:dataTableColumn value="#{tempclient.firstName}">
+								<f:facet name="header">
+									<h:outputText value="Prénom" />
+								</f:facet>
+							</b:dataTableColumn>
+
+							<b:dataTableColumn value="#{tempclient.savingAccount}">
+								<f:facet name="header">
+									<h:outputText value="SC" />
+								</f:facet>
+							</b:dataTableColumn>
+
+							<b:dataTableColumn value="#{tempclient.currentAccount}">
+								<f:facet name="header">
+									<h:outputText value="CA" />
+								</f:facet>
+							</b:dataTableColumn>
+
+						</b:dataTable>
+
+					</b:column>
+					<b:column col-md="2">
+					</b:column>
+
+					<b:column col-md="5">
+						<h:outputText value="Crédit" />
+						<b:dataTable value="#{virementController.listClient}"
+							var="tempclient" id="client-id2"
+							border="#{dataTableSettingsBean.border}"
+							custom-options="#{dataTableSettingsBean.customOptionsValue}"
+							fixedHeader="#{dataTableSettingsBean.fixedHeader}"
+							multi-column-search="false" page-length="5"
+							page-length-menu="5,10,20"
+							row-highlight="#{dataTableSettingsBean.rowHighlight}"
+							save-state="#{dataTableSettingsBean.saveState}" searching="true"
+							select="true" selectionMode="single" striped="false">
+
+							<b:dataTableColumn value="#{tempclient.lastName}"
+								searchable="true">
+								<f:facet name="header" searching="true">
+									<h:outputText value="Nom" />
+								</f:facet>
+							</b:dataTableColumn>
+
+							<b:dataTableColumn value="#{tempclient.firstName}">
+								<f:facet name="header">
+									<h:outputText value="Prénom" />
+								</f:facet>
+							</b:dataTableColumn>
+
+							<b:dataTableColumn value="#{tempclient.savingAccount}">
+								<f:facet name="header">
+									<h:outputText value="Compte" />
+								</f:facet>
+							</b:dataTableColumn>
+
+						</b:dataTable>
+					</b:column>
+				</b:row>
+
+
 				<b:row styleClass="show-grid">
 					<b:column col-md="3" offset="3">
 						<b:inputText type="number" class="form-control"
@@ -133,45 +130,6 @@
 				</b:row>
 
 			</h:form>
-
-
-
-
-			<b:dataTable value="#{virementController.listAccount}"
-				var="tempAccount" id="client-id3"
-				border="#{dataTableSettingsBean.border}"
-				custom-options="#{dataTableSettingsBean.customOptionsValue}"
-				fixedHeader="#{dataTableSettingsBean.fixedHeader}"
-				multi-column-search="false" page-length="5"
-				page-length-menu="5,10,20"
-				row-highlight="#{dataTableSettingsBean.rowHighlight}"
-				save-state="#{dataTableSettingsBean.saveState}" searching="true"
-				select="true" selectionMode="single" striped="false">
-
-				<b:dataTableColumn value="#{tempAccount.rate}" searchable="true">
-					<f:facet name="header" searching="true">
-						<h:outputText value="Nom" />
-					</f:facet>
-				</b:dataTableColumn>
-
-				<b:dataTableColumn value="#{tempAccount.rate}">
-					<f:facet name="header">
-						<h:outputText value="Prénom" />
-					</f:facet>
-				</b:dataTableColumn>
-
-				<b:dataTableColumn value="#{tempAccount.balance}">
-					<f:facet name="header">
-						<h:outputText value="Compte" />
-					</f:facet>
-				</b:dataTableColumn>
-
-			</b:dataTable>
-
-
-
-
-
 
 
 		</ui:define>

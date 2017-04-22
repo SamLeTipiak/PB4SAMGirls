@@ -33,7 +33,7 @@ public class VirementController implements Serializable {
 
 	@Autowired
 	IClientService clientService;
-	
+
 	@Autowired
 	IAccountService accountService;
 
@@ -130,7 +130,9 @@ public class VirementController implements Serializable {
 		}
 	}
 
-	private void transfer() {
+	private void transfer(Client client1, Client client2, double montant) {
+		accountService.transfer(client1.getCurrentAccount(), client2.getCurrentAccount(), montant);
+		System.out.println("**********************************" +montant);
 
 	}
 
