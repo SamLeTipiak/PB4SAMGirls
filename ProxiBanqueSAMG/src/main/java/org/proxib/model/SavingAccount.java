@@ -2,74 +2,48 @@ package org.proxib.model;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
 @Entity
-public class SavingAccount  {
+public class SavingAccount extends Account {
 
 	private static float SAVINGRATE = 0.03f;
-	@Id
-	@GeneratedValue(strategy = GenerationType.TABLE)
-	private Long id;
-	protected double balance;
-	protected double rate;
+
+	@OneToOne(mappedBy = "savingAccount", cascade = CascadeType.ALL)
+	@JoinColumn(name = "account_id")
+	private Client client;
+
+	public SavingAccount() {
+		super();
+	}
+
 	
-	public double getBalance() {
-		return balance;
+	public SavingAccount(double balance) {
+		super(balance);
+		super.rate = SAVINGRATE;
 	}
 
-	public void setBalance(double balance) {
-		this.balance = balance;
+
+	public SavingAccount(double balance, double rate) {
+		super(balance);
+		super.rate = rate;
 	}
 
-	public double getRate() {
+	public double getrate() {
 		return rate;
 	}
 
-	public void setRate(double rate) {
+	public void setrate(float rate) {
 		this.rate = rate;
 	}
 
-	public Client getClient() {
-		return client;
-	}
-
-	public void setClient(Client client) {
-		this.client = client;
-	}
-
-	
-
-	@OneToOne(mappedBy = "savingAccount", cascade = CascadeType.ALL)
-	private Client client;
-
-
-
-	
 	public static float getSAVINGRATE() {
 		return SAVINGRATE;
 	}
 
 	public static void setSAVINGRATE(float sAVINGRATE) {
 		SAVINGRATE = sAVINGRATE;
-	}
-
-	public SavingAccount(double balance) {
-		super();
-		this.balance = balance;
-	}
-
-	public SavingAccount() {
-		super();
-	}
-
-	@Override
-	public String toString() {
-		return "SavingAccount [balance=" + balance + "]";
 	}
 
 }
