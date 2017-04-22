@@ -55,8 +55,10 @@ public class ClientController implements Serializable {
 			this.listClient.addAll(clientService.findAll());
 			this.listClientSelected.addAll(listClient);
 			
-		System.out.println(listClient);
-			System.out.println("*");
+
+			System.out.println("******************");
+			System.out.println(listClient);
+			System.out.println("******************");
 			System.out.println("*");
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -16,6 +16,8 @@ public interface IAccountService {
 	
 	List<Account> findAll() throws Exception;
 	
+	String transfer(Account accountToWithdraw, Account accountToCredit, double sum);
+	
 //	List<Account> findByProperty(String prop, Object val) throws Exception;
 //	
 //	List<Account> findInRange(int firstResult, int maxResults) throws Exception;
