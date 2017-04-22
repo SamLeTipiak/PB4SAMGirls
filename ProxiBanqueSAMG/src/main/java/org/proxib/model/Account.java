@@ -10,6 +10,7 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.ManyToOne;
 
+
 @Inheritance(strategy=InheritanceType.JOINED)
 @Entity
 //@Component
@@ -52,10 +53,10 @@ public class Account {
 
 	public double getBalance() {
 		return balance;
-	}
+	} 
 
 	public void setBalance(double balance) {
-		this.balance = balance;
+		this.balance += balance;
 	}
 
 	public double getRate() {
