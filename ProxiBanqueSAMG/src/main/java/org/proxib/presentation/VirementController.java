@@ -11,7 +11,9 @@ import javax.faces.context.FacesContext;
 
 import org.primefaces.context.RequestContext;
 import org.primefaces.event.RowEditEvent;
+import org.proxib.model.Account;
 import org.proxib.model.Client;
+import org.proxib.service.IAccountService;
 import org.proxib.service.IClientService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,23 +33,27 @@ public class VirementController implements Serializable {
 
 	@Autowired
 	IClientService clientService;
+	
+	@Autowired
+	IAccountService accountService;
 
 	private Client client;
 	private Client selectedClient;
+	private Account account;
 
 	private List<Client> listClient;
 	private List<Client> listClientUpdate;
-	private List<Client> nouvelleliste;
-
-	public List<Client> getNouvelleliste() {
-		return nouvelleliste;
-	}
-
-	public void setNouvelleliste(List<Client> nouvelleliste) {
-		this.nouvelleliste = nouvelleliste;
-	}
-
 	private List<Client> listClientSelected;
+	private List<Account> listAccountSelected;
+	private List<Account> listAccount;
+
+	public List<Account> getListAccount() {
+		return listAccount;
+	}
+
+	public void setListAccount(List<Account> listAccount) {
+		this.listAccount = listAccount;
+	}
 
 	@PostConstruct
 	public void init() {
@@ -59,10 +65,14 @@ public class VirementController implements Serializable {
 		this.selectedClient = new Client();
 		this.listClient = new ArrayList<>();
 		this.listClientSelected = new ArrayList<>();
+		this.listAccountSelected = new ArrayList<>();
 		this.listClientUpdate = new ArrayList<>();
+		this.listAccount = new ArrayList<>();
 		try {
 			this.listClient.addAll(clientService.findAll());
 			this.listClientSelected.addAll(listClient);
+			this.listAccount.addAll(accountService.findAll());
+			this.listAccountSelected.addAll(listAccount);
 			// this.listClientUpdate.addAll(clientService.findAll());
 
 		} catch (Exception e) {
@@ -118,6 +128,10 @@ public class VirementController implements Serializable {
 		} catch (Exception e) {
 			notificationError(e, "suppression Client");
 		}
+	}
+
+	private void transfer() {
+
 	}
 
 	public void onCancel(RowEditEvent event) {
@@ -198,6 +212,22 @@ public class VirementController implements Serializable {
 
 	public void setListClientUpdate(List<Client> listClientUpdate) {
 		this.listClientUpdate = listClientUpdate;
+	}
+
+	public Account getAccount() {
+		return account;
+	}
+
+	public void setAccount(Account account) {
+		this.account = account;
+	}
+
+	public List<Account> getListAccountSelected() {
+		return listAccountSelected;
+	}
+
+	public void setListAccountSelected(List<Account> listAccountSelected) {
+		this.listAccountSelected = listAccountSelected;
 	}
 
 }

@@ -156,7 +156,7 @@ public class Client implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Client [firstName=" + firstName + ", lastName=" + lastName + "]";
+		return firstName + " " + lastName;
 	}
 
 	public void addCurrentAccountToClient(CurrentAccount account) {
@@ -169,11 +169,7 @@ public class Client implements Serializable {
 		this.setSavingAccount(account);
 	}
 
-	@Override
-	public String toString() {
-		return "Client [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", address=" + address
-				+ ", email=" + email + ", savingAccount=" + savingAccount + ", currentAccount=" + currentAccount + "]";
-	}
+
 	
 	
 	

@@ -77,10 +77,13 @@ public class Account {
 		this.client = client;
 	}
 
+	//No modif allowed
 	@Override
 	public String toString() {
-		return "Compte  : " + balance + " €\n";
+		return " " + balance ;
 	}
+
+
 
 	
 }
