@@ -61,7 +61,6 @@
 	<servlet-mapping>
 		<servlet-name>Faces Servlet</servlet-name>
 		<url-pattern>*.xhtml</url-pattern>
-		<url-pattern>/home2.xhtml</url-pattern>
 
 	</servlet-mapping>
 

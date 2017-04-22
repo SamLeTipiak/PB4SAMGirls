@@ -1,11 +1,16 @@
 package org.proxib.test;
 
+import java.time.LocalDate;
+
 import org.proxib.config.ApplicationConfig;
+import org.proxib.dao.ITransactionDao;
 import org.proxib.model.Client;
 import org.proxib.model.CurrentAccount;
 import org.proxib.model.SavingAccount;
+import org.proxib.model.Transaction;
 import org.proxib.service.IAccountService;
 import org.proxib.service.IClientService;
+import org.proxib.service.ITransactionService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -42,6 +47,7 @@ public class TestMain {
 
 		IClientService clientService = context.getBean("serviceClient", IClientService.class);
 		IAccountService accountService = context.getBean("serviceAccount", IAccountService.class);
+		ITransactionService txnService = context.getBean("transactionService", ITransactionService.class);
 		
 		Client c1 = new Client("Paul", "Leroy", "17 rue des oliviers 75001 Paris", "paul.leroy@gmail.com" );
 		Client c2 = new Client("Paula", "Lis", "18 rue des oliviers 75001 Paris", "paula.lis@gmail.com");
@@ -62,14 +68,30 @@ public class TestMain {
 		try {
 			clientService.persist(c2);
 			clientService.persist(c1);
+
+			System.out.println(accountService.transfer(a4, a3, 200));
+
 			System.out.println(accountService.transfer(a4, a3, -200));
 			System.out.println(accountService.doAudit(0));
+
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+//		Transaction txn = new Transaction(LocalDate.now());
+//		System.out.println("**********************************************" +LocalDate.now() + "*********************************");
+//		try {
+//			txnService.persist(txn);
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
 
+		try {
+			System.out.println(txnService.findById(1l));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 
 

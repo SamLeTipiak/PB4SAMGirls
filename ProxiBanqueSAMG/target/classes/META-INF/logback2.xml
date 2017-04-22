@@ -38,12 +38,12 @@
 	
 	
 <!-- 	<logger name="org.slf4j.simpleLogger.defaultLogLevel" level="ERROR" /> -->
-	<logger name="simpleLogger.MainTest" level="TRACE">
+	<logger name="simpleLogger.MainTest" level="DEBUG">
 		<appender-ref ref="FILE" />
 	</logger>
 	<!-- TRACE, DEBUG, INFO, WARN, ERROR, ALL or OFF -->
 
-	<root level="TRACE">
+	<root level="INFO">
 		<appender-ref ref="STDOUT" />
 		<appender-ref ref="FILE" />
 	</root>
