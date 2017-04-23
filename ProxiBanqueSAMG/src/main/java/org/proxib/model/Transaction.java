@@ -83,10 +83,12 @@ public class Transaction {
 		this.amount = sum;
 	}
 
-
+	
 	@Override
 	public String toString() {
 		return "Transaction [date=" + date + "]";
 	}
+	
+	
 
 }
