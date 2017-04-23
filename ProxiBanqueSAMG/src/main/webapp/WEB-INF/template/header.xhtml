@@ -11,14 +11,8 @@
 <body>
 	<ui:composition>
 		<b:navBar brand="ProxiBanque" brandHref="#">
-
 			<h:form styleClass="navbar-form navbar-right">
-
-				<b:button outcome="#" value="Logout" icon="remove"
-					disabled="true">
-					<f:param name="testId" value="44" />
-				</b:button>
-
+				<h:commandLink action="#{logout.logout}" value="Logout"></h:commandLink>
 			</h:form>
 		</b:navBar>
 	</ui:composition>
