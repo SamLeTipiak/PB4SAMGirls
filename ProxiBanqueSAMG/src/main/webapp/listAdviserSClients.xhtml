@@ -71,7 +71,7 @@
 							oncomplete="PF('confirmDeleteDlg').show()"
 							image="ui-icon ui-icon-close" title="Supprimer">
 							<f:setPropertyActionListener value="#{tempclient}"
-								target="#{clientController.selectedClient}" />
+								target="#{clientController3.selectedClient}" />
 							<h:outputText styleClass="ui-icon ui-icon-close" />
 						</p:commandLink>
 					</p:column>
@@ -81,7 +81,7 @@
 							oncomplete="PF('detailsDlg').show()"
 							image="ui-icon ui-icon-search" title="Details">
 							<f:setPropertyActionListener value="#{tempclient}"
-								target="#{clientController.selectedClient}" />
+								target="#{clientController3.selectedClient}" />
 							<h:outputText styleClass="ui-icon ui-icon-search" />
 						</p:commandLink>
 					</p:column>
