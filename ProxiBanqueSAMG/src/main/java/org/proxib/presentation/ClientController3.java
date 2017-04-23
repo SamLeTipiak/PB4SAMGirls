@@ -54,7 +54,7 @@ public class ClientController3 implements Serializable {
 	
 		try {
 			this.listClient.addAll(adviserService.findById(1l).getClients());
-			this.listClientSelected.addAll(listClient);
+			this.listClientSelected.addAll(adviserService.findById(1l).getClients());
 			
 
 			System.out.println("******************");
@@ -88,7 +88,11 @@ public class ClientController3 implements Serializable {
 
 	public void delete() {
 		try {
-			clientService.remove(this.selectedClient.getId());
+			long idClient = this.selectedClient.getIdClient();
+			System.out.println("******************");
+			System.out.println(idClient);
+			System.out.println("******************");
+			clientService.remove(idClient);
 			refreshList();
 			notificationSuccess("Client supprimé");
 		} catch (Exception e) {

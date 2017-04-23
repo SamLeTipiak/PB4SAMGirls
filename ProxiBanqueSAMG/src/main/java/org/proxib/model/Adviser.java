@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -31,7 +32,8 @@ public class Adviser {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
+	@Column(name= "idAdviser")
+	private Long idAdviser;
 	private String firstName;
 	private String lastName;
 	
@@ -60,8 +62,8 @@ public class Adviser {
 	public void setClients(List<Client> clients) {
 		this.clients = clients;
 	}
-	public Long getId() {
-		return id;
+	public Long getIdAdviser() {
+		return idAdviser;
 	}
 	public Adviser(String firstName, String lastName, List<Client> clients) {
 		super();
@@ -82,7 +84,7 @@ public class Adviser {
 	
 	@Override
 	public String toString() {
-		return "Adviser [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", clients=" + clients
+		return "Adviser [id=" + idAdviser + ", firstName=" + firstName + ", lastName=" + lastName + ", clients=" + clients
 				+ "]";
 	}
 
