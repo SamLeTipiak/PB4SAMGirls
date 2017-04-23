@@ -5,6 +5,15 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
+/**
+ * <b>SavingAccount représente les comptes épargne.</b>
+ * <p>Chaque compte épargne a un taux de rémunération SAVINGRATE identique.
+ * </p>
+ * <p>Chaque compte épargne est aussi associé à un client.</p>
+ * @author Soulabaille Maëva - Potier Aurélie - Bouchet Samuel - Ghania Bouzemame
+ * @version 1.0
+ *
+ */
 @Entity
 public class SavingAccount extends Account {
 
