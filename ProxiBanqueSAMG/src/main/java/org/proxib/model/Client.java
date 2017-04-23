@@ -12,13 +12,33 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
+/**
+ * <b>Client représente les clients de la banque.</b>
+ * <p>
+ * Chaque client est caractérisé par les informations suivantes :
+ * <ul>
+ * <li>id : un identifiant généré automatiquement (par incrémentation à partir
+ * de 1) par la base de données</li>
+ * <li>firstName : son prénom</li>
+ * <li>lastName : son nom de famille</li>
+ * <li>adresse : son adresse physique</li>
+ * <li>email : son adresse mail</li>
+ * </ul>
+ * </p>
+ * <p>
+ * Chaque client est aussi associé à un conseiller et à un compte courant et/ou
+ * épargne qu'il est possible de modifier.
+ * </p>
+ * 
+ * @author Soulabaille Maëva - Potier Aurélie - Bouchet Samuel - Ghania
+ *         Bouzemame
+ * @version 1.0
+ *
+ */
 @Entity
 // @Component
 public class Client implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -29,18 +49,17 @@ public class Client implements Serializable {
 	private String address;
 	private String email;
 
-//	 @ManyToOne(cascade={CascadeType.ALL})
-//	 @JoinColumn(name="adviser_id")
-//	 private Adviser adviser;
+	@ManyToOne(cascade = { CascadeType.ALL })
+	@JoinColumn(name = "adviser_id")
+	private Adviser adviser;
 
-	@OneToOne(cascade = {CascadeType.ALL})
-	@JoinColumn(name="savingAccount_id")
+	@OneToOne(cascade = { CascadeType.ALL })
+	@JoinColumn(name = "savingAccount_id")
 	private SavingAccount savingAccount;
 
-	@OneToOne(cascade = {CascadeType.ALL})
-	@JoinColumn(name="currentAccount_id")
+	@OneToOne(cascade = { CascadeType.ALL })
+	@JoinColumn(name = "currentAccount_id")
 	private CurrentAccount currentAccount;
-	
 
 	public String getFirstName() {
 		return firstName;
@@ -74,29 +93,25 @@ public class Client implements Serializable {
 		this.email = email;
 	}
 
-//	public Adviser getAdviser() {
-//		return adviser;
-//	}
-//
-//	public void setAdviser(Adviser adviser) {
-//		this.adviser = adviser;
-//	}
+	public Adviser getAdviser() {
+		return adviser;
+	}
 
+	public void setAdviser(Adviser adviser) {
+		this.adviser = adviser;
+	}
 
 	public Long getId() {
 		return id;
 	}
 
-	
-	
-//	 @Override
-//	 public String toString() {
-//	 return "Client [firstName=" + firstName + ", lastName=" + lastName + 
-//	 "address=" + address + ", email=" + email
-//	 + ", adviser=" + adviser + ", accounts=" + accounts + "]";
-//	 }
-	
-	 public String getAddress() {
+//	@Override
+//	public String toString() {
+//		return "Client [firstName=" + firstName + ", lastName=" + lastName + "address=" + address + ", email=" + email
+//				+ ", adviser=" + adviser + ", accounts=" + accounts + "]";
+//	}
+
+	public String getAddress() {
 		return address;
 	}
 
@@ -109,7 +124,7 @@ public class Client implements Serializable {
 	}
 
 	public void setSavingAccount(SavingAccount savingAccount) {
-//		savingAccount.setClient(this);
+		// savingAccount.setClient(this);
 		this.savingAccount = savingAccount;
 	}
 
@@ -118,37 +133,37 @@ public class Client implements Serializable {
 	}
 
 	public void setCurrentAccount(CurrentAccount currentAccount) {
-//		currentAccount.setClient(this);
+		// currentAccount.setClient(this);
 		this.currentAccount = currentAccount;
 	}
 
-	public Client(String firstName, String lastName, String address, String
-	 email, Adviser adviser,
-	 List<Account> accounts) {
+	public Client(String firstName, String lastName, String address, String email, Adviser adviser,
+			List<Account> accounts) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.address = address;
+		this.email = email;
+		this.adviser = adviser;
+	}
+
+	public Client(String firstName, String lastName, String address, String email) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.address = address;
+		this.email = email;
+	}
+
+	 public Client(String firstName, String lastName, String address, String
+	 email, SavingAccount savingAccount) {
 	 super();
 	 this.firstName = firstName;
 	 this.lastName = lastName;
 	 this.address = address;
 	 this.email = email;
-//	 this.adviser = adviser;
+	 this.savingAccount = savingAccount;
 	 }
-
-	 public Client(String firstName, String lastName, String address, String email) {
-			super();
-			this.firstName = firstName;
-			this.lastName = lastName;
-			this.address = address;
-			this.email = email;
-		}
-	 
-//	public Client(String firstName, String lastName, String address, String email, SavingAccount savingAccount) {
-//		super();
-//		this.firstName = firstName;
-//		this.lastName = lastName;
-//		this.address = address;
-//		this.email = email;
-//		this.savingAccount = savingAccount;
-//	}
 
 	public Client() {
 		super();
@@ -159,20 +174,26 @@ public class Client implements Serializable {
 		return firstName + " " + lastName;
 	}
 
+	/**
+	 * addCurrentAccountToClient() permet d'associer un compte courant à un
+	 * client donné.
+	 * 
+	 * @param account
+	 */
 	public void addCurrentAccountToClient(CurrentAccount account) {
 		account.setClient(this);
 		this.setCurrentAccount(account);
 	}
-	
+
+	/**
+	 * addSavingtAccountToClient() permet d'associer un compte épargne à un
+	 * client donné.
+	 * 
+	 * @param account
+	 */
 	public void addSavingAccountToClient(SavingAccount account) {
 		account.setClient(this);
 		this.setSavingAccount(account);
 	}
 
-
-	
-	
-	
-	
-	
 }

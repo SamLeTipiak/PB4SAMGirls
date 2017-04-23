@@ -5,6 +5,15 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
+/**
+ * <b>CurrentAccount représente les comptes courants.</b>
+ * <p>Chaque compte courant a un taux de rémunération CURRENTRATE identique.
+ * </p>
+ * <p>Chaque compte épargne est aussi associé à un client.</p>
+ * @author Soulabaille Maëva - Potier Aurélie - Bouchet Samuel - Ghania Bouzemame
+ * @version 1.0
+ *
+ */
 @Entity
 public class CurrentAccount extends Account{
 	

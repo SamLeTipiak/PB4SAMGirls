@@ -10,7 +10,20 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.ManyToOne;
 
-
+/**
+ * <b>Account représente les comptes bancaires ouverts chez ProxiBanque.</b>
+ * <p>Chaque compte est caractérisé par les informations suivantes :
+ * <ul>
+ * <li>id : un identifiant généré automatiquement au niveau de la base de données</li>
+ * <li>balance : le solde du compte</li>
+ * <li>rate : la rémunération du compte</li>
+ * </ul>
+ * </p>
+ * <p>Chaque compte est aussi associé à un client.</p>
+ * @author Soulabaille Maëva - Potier Aurélie - Bouchet Samuel - Ghania Bouzemame
+ * @version 1.0
+ *
+ */
 @Inheritance(strategy=InheritanceType.JOINED)
 @Entity
 //@Component

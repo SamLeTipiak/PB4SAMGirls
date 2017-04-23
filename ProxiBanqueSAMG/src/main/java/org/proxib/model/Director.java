@@ -1,5 +1,17 @@
 package org.proxib.model;
 
+/**
+ * <b>Director représente le directeur d'agence.</b>
+ * <p>Il est caractérisé par :</p>
+ * <ul>
+ * <li>id : un identifiant généré automatiquement (par incrémentation) au niveau de la base de données.</li>
+ * <li>firstName : son prénom</li>
+ * <li>lastName : son nom de famille</li>
+ * </ul>
+ * @author Soulabaille Maëva - Potier Aurélie - Bouchet Samuel - Ghania Bouzemame
+ * @version 1.0
+ *
+ */
 public class Director {
 
 	private Long id;
