@@ -6,69 +6,55 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
-	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
-
-<!-- <f:metadata> -->
-<!-- 	<f:event type="preRenderView" -->
-<!-- 		listener="#{adviserController2.loadAdviser()}" /> -->
-<!-- </f:metadata> -->
+	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+	xmlns:b="http://bootsfaces.net/ui">
 
 <h:head>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>Mon petit conseiller</title>
+	<title>Liste des conseilles</title>
 </h:head>
 
 <h:body>
 	<ui:composition template="/WEB-INF/template/template.xhtml">
+
+		<ui:define name="navBar">
+			<ui:include src="/WEB-INF/template/navBarDir.xhtml" />
+		</ui:define>
+
 		<ui:define name="content">
 
+			<h3 style="margin-top: 0">Liste des conseillers</h3>
+			<p:separator />
 
-			<h:form id="form1">
+			<b:dataTable id="tempadvisers" var="tempadviser"
+				value="#{adviserController.listAdviser}"
+				border="#{dataTableSettingsBean.border}"
+				custom-options="#{dataTableSettingsBean.customOptionsValue}"
+				fixedHeader="#{dataTableSettingsBean.fixedHeader}"
+				multi-column-search="false" page-length="5"
+				page-length-menu="5,10,20"
+				row-highlight="#{dataTableSettingsBean.rowHighlight}"
+				save-state="#{dataTableSettingsBean.saveState}" searching="true"
+				select="true" selectionMode="single" striped="false">
 
+				<b:dataTableColumn value="#{tempadviser.firstName}"
+					searchable="true">
+					<f:facet name="header" searching="true">
+						<h:outputText value="Nom" />
+					</f:facet>
+				</b:dataTableColumn>
 
-
-
-
-				<p:growl id="messages" showDetail="true" life="3000" />
-				<p:dataTable id="tempadvisers" var="tempadviser"
-					value="#{adviserController.listAdviser}" styleClass="et_datatable"
-					emptyMessage="Empty..." editable="true" paginator="true" rows="10"
-					paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-					rowsPerPageTemplate="5,10,15">
-
-					<p:column headerText="Prénom" sortBy="#{tempadviser.firstName}"
-						filterBy="#{tempadviser.firstName}" filterMatchMode="contains">
-						<h:outputText value="#{tempadviser.firstName}" />
-					</p:column>
-
-
-					<p:column headerText="Nom" sortBy="#{tempadviser.lastName}"
-						filterBy="#{tempadviser.lastName}" filterMatchMode="contains">
-						<h:outputText value="#{tempadviser.lastName}" />
-					</p:column>
-
-				</p:dataTable>
-			</h:form>
+				<b:dataTableColumn value="#{tempadviser.lastName}">
+					<f:facet name="header">
+						<h:outputText value="Prénom" />
+					</f:facet>
+				</b:dataTableColumn>
+				
+			</b:dataTable>
 
 		</ui:define>
 	</ui:composition>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 </h:body>
 </html>

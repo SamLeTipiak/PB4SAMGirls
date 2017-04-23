@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui" xmlns:b="http://bootsfaces.net/ui">
+<body>
+	<ui:composition>
+
+		<b:panel title="Menu">
+			<b:listLinks>
+				<b:navLink header="Actions conseillers" />
+				<b:navLink outcome="/accueil_directeur.xhtml" value="Liste des conseillers"
+					icon="list" iconAlign="left" />
+				<b:navLink></b:navLink>
+				<b:navLink header="Clients" />
+				<b:navLink outcome="/listOverdraftDir.xhtml" value="Découverts"
+					icon="signal"></b:navLink>
+				<b:navLink></b:navLink>
+				<b:navLink header="Bilan" />
+				<b:navLink outcome="#" value="Synthèse de l'agence"
+					icon="calendar"></b:navLink>
+				<b:navLink></b:navLink>
+				<b:messages />
+
+			</b:listLinks>
+		</b:panel>
+
+
+
+
+	</ui:composition>
+
+</body>
+</html>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+	xmlns:b="http://bootsfaces.net/ui">
+
+<h:head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Mon petit client</title>
+</h:head>
+<h:body>
+
+	<ui:composition template="/WEB-INF/template/template.xhtml">
+		<ui:define name="content">
+			<b:column span="3">
+				<b:panel title="Menu">
+					<b:listLinks>
+						<b:navLink header="Actions clients" />
+						<b:navLink href="http://www.bootsfaces.net"
+							value="Ajouter un client" icon="plus-sign" iconAlign="left" />
+						<b:navLink></b:navLink>
+						<b:navLink header="Bilan" />
+						<b:navLink href="http://getbootstrap.com/components/#navbar"
+							value="Découverts" icon="signal"></b:navLink>
+						<b:navLink></b:navLink>
+						<b:messages />
+
+					</b:listLinks>
+				</b:panel>
+			</b:column>
+		</ui:define>
+	</ui:composition>
+
+
+
+</h:body>
+</html>

@@ -118,7 +118,7 @@ public class VirementController implements Serializable {
 		try {
 			this.listClientUpdate = new ArrayList<>();
 			this.listClientUpdate.addAll(listClient);
-			System.err.println("**");
+			System.out.println("yo");
 			System.out.println(selectedClient);
 			System.out.println("********************************before" + listClientUpdate);
 			boolean isdeleted = this.listClientUpdate.remove(this.selectedClient);

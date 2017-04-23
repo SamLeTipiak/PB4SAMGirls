@@ -9,11 +9,6 @@
 	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
 	xmlns:b="http://bootsfaces.net/ui">
 
-<!-- <f:metadata> -->
-<!-- 	<f:event type="preRenderView" -->
-<!-- 		listener="#{adviserController2.loadAdviser()}" /> -->
-<!-- </f:metadata> -->
-
 <h:head>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -22,8 +17,13 @@
 
 <h:body>
 	<ui:composition template="/WEB-INF/template/template.xhtml">
-		<ui:define name="content">
+
+		<ui:define name="navBar">
+			<ui:include src="/WEB-INF/template/navBarDir.xhtml" />
+		</ui:define>
 		
+		<ui:define name="content">
+
 			<h3 style="margin-top: 0">Découverts</h3>
 			<p:separator />
 

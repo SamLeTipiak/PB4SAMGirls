@@ -21,14 +21,16 @@
 		<ui:define name="content">
 
 			<b:row styleClass="show-grid">
-				<b:column span="6" offset="3">
+			
 					<h:outputText value="Virement" />
-				</b:column>
+				
 			</b:row>
+			
+			
 
 			<h:form>
 				<b:row styleClass="show-grid" tooltip-position="">
-					<b:column col-md="5">
+					
 						<h:outputText value="Débit" style="text-align: right" />
 
 
@@ -70,11 +72,9 @@
 
 						</b:dataTable>
 
-					</b:column>
-					<b:column col-md="2">
-					</b:column>
+				
 
-					<b:column col-md="5">
+				
 						<h:outputText value="Crédit" />
 						<b:dataTable value="#{virementController.listClient}"
 							var="tempclient" id="client-id2"
@@ -107,7 +107,7 @@
 							</b:dataTableColumn>
 
 						</b:dataTable>
-					</b:column>
+					
 				</b:row>
 
 
@@ -121,17 +121,17 @@
 							</f:facet>
 						</b:inputText>
 					</b:column>
-					<b:column col-md="6">
+					
 						<b:buttonGroup>
 							<b:commandButton value="Valider" type="submit" />
 							<b:button value="Annuler" />
 						</b:buttonGroup>
-					</b:column>
+					
 				</b:row>
 
 			</h:form>
-
-
+			
+		
 		</ui:define>
 	</ui:composition>
 
