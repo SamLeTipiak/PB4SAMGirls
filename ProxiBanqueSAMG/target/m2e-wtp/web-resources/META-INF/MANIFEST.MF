@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-Built-By: Touristes
-Build-Jdk: 1.8.0_121
+Built-By: Samuel
+Build-Jdk: 1.8.0_111
 Created-By: Maven Integration for Eclipse
 

@@ -38,8 +38,10 @@ public class VirementController implements Serializable {
 	IAccountService accountService;
 
 	private Client client;
-	private Client selectedClient;
+	private Client selectedClientDebit;
+	private Client selectedClientCredit;
 	private Account account;
+	private double montant;
 
 	private List<Client> listClient;
 	private List<Client> listClientUpdate;
@@ -62,12 +64,14 @@ public class VirementController implements Serializable {
 
 	public void refreshList() {
 		this.client = new Client();
-		this.selectedClient = new Client();
+		this.selectedClientDebit = new Client();
+		this.selectedClientCredit = new Client();
 		this.listClient = new ArrayList<>();
 		this.listClientSelected = new ArrayList<>();
 		this.listAccountSelected = new ArrayList<>();
 		this.listClientUpdate = new ArrayList<>();
 		this.listAccount = new ArrayList<>();
+		this.montant =0;
 		try {
 			this.listClient.addAll(clientService.findAll());
 			this.listClientSelected.addAll(listClient);
@@ -82,7 +86,7 @@ public class VirementController implements Serializable {
 
 	public void updateList() {
 		this.client = new Client();
-		this.selectedClient = new Client();
+		this.selectedClientDebit = new Client();
 		this.listClient = new ArrayList<>();
 		this.listClientSelected = new ArrayList<>();
 
@@ -106,7 +110,7 @@ public class VirementController implements Serializable {
 
 	public void update() {
 		try {
-			clientService.merge(this.selectedClient);
+			clientService.merge(this.selectedClientDebit);
 			refreshList();
 			notificationSuccess("Client mis à jour");
 		} catch (Exception e) {
@@ -118,22 +122,25 @@ public class VirementController implements Serializable {
 		try {
 			this.listClientUpdate = new ArrayList<>();
 			this.listClientUpdate.addAll(listClient);
-			System.out.println("yo");
-			System.out.println(selectedClient);
-			System.out.println("********************************before" + listClientUpdate);
-			boolean isdeleted = this.listClientUpdate.remove(this.selectedClient);
-			System.out.println(isdeleted);
-			System.out.println("********************************AFTER" + listClientUpdate);
+			boolean isdeleted = this.listClientUpdate.remove(this.selectedClientDebit);
+			System.out.println(selectedClientDebit);
+			System.out.println(selectedClientCredit);
 			notificationSuccess("Client supprimé");
 		} catch (Exception e) {
 			notificationError(e, "suppression Client");
 		}
 	}
 
-	private void transfer(Client client1, Client client2, double montant) {
-		accountService.transfer(client1.getCurrentAccount(), client2.getCurrentAccount(), montant);
-		System.out.println("**********************************" +montant);
+	public void transfer() {
 
+		try {
+			accountService.transfer(selectedClientDebit.getCurrentAccount(), selectedClientCredit.getCurrentAccount(),
+					montant);
+			notificationSuccess("Virement Effectué");
+			refreshList();
+		} catch (Exception e) {
+			notificationError(e, "suppression Client");
+		}
 	}
 
 	public void onCancel(RowEditEvent event) {
@@ -181,12 +188,12 @@ public class VirementController implements Serializable {
 		this.client = client;
 	}
 
-	public Client getSelectedClient() {
-		return selectedClient;
+	public Client getselectedClientDebit() {
+		return selectedClientDebit;
 	}
 
-	public void setSelectedClient(Client selectedClient) {
-		this.selectedClient = selectedClient;
+	public void setselectedClientDebit(Client selectedClientDebit) {
+		this.selectedClientDebit = selectedClientDebit;
 	}
 
 	public List<Client> getListClient() {
@@ -230,6 +237,22 @@ public class VirementController implements Serializable {
 
 	public void setListAccountSelected(List<Account> listAccountSelected) {
 		this.listAccountSelected = listAccountSelected;
+	}
+
+	public Client getSelectedClientCredit() {
+		return selectedClientCredit;
+	}
+
+	public void setSelectedClientCredit(Client selectedClientCredit) {
+		this.selectedClientCredit = selectedClientCredit;
+	}
+
+	public double getMontant() {
+		return montant;
+	}
+
+	public void setMontant(double montant) {
+		this.montant = montant;
 	}
 
 }

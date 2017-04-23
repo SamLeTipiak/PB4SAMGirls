@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
-	xmlns:tx="http://www.springframework.org/schema/tx"
-	xmlns:mvc="http://www.springframework.org/schema/mvc"
-	xsi:schemaLocation="http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:security="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-4.2.xsd
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd
 		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
@@ -14,9 +13,44 @@
 	<!-- Scan for all of Spring components such as Spring Service -->
 	<context:component-scan base-package="org.formation" />
 
-	
+
 	<bean name="ApplicationConfig" class="org.proxib.config.ApplicationConfig" />
-			<mvc:annotation-driven />
+	<mvc:annotation-driven />
+
+
+	<!-- security -->
+
+
+<!-- 	<bean id="requestContextFilter" class="org.springframework.web.filter.RequestContextFilter" /> -->
+
+
+
+<!-- 	<security:http auto-config="true"> -->
 	
+<!-- 			<security:intercept-url pattern="/tatalogin.xhtml" -->
+<!-- 			access="hasRole('ROLE_DIRECTOR')" /> -->
+<!-- 		<security:intercept-url pattern="/accueil_directeur.xhtml" -->
+<!-- 			access="hasRole('ROLE_DIRECTOR')" /> -->
+<!-- 		<security:intercept-url pattern="/tatalogin.xhtml" -->
+<!-- 			access="hasRole('ROLE_ADVISER')" /> -->
+<!-- 		<security:intercept-url pattern="/accueil_conseiller2.xhtml" -->
+<!-- 			access="hasRole('ROLE_ADVISER')" /> -->
+
+<!-- 	</security:http> -->
+
+	<!-- Authentification : login/pwd en dur -->
+
+<!-- 	<security:authentication-manager> -->
+<!-- 		<security:authentication-provider> -->
+<!-- 			<security:user-service> -->
+<!-- 				<security:user name="toto" password="toto" -->
+<!-- 					authorities="ROLE_ADVISER" /> -->
+<!-- 				<security:user name="tata" password="tata" -->
+<!-- 					authorities="ROLE_DIRECTOR" /> -->
+<!-- 			</security:user-service> -->
+<!-- 		</security:authentication-provider> -->
+<!-- 	</security:authentication-manager> -->
+
+
 
 </beans>

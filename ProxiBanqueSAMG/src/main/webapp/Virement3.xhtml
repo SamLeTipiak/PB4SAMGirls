@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+	xmlns:b="http://bootsfaces.net/ui">
+
+
+<f:metadata>
+	<f:event type="preRenderView"
+		listener="#{clientController.refreshList}" />
+</f:metadata>
+
+<h:head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Virement</title>
+</h:head>
+
+<h:body>
+	<ui:composition template="/WEB-INF/template/template.xhtml">
+		<ui:define name="content">
+
+			<h3 style="margin-top: 0">Virement</h3>
+			<p:separator />
+
+			<h4 style="margin-top: 0">Compte à débiter</h4>
+			<p:separator />
+
+			<h:form id="form1">
+
+				<p:growl id="messages" showDetail="true" life="3000" />
+				<p:dataTable id="tempclients" var="tempclientDebit"
+					value="#{virementController.listClient}" styleClass="et_datatable"
+					selectionMode="single" editable="true"
+					rowKey="#{tempclientDebit.id}"
+					filteredValue="#{virementController.listClientSelected}">
+
+					<p:column headerText="Nom" sortBy="#{tempclientDebit.firstName}"
+						filterBy="#{tempclientDebit.firstName}" filterMatchMode="contains">
+						<h:outputText value="#{tempclientDebit.firstName}" />
+					</p:column>
+
+					<p:column headerText="Prénom" sortBy="#{tempclientDebit.lastName}"
+						filterBy="#{tempclientDebit.lastName}" filterMatchMode="contains">
+						<h:outputText value="#{tempclientDebit.lastName}" />
+					</p:column>
+
+					<p:column headerText="Solde">
+						<h:outputText value="#{tempclientDebit.currentAccount}" />
+					</p:column>
+
+					<p:column headerText="Débit" style="width:8%">
+						<p:commandLink update=":form1:tempclientsCredit,:form1:display"
+							oncomplete="PF('confirmDeleteDlg').show()"
+							image="ui-icon ui-icon-close" title="Supprimer">
+							<f:setPropertyActionListener value="#{tempclientDebit}"
+								target="#{virementController.selectedClientDebit}" />
+							<h:outputText styleClass="ui-icon ui-icon-plus" />
+						</p:commandLink>
+					</p:column>
+				</p:dataTable>
+
+				<p:separator />
+				<h4 style="margin-top: 0">Compte à Créditer</h4>
+				<p:separator />
+
+				<p:dataTable id="tempclientsCredit" var="tempclientCredit"
+					value="#{virementController.listClientUpdate}"
+					emptyMessage="Sélectionner un compte à débiter"
+					styleClass="et_datatable" selectionMode="single" editable="true"
+					rowKey="#{tempclientCredit.id}"
+					filteredValue="#{virementController.listClientUpdate}">
+
+					<p:column headerText="Nom" sortBy="#{tempclientCredit.lastName}"
+						filterBy="#{tempclientCredit.lastName}" filterMatchMode="contains">
+						<h:outputText value="#{tempclientCredit.lastName}" />
+					</p:column>
+
+					<p:column headerText="Prénom"
+						sortBy="#{tempclientCredit.firstName}"
+						filterBy="#{tempclientCredit.firstName}"
+						filterMatchMode="contains">
+						<h:outputText value="#{tempclientCredit.firstName}" />
+					</p:column>
+
+					<p:column headerText="Solde">
+						<h:outputText value="#{tempclientCredit.currentAccount}" />
+					</p:column>
+
+					<p:column headerText="Crédit" style="width:8%">
+						<p:commandLink update=":form1:tempclientsCredit,:form1:display2"
+							oncomplete="PF('confirmDebitDlg').show()"
+							image="ui-icon ui-icon-close" title="Supprimer">
+							<f:setPropertyActionListener value="#{tempclientCredit}"
+								target="#{virementController.selectedClientCredit}" />
+							<h:outputText styleClass="ui-icon ui-icon-plus" />
+						</p:commandLink>
+					</p:column>
+
+				</p:dataTable>
+
+				<p:separator />
+				<h4 style="margin-top: 0">Synthèse</h4>
+				<p:separator />
+				<p:panel header="Comptes selectionnés" style="margin-bottom:20px">
+					<h:panelGrid id="syntheseDebit" columns="4" cellpadding="4"
+						style="margin:0 auto;">
+						<h:outputText value="Compte à débiter"
+							style="padding-left: 30px; padding-right: 30px;  font-weight:bold" />
+						<h:outputText value="#{virementController.selectedClientDebit}" />
+						<h:outputText value="Solde"
+							style="padding-left: 30px; padding-right: 30px;  font-weight:bold" />
+						<h:outputText
+							value="#{virementController.selectedClientDebit.currentAccount}" />
+					</h:panelGrid>
+
+					<h:panelGrid id="syntheseCredit" columns="4" cellpadding="4"
+						style="margin:0 auto;">
+						<h:outputText value="Compte à créditer"
+							style="padding-left: 30px; padding-right: 30px; font-weight:bold" />
+						<h:outputText value="#{virementController.selectedClientCredit}" />
+						<h:outputText value="Solde"
+							style="padding-left: 30px; padding-right: 30px;  font-weight:bold" />
+						<h:outputText
+							value="#{virementController.selectedClientCredit.currentAccount}" />
+					</h:panelGrid>
+
+					<b:row styleClass="show-grid">
+						<br />
+						<b:column col-md="3" offset="3">
+							<b:inputText type="number" id="montant" placeholder="0"
+								value="#{virementController.montant}" required="true">
+								<f:facet name="append">
+									<h:outputText value="€" />
+								</f:facet>
+							</b:inputText>
+						</b:column>
+
+						<b:buttonGroup>
+							<b:commandButton id="btn_add" value="Valider" update=":form1"
+								resetValues="montant" action="#{virementController.transfer}" />
+							<b:commandButton id="btn_reset" value="Reset" type="reset" />
+						</b:buttonGroup>
+
+					</b:row>
+
+
+
+				</p:panel>
+
+
+
+
+
+
+
+				<p:dialog header="Client à débiter" widgetVar="confirmDeleteDlg"
+					resizable="false" width="400" height="100" showEffect="clip"
+					hideEffect="clip" modal="true">
+
+					<h:panelGrid id="display" columns="2" cellpadding="4"
+						style="margin:0 auto;">
+
+						<h:outputText value="Nom"
+							style="padding-left: 30px; padding-right: 30px; font-weight:bold" />
+						<h:outputText
+							value="#{virementController.selectedClientDebit.lastName}" />
+
+						<h:outputText value="Prénom"
+							style="padding-left: 30px; padding-right: 30px; font-weight:bold" />
+						<h:outputText
+							value="#{virementController.selectedClientDebit.firstName}" />
+
+					</h:panelGrid>
+
+					<p:outputPanel layout="block" style="text-align:center">
+						<br />
+						<p:commandButton value="Confirmer"
+							update=":form1:messages,:form1:tempclientsCredit,:form1:syntheseDebit"
+							actionListener="#{virementController.refresh}"
+							oncomplete="PF('confirmDeleteDlg').hide()" />
+						<p:commandButton value="Annuler"
+							onclick="PF('confirmDeleteDlg').hide()" type="button" />
+					</p:outputPanel>
+				</p:dialog>
+
+
+
+				<p:dialog header="Client à créditer" widgetVar="confirmDebitDlg"
+					resizable="false" width="400" height="100" showEffect="clip"
+					hideEffect="clip" modal="true">
+
+					<h:panelGrid id="display2" columns="2" cellpadding="4"
+						style="margin:0 auto;">
+
+						<h:outputText value="Nom"
+							style="padding-left: 30px; padding-right: 30px; font-weight:bold" />
+						<h:outputText
+							value="#{virementController.selectedClientCredit.lastName}" />
+
+						<h:outputText value="Prénom"
+							style="padding-left: 30px; padding-right: 30px; font-weight:bold" />
+						<h:outputText
+							value="#{virementController.selectedClientCredit.firstName}" />
+
+					</h:panelGrid>
+
+					<p:outputPanel layout="block" style="text-align:center">
+						<br />
+						<p:commandButton value="Valider"
+							update=":form1:messages,:form1:syntheseCredit"
+							actionListener="#{virementController.refresh}"
+							oncomplete="PF('confirmDebitDlg').hide()" />
+						<p:commandButton value="Annuler"
+							onclick="PF('confirmDebitDlg').hide()" type="button" />
+					</p:outputPanel>
+				</p:dialog>
+			</h:form>
+
+
+		</ui:define>
+	</ui:composition>
+
+</h:body>
+</html>

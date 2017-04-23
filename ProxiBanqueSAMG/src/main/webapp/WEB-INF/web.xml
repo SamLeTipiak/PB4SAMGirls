@@ -6,6 +6,31 @@
 
 	<display-name>ProxiBanqueSAMG</display-name>
 
+
+
+	<!-- - Filtre springSecurityFilterChain -->
+
+<!-- 	<filter> -->
+<!-- 		<filter-name>springSecurityFilterChain</filter-name> -->
+<!-- 		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class> -->
+<!-- 	</filter> -->
+
+<!-- 	<filter> -->
+<!-- 		<filter-name>requestContextFilter</filter-name> -->
+<!-- 		<filter-class>org.springframework.web.filter.RequestContextFilter</filter-class> -->
+<!-- 	</filter> -->
+
+<!-- 	<filter-mapping> -->
+<!-- 		<filter-name>requestContextFilter</filter-name> -->
+<!-- 		<url-pattern>/*</url-pattern> -->
+<!-- 	</filter-mapping> -->
+
+<!-- 	<filter-mapping> -->
+<!-- 		<filter-name>springSecurityFilterChain</filter-name> -->
+<!-- 		<url-pattern>/*</url-pattern> -->
+<!-- 	</filter-mapping> -->
+
+
 	<!-- Prime FACES -->
 	<context-param>
 		<param-name>primefaces.THEME</param-name>
@@ -24,6 +49,15 @@
 	<listener>
 		<listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
 	</listener>
+
+	<!-- - Fichiers XML de configuration, à charger par le ContextLoaderListener -->
+	<!-- <context-param> -->
+	<!-- <param-name>contextConfigLocation</param-name> -->
+	<!-- <param-value> /WEB-INF/proxibsamg-security.xml </param-value> -->
+	<!-- </context-param> -->
+
+	<!-- /WEB-INF/proxibsamg-data.xml -->
+
 
 	<context-param>
 		<param-name>javax.faces.FACELETS_SKIP_COMMENTS</param-name>
@@ -50,6 +84,9 @@
 
 
 
+
+
+
 	<!-- JSF Servlet is defined to container -->
 	<servlet>
 		<servlet-name>Faces Servlet</servlet-name>
@@ -61,61 +98,61 @@
 	<servlet-mapping>
 		<servlet-name>Faces Servlet</servlet-name>
 		<url-pattern>*.xhtml</url-pattern>
-<!-- 		<url-pattern>/conseiller/*</url-pattern> -->
-		
+<!-- 		<url-pattern>/accueil_conseiller2.xhtml</url-pattern> -->
+
 
 	</servlet-mapping>
 
 
 
-	<security-constraint>
-		<web-resource-collection>
-			<web-resource-name></web-resource-name>
-			<url-pattern>/accueil_conseiller2.xhtml</url-pattern>
-			<http-method>GET</http-method>
-			<http-method>POST</http-method>
-			<http-method>PUT</http-method>
-			<http-method>DELETE</http-method>
-		</web-resource-collection>
-		<auth-constraint>
-			<role-name>adviser</role-name>
-		</auth-constraint>
-	</security-constraint>
+	<!-- <security-constraint> -->
+	<!-- <web-resource-collection> -->
+	<!-- <web-resource-name></web-resource-name> -->
+	<!-- <url-pattern>/accueil_conseiller2.xhtml</url-pattern> -->
+	<!-- <http-method>GET</http-method> -->
+	<!-- <http-method>POST</http-method> -->
+	<!-- <http-method>PUT</http-method> -->
+	<!-- <http-method>DELETE</http-method> -->
+	<!-- </web-resource-collection> -->
+	<!-- <auth-constraint> -->
+	<!-- <role-name>ROLE_ADVISER</role-name> -->
+	<!-- </auth-constraint> -->
+	<!-- </security-constraint> -->
 
-<!-- 	<security-constraint> -->
-<!-- 		<web-resource-collection> -->
-<!-- 			<web-resource-name></web-resource-name> -->
-<!-- 			<url-pattern>/accueil_conseiller2.xhtml</url-pattern> -->
+	<!-- <security-constraint> -->
+	<!-- <web-resource-collection> -->
+	<!-- <web-resource-name></web-resource-name> -->
+	<!-- <url-pattern>/accueil_conseiller2.xhtml</url-pattern> -->
 
-<!-- 			<http-method>GET</http-method> -->
-<!-- 			<http-method>POST</http-method> -->
-<!-- 			<http-method>PUT</http-method> -->
-<!-- 			<http-method>DELETE</http-method> -->
-<!-- 		</web-resource-collection> -->
-
-
-<!-- 		<auth-constraint> -->
-<!-- 			<role-name>director</role-name> -->
-<!-- 		</auth-constraint> -->
-<!-- 	</security-constraint> -->
-
-	<security-role>
-		<role-name>adviser</role-name>
-	</security-role>
-	<security-role>
-		<role-name>director</role-name>
-	</security-role>
-
-	<login-config>
-		<auth-method>FORM</auth-method>
-		<form-login-config>
-			<form-login-page>/login.xhtml</form-login-page>
-			<form-error-page>/error.xhtml</form-error-page>
-		</form-login-config>
+	<!-- <http-method>GET</http-method> -->
+	<!-- <http-method>POST</http-method> -->
+	<!-- <http-method>PUT</http-method> -->
+	<!-- <http-method>DELETE</http-method> -->
+	<!-- </web-resource-collection> -->
 
 
+	<!-- <auth-constraint> -->
+	<!-- <role-name>director</role-name> -->
+	<!-- </auth-constraint> -->
+	<!-- </security-constraint> -->
 
-	</login-config>
+	<!-- <security-role> -->
+	<!-- <role-name>adviser</role-name> -->
+	<!-- </security-role> -->
+	<!-- <security-role> -->
+	<!-- <role-name>director</role-name> -->
+	<!-- </security-role> -->
+
+	<!-- <login-config> -->
+	<!-- <auth-method>FORM</auth-method> -->
+	<!-- <form-login-config> -->
+	<!-- <form-login-page>/login.xhtml</form-login-page> -->
+	<!-- <form-error-page>/error.xhtml</form-error-page> -->
+	<!-- </form-login-config> -->
+
+
+
+	<!-- </login-config> -->
 
 
 	<!-- <session-config><session-timeout>30</session-timeout></session-config> -->
