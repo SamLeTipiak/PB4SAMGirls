@@ -57,7 +57,7 @@ public class TestDaoAdviser {
 			ad1=adviserService.findAll().get(adviserService.findAll().size()-1);
 			ad1.setFirstName("Elo");
 			adviserService.merge(ad1);
-			assertEquals("Elo", adviserService.findById(ad1.getId()).getFirstName());
+			assertEquals("Elo", adviserService.findById(ad1.getIdAdviser()).getFirstName());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -68,7 +68,7 @@ public class TestDaoAdviser {
 	public void testServiceDeleteAdviser() {
 		try {
 			int sizeBefore = adviserService.findAll().size();
-			adviserService.remove(adviserService.findAll().get(adviserService.findAll().size() - 1).getId());
+			adviserService.remove(adviserService.findAll().get(adviserService.findAll().size() - 1).getIdAdviser());
 			assertEquals(sizeBefore - 1, adviserService.findAll().size());
 		} catch (Exception e) {
 			e.printStackTrace();

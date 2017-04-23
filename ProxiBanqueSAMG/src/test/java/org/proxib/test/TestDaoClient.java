@@ -59,7 +59,7 @@ public class TestDaoClient {
 			client1=clientService.findAll().get(clientService.findAll().size()-1);
 			client1.setaddress("Avenue des Travaux");
 			clientService.merge(client1);
-			assertEquals("Avenue des Travaux", clientService.findById(client1.getId()).getaddress());
+			assertEquals("Avenue des Travaux", clientService.findById(client1.getIdClient()).getaddress());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -70,7 +70,7 @@ public class TestDaoClient {
 	public void testServiceDeleteClient() {
 		try {
 			int sizeBefore = clientService.findAll().size();
-			clientService.remove(clientService.findAll().get(clientService.findAll().size() - 1).getId());
+			clientService.remove(clientService.findAll().get(clientService.findAll().size() - 1).getIdClient());
 			assertEquals(sizeBefore - 1, clientService.findAll().size());
 		} catch (Exception e) {
 			e.printStackTrace();
