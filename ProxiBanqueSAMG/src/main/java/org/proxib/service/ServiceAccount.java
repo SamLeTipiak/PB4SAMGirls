@@ -1,13 +1,17 @@
 package org.proxib.service;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.proxib.dao.IAccountDao;
 import org.proxib.dao.IClientDao;
+import org.proxib.dao.ITransactionDao;
 import org.proxib.model.Account;
 import org.proxib.model.Client;
-import org.proxib.presentation.ClientController;
+import org.proxib.model.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +25,8 @@ public class ServiceAccount implements IAccountService {
 	@Autowired
 	private IClientDao clientDao;
 
+	@Autowired
+	private ITransactionDao transactionDao;
 	
 	@Override
 	public void persist(Account account) throws Exception {
@@ -50,6 +56,10 @@ public class ServiceAccount implements IAccountService {
 
 	@Override
 	public String transfer(Account accountToWithdraw, Account accountToCredit, double sum) {
+		
+		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+		Date date = new Date();
+		
 		if (sum <= 0.0) {
 			
 			return "La somme est inférieure ou égale à 0";
@@ -66,6 +76,14 @@ public class ServiceAccount implements IAccountService {
 			try {
 				accountDao.merge(accountToWithdraw);
 				accountDao.merge(accountToCredit);
+				
+				Transaction transaction =new Transaction();
+				transaction.setDate(date);
+				transaction.setAccountToWithdrawId(accountToWithdraw.getId());
+				transaction.setAccountToCreditId(accountToCredit.getId());
+				transaction.setAmount(sum);
+				transactionDao.persist(transaction);
+				
 				return "Virement effectué";
 			} catch (Exception e) {
 				System.out.println("Exception dans virement dans serviceAccount");

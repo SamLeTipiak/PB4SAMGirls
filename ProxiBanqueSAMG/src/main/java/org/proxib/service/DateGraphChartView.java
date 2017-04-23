@@ -8,12 +8,16 @@ import org.primefaces.model.chart.AxisType;
 import org.primefaces.model.chart.DateAxis;
 import org.primefaces.model.chart.LineChartModel;
 import org.primefaces.model.chart.LineChartSeries;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class DateGraphChartView implements Serializable{
 
 	private LineChartModel dateModel;
+	
+	@Autowired
+	private ITransactionService transactionService;
 	
 	@PostConstruct
     public void init() {
@@ -36,18 +40,18 @@ public class DateGraphChartView implements Serializable{
         series1.set("2014-01-24", 24);
         series1.set("2014-01-30", 51);
  
-        LineChartSeries series2 = new LineChartSeries();
-        series2.setLabel("Series 2");
- 
-        series2.set("2014-01-01", 32);
-        series2.set("2014-01-06", 73);
-        series2.set("2014-01-12", 24);
-        series2.set("2014-01-18", 12);
-        series2.set("2014-01-24", 74);
-        series2.set("2014-01-30", 62);
- 
+//        LineChartSeries series2 = new LineChartSeries();
+//        series2.setLabel("Series 2");
+// 
+//        series2.set("2014-01-01", 32);
+//        series2.set("2014-01-06", 73);
+//        series2.set("2014-01-12", 24);
+//        series2.set("2014-01-18", 12);
+//        series2.set("2014-01-24", 74);
+//        series2.set("2014-01-30", 62);
+// 
         dateModel.addSeries(series1);
-        dateModel.addSeries(series2);
+//        dateModel.addSeries(series2);
          
         dateModel.setTitle("Zoom for Details");
         dateModel.setZoom(true);

@@ -30,17 +30,17 @@ public class AspectConfig {
 	@AfterReturning("transactions()")
 	public void logTransaction() {
 		System.out.println("*****************************dans aspect************************");
-		Transaction transaction = new Transaction(LocalDate.now());
-		try {
-			transactionService.persist(transaction);
-			System.out.println("**************************persit**********************");
-			LOGGER.info("Virement effectuéééééé");
-		} catch (Exception e) {
-			System.out.println("*******************Exception****************");
-			e.printStackTrace();
-		}
-	}
-	
+//		Transaction transaction = new Transaction(LocalDate.now());
+//		try {
+//			transactionService.persist(transaction);
+//			System.out.println("**************************persit**********************");
+//			LOGGER.info("Virement effectuéééééé");
+//		} catch (Exception e) {
+//			System.out.println("*******************Exception****************");
+//			e.printStackTrace();
+//		}
+//	}
+//	
 	
 //	public String transfer(Account accountToWithdraw, Account accountToCredit, double sum) {
 //		
@@ -54,6 +54,6 @@ public class AspectConfig {
 		
 //		return null;
 //		
-//	}
+	}
 	
 }
