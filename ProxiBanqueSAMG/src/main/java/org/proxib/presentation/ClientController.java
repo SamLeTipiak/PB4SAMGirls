@@ -13,6 +13,9 @@ import org.primefaces.context.RequestContext;
 import org.primefaces.event.RowEditEvent;
 import org.proxib.model.Account;
 import org.proxib.model.Client;
+import org.proxib.model.CurrentAccount;
+import org.proxib.model.SavingAccount;
+import org.proxib.service.IAccountService;
 import org.proxib.service.IClientService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,33 +36,35 @@ public class ClientController implements Serializable {
 	@Autowired
 	IClientService clientService;
 
+	@Autowired
+	IAccountService accountService;
+
 	private Client client;
 	private Client selectedClient;
 
+	private CurrentAccount currentAccount;
+	private SavingAccount savingAccount;
+	private double balanceCurrent, balanceSaving ;
+
 	private List<Client> listClient;
 	private List<Client> listClientSelected;
-	
+
 	@PostConstruct
 	public void init() {
 		refreshList();
 	}
 
-	
 	public void refreshList() {
 		this.client = new Client();
+		this.balanceCurrent = 0;
+		this.balanceSaving = 0;
 		this.selectedClient = new Client();
 		this.listClient = new ArrayList<>();
 		this.listClientSelected = new ArrayList<>();
-	
+
 		try {
 			this.listClient.addAll(clientService.findAll());
 			this.listClientSelected.addAll(listClient);
-			
-
-			System.out.println("******************");
-			System.out.println(listClient);
-			System.out.println("******************");
-			System.out.println("*");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -67,6 +72,14 @@ public class ClientController implements Serializable {
 
 	public void save() {
 		try {
+	
+			
+			this.currentAccount = new CurrentAccount(balanceCurrent);
+			this.savingAccount = new SavingAccount(balanceSaving);
+			
+			client.addCurrentAccountToClient(currentAccount);
+			client.addSavingAccountToClient(savingAccount);
+			
 			clientService.persist(this.client);
 			refreshList();
 			notificationSuccess("Client ajouté");
@@ -166,5 +179,39 @@ public class ClientController implements Serializable {
 	public void setListClientSelected(List<Client> listClientSelected) {
 		this.listClientSelected = listClientSelected;
 	}
+
+	public CurrentAccount getCurrentAccount() {
+		return currentAccount;
+	}
+
+	public void setCurrentAccount(CurrentAccount currentAccount) {
+		this.currentAccount = currentAccount;
+	}
+
+	public SavingAccount getSavingAccount() {
+		return savingAccount;
+	}
+
+	public void setSavingAccount(SavingAccount savingAccount) {
+		this.savingAccount = savingAccount;
+	}
+
+	public double getBalanceCurrent() {
+		return balanceCurrent;
+	}
+
+	public void setBalanceCurrent(double balanceCurrent) {
+		this.balanceCurrent = balanceCurrent;
+	}
+
+	public double getBalanceSaving() {
+		return balanceSaving;
+	}
+
+	public void setBalanceSaving(double balanceSaving) {
+		this.balanceSaving = balanceSaving;
+	}
+
+	
 
 }
