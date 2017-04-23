@@ -1,14 +1,11 @@
 package org.proxib.model;
 
-import java.time.LocalDate;
 import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
-import org.springframework.stereotype.Component;
 
 @Entity
 //@Component
@@ -17,9 +14,9 @@ public class Transaction {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long idTransaction;
-//	private Account accountToWithdraw;
-//	private Account accountToCredit;
-	private LocalDate date;
+	private Long accountToWithdrawId;
+	private Long accountToCreditId;
+	private Date date;
 	private double amount;
 
 	public Transaction() {
@@ -27,48 +24,54 @@ public class Transaction {
 	}
 	
 
-	public Transaction(LocalDate date) {
+	public Transaction(Date date) {
 		super();
 		this.date = date;
 	}
 
 
-//	public Transaction(Account accountToWithdraw, Account accountToCredit, LocalDate date, double amount) {
-//		super();
-//		this.accountToWithdraw = accountToWithdraw;
-//		this.accountToCredit = accountToCredit;
-//		this.date = date;
-//		this.amount = amount;
-//	}
+	public Transaction(Long accountToWithdrawId, Long accountToCreditId, Date date, double amount) {
+		super();
+		this.accountToWithdrawId = accountToWithdrawId;
+		this.accountToCreditId = accountToCreditId;
+		this.date = date;
+		this.amount = amount;
+	}
 
-//	public Account getAccountToWithdraw() {
-//		return accountToWithdraw;
-//	}
-//
-//	public void setAccountToWithdraw(Account accountToWithdraw) {
-//		this.accountToWithdraw = accountToWithdraw;
-//	}
-//
-//	public Account getAccountToCredit() {
-//		return accountToCredit;
-//	}
-//
-//	public void setAccountToCredit(Account accountToCredit) {
-//		this.accountToCredit = accountToCredit;
-//	}
 
-	public Transaction(LocalDate date, double amount) {
+
+	public Long getAccountToWithdrawId() {
+		return accountToWithdrawId;
+	}
+
+
+	public void setAccountToWithdrawId(Long accountToWithdrawId) {
+		this.accountToWithdrawId = accountToWithdrawId;
+	}
+
+
+	public Long getAccountToCreditId() {
+		return accountToCreditId;
+	}
+
+
+	public void setAccountToCreditId(Long accountToCreditId) {
+		this.accountToCreditId = accountToCreditId;
+	}
+
+
+	public Transaction(Date date, double amount) {
 		super();
 		this.date = date;
 		this.amount = amount;
 	}
 
 
-	public LocalDate getDate() {
+	public Date getDate() {
 		return date;
 	}
 
-	public void setDate(LocalDate date) {
+	public void setDate(Date date) {
 		this.date = date;
 	}
 
@@ -76,8 +79,8 @@ public class Transaction {
 		return amount;
 	}
 
-	public void setAmount(float amount) {
-		this.amount = amount;
+	public void setAmount(double sum) {
+		this.amount = sum;
 	}
 
 
