@@ -1,4 +1,4 @@
-package org.proxib.service;
+package org.proxib.service.impl;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -12,6 +12,7 @@ import org.proxib.dao.ITransactionDao;
 import org.proxib.model.Account;
 import org.proxib.model.Client;
 import org.proxib.model.Transaction;
+import org.proxib.service.IAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

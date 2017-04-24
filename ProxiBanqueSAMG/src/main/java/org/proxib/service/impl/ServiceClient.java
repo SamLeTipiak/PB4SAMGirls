@@ -1,9 +1,10 @@
-package org.proxib.service;
+package org.proxib.service.impl;
 
 import java.util.List;
 
 import org.proxib.dao.IClientDao;
 import org.proxib.model.Client;
+import org.proxib.service.IClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -51,9 +52,5 @@ public class ServiceClient implements IClientService {
 		return clientDao.findAll();
 	}
 
-	@Override
-	public List<Client> findByProperty(String prop, Object val) throws Exception {
-		return clientDao.findByProperty(prop, val);
-	}
 
 }

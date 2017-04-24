@@ -30,7 +30,6 @@ public interface IEntityDao<E> {
 
 	List<E> findAll() throws Exception;
 
-	List<E> findByProperty(String prop, Object val) throws Exception;
 
 
 }

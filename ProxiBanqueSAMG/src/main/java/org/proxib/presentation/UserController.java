@@ -46,15 +46,24 @@ public class UserController {
 				return "bilan";
 			}
 		}
-
-		notificationError("Identifiants inconnus");
+		notificationError("Identifiants");
 		return "";
+
+	}
+
+	public void notificationSuccess(String operation) {
+
+		LOGGER.info("Operation " + operation + " success");
+		FacesMessage msg = null;
+		msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Notification", "Success");
+		FacesContext.getCurrentInstance().addMessage(null, msg);
 
 	}
 
 	public void notificationError(String operation) {
 
-		// LOGGER.error("Error");
+		LOGGER.error("Error");
+		LOGGER.info(operation);
 		// Logger.getLogger(this.getClass().getName()).log(Level.ERROR,
 		// "Operation "+operation+" Error ",e);
 		FacesMessage msg = null;

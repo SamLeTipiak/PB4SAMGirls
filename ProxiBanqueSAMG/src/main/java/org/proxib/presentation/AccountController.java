@@ -11,7 +11,7 @@ import org.proxib.model.Account;
 import org.proxib.model.Client;
 import org.proxib.service.IAccountService;
 import org.proxib.service.IClientService;
-import org.proxib.service.ServiceClient;
+import org.proxib.service.impl.ServiceClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

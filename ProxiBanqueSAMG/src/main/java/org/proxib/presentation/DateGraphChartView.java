@@ -1,4 +1,4 @@
-package org.proxib.service;
+package org.proxib.presentation;
 
 import java.io.Serializable;
 import java.text.DateFormat;
@@ -15,6 +15,7 @@ import org.primefaces.model.chart.DateAxis;
 import org.primefaces.model.chart.LineChartModel;
 import org.primefaces.model.chart.LineChartSeries;
 import org.proxib.model.Transaction;
+import org.proxib.service.ITransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

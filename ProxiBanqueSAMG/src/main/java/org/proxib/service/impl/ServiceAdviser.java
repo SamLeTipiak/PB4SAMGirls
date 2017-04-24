@@ -1,9 +1,10 @@
-package org.proxib.service;
+package org.proxib.service.impl;
 
 import java.util.List;
 
 import org.proxib.dao.IAdviserDao;
 import org.proxib.model.Adviser;
+import org.proxib.service.IAdviserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

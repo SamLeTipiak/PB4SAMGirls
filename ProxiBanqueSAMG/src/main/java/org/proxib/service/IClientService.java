@@ -3,6 +3,7 @@ package org.proxib.service;
 import java.util.List;
 
 import org.proxib.model.Client;
+import org.proxib.service.impl.ServiceClient;
 
 /**
  * Sont déclarées dans cette interface toutes les méthodes propres à la couche
@@ -26,8 +27,5 @@ public interface IClientService {
 
 	List<Client> findAll() throws Exception;
 
-	List<Client> findByProperty(String prop, Object val) throws Exception;
-
-	
 
 }

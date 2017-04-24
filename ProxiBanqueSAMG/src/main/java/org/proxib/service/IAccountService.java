@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.proxib.model.Account;
 import org.proxib.model.Client;
+import org.proxib.service.impl.ServiceAccount;
 
 /**
  * Sont déclarées dans cette interface toutes les méthodes propres à la couche
