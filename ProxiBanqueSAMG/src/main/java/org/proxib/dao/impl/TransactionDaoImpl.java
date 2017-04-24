@@ -2,9 +2,7 @@ package org.proxib.dao.impl;
 
 
 
-import org.proxib.dao.IClientDao;
 import org.proxib.dao.ITransactionDao;
-import org.proxib.model.Client;
 import org.proxib.model.Transaction;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;

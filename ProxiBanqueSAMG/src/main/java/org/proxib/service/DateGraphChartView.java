@@ -2,7 +2,6 @@ package org.proxib.service;
 
 import java.io.Serializable;
 import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -50,8 +49,8 @@ public class DateGraphChartView implements Serializable {
 		LineChartSeries series1 = new LineChartSeries();
 		LineChartSeries series2 = new LineChartSeries();
 		LineChartSeries series3 = new LineChartSeries();
-		series1.setLabel("Total des sommes transférées par jour en k€");
-		series2.setLabel("Nombre de virements par jour");
+		series1.setLabel(" Total des sommes transférées par jour en k€");
+		series2.setLabel(" Nombre de virements par jour");
 		
 		List<Transaction> listeTransaction = new ArrayList<>();
 
@@ -93,7 +92,7 @@ public class DateGraphChartView implements Serializable {
 		}
 
 
-		series3.setLabel("Total des sommes virées : "+totalAmounts +"€");
+		series3.setLabel(" Total des sommes virées : "+totalAmounts +"€");
 
 		
 		dateModel.addSeries(series1);
@@ -102,7 +101,7 @@ public class DateGraphChartView implements Serializable {
 
 		dateModel.setTitle("Nombre et somme des virements par jour  (Zoomer pour voir en détail)");
 		dateModel.setZoom(true);
-		dateModel.getAxis(AxisType.Y).setLabel("Nombre de virements  & total des sommes en k€");
+		dateModel.getAxis(AxisType.Y).setLabel("Nombre de virements & total des sommes en k€");
 		dateModel.setLegendPosition("ne");
 		DateAxis axis = new DateAxis("");
 		axis.setTickAngle(-50);

@@ -66,12 +66,15 @@ public class accountAmountsChartView implements Serializable {
 
 		}
 
-		pieModel.set("Inférieur à 0 €", inf0);
+		pieModel.set(" Inférieur à 0 €", inf0);
 //		pieModel.set("Entre 0 et 1000", inf1000);
-		pieModel.set("Entre 1000€ et 5000€", inf5000);
+		pieModel.set(" Entre 1 000€ et 5 000€", inf5000);
 //		pieModel.set("Entre 5000 et 10000", inf10000);
-		pieModel.set("Entre 10000€ et 50000€", inf50000);
-		pieModel.set("Supérieur à 50000€", sup50000);
+		pieModel.set( "Entre 10 000€ et 50 000€", inf50000);
+		pieModel.set(" Supérieur à 50 000€", sup50000);
+		
+		
+		pieModel.setSeriesColors(" da8768, dcfbcc, 9191ea , eccce3");
 
 		pieModel.setTitle("Répartition des comptes en fonction du solde");
 		pieModel.setLegendPosition("e");
