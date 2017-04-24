@@ -43,9 +43,13 @@ public class DateGraphChartView implements Serializable {
 
 
 	private void createDateModel() {
+		
+		double totalAmounts = 0;
+		
 		dateModel = new LineChartModel();
 		LineChartSeries series1 = new LineChartSeries();
 		LineChartSeries series2 = new LineChartSeries();
+		LineChartSeries series3 = new LineChartSeries();
 		series1.setLabel("Total des sommes transférées par jour en k€");
 		series2.setLabel("Nombre de virements par jour");
 		
@@ -63,12 +67,9 @@ public class DateGraphChartView implements Serializable {
 		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
 
 		Date date=null;
-//		try {
-//			date = dateFormat.parse("2017/04/23");
-//		} catch (ParseException e) {
-//			e.printStackTrace();
-//		}
+
 		date = new Date();
+		String tomorow = dateFormat.format(ajouterJour(date, 1));
 		String dateString="";
 		
 		
@@ -84,43 +85,31 @@ public class DateGraphChartView implements Serializable {
 				}
 
 			}
-			
+			totalAmounts+=amounts;
 			dateString = dateFormat.format(date);
 			series1.set(dateString, amounts/1000);
 			series2.set(dateString, numberOfTransfer);
 			date = ajouterJour(date, -1);
 		}
 
-		// series1.set("2014-01-01", 51);
-		// series1.set("2014-01-06", 22);
-		// series1.set("2014-01-12", 65);
-		// series1.set("2014-01-18", 74);
-		// series1.set("2014-01-24", 24);
-		// series1.set("2014-01-30", 51);
 
-		// LineChartSeries series2 = new LineChartSeries();
-		// series2.setLabel("Series 2");
-		//
-		// series2.set("2014-01-01", 32);
-		// series2.set("2014-01-06", 73);
-		// series2.set("2014-01-12", 24);
-		// series2.set("2014-01-18", 12);
-		// series2.set("2014-01-24", 74);
-		// series2.set("2014-01-30", 62);
-		//
+		series3.setLabel("Total des sommes virées : "+totalAmounts +"€");
+
+		
 		dateModel.addSeries(series1);
 		dateModel.addSeries(series2);
+		dateModel.addSeries(series3);
 
 		dateModel.setTitle("Nombre et somme des virements par jour  (Zoomer pour voir en détail)");
 		dateModel.setZoom(true);
 		dateModel.getAxis(AxisType.Y).setLabel("Nombre de virements  & total des sommes en k€");
-		dateModel.setLegendPosition("e");
-		DateAxis axis = new DateAxis("Dates sur les trente derniers jours");
+		dateModel.setLegendPosition("ne");
+		DateAxis axis = new DateAxis("");
 		axis.setTickAngle(-50);
-		//axis.setMax("2017-05-01");
+		axis.setMax(tomorow);
 		axis.setTickFormat("%b %#d, %y");
-
 		dateModel.getAxes().put(AxisType.X, axis);
+		
 	}
 	
 	private Date ajouterJour(Date date, int nbJour) {
