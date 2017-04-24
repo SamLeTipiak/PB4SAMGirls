@@ -51,7 +51,7 @@
 					<p:column headerText="Débit" style="width:8%">
 						<p:commandLink update=":form1:tempclientsCredit,:form1:display"
 							oncomplete="PF('confirmDeleteDlg').show()"
-							image="ui-icon ui-icon-close" title="Supprimer">
+							image="ui-icon ui-icon-close" title="Ajouter">
 							<f:setPropertyActionListener value="#{tempclientDebit}"
 								target="#{virementController.selectedClientDebit}" />
 							<h:outputText styleClass="ui-icon ui-icon-plus" />
