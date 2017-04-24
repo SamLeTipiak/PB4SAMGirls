@@ -5,8 +5,10 @@ import java.util.Properties;
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
+import org.proxib.dao.IEntityDao;
+import org.proxib.model.Transaction;
 import org.proxib.service.IAccountService;
-import org.proxib.service.ServiceAccount;
+import org.proxib.service.impl.ServiceAccount;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -22,6 +24,7 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.Database;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+
 
 @Configuration
 @EnableJpaRepositories(basePackages = { "org.proxib" })
@@ -83,6 +86,5 @@ public class ApplicationConfig {
 	@Bean
 	public IAccountService accountService() {
 		return new ServiceAccount();
-		
 	}
 }

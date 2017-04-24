@@ -3,6 +3,7 @@ package org.proxib.service;
 import java.util.List;
 
 import org.proxib.model.Adviser;
+import org.proxib.service.impl.ServiceAdviser;
 
 /**
  * Sont déclarées dans cette interface toutes les méthodes propres à la couche

@@ -4,6 +4,7 @@ import java.util.List;
 
 
 import org.proxib.model.Transaction;
+import org.proxib.service.impl.ServiceTransaction;
 
 /**
  * Sont déclarées dans cette interface toutes les méthodes propres à la couche
