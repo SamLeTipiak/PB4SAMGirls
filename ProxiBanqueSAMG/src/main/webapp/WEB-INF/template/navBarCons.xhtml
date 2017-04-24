@@ -6,10 +6,7 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui" xmlns:b="http://bootsfaces.net/ui">
 
-<f:metadata>
-	<f:event type="preRenderView"
-		listener="#{accountController.loadClientsOverdraft()}" />
-</f:metadata>
+
 <body>
 	<ui:composition>
 
@@ -27,8 +24,7 @@
 				<b:navLink></b:navLink>
 				<b:navLink header="Bilan" />
 
-				<b:navLink tooltip="#{accountController.taille}"
-					tooltip-position="left" outcome="/listOverdraft.xhtml"
+				<b:navLink outcome="/listOverdraft.xhtml"
 					value="Découverts" icon="signal" />
 				<b:navLink></b:navLink>
 				
