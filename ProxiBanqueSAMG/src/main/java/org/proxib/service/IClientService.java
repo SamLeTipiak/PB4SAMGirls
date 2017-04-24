@@ -4,6 +4,16 @@ import java.util.List;
 
 import org.proxib.model.Client;
 
+/**
+ * Sont déclarées dans cette interface toutes les méthodes propres à la couche
+ * Service et relatives aux actions clients. Elles sont définies dans la classe
+ * {@link ServiceClient}.
+ * 
+ * @author Soulabaille Maëva - Potier Aurélie - Bouchet Samuel - Ghania
+ *         Bouzemame
+ * @version 1.0
+ *
+ */
 public interface IClientService {
 
 	void persist(Client client) throws Exception;
@@ -15,12 +25,12 @@ public interface IClientService {
 	Client findById(Long id) throws Exception;
 
 	List<Client> findAll() throws Exception;
-	
+
 	List<Client> findByProperty(String prop, Object val) throws Exception;
-	
-//	List<Client> findInRange(int firstResult, int maxResults) throws Exception;
-//	
-//	long count() throws Exception;
-	
+
+	// List<Client> findInRange(int firstResult, int maxResults) throws
+	// Exception;
+	//
+	// long count() throws Exception;
 
 }

@@ -79,6 +79,7 @@
 
 	<!-- Welcome Page -->
 	<welcome-file-list>
+	<!-- <welcome-file>tatalogin.xhtml</welcome-file> -->
 		<welcome-file>accueil_conseiller2.xhtml</welcome-file>
 	</welcome-file-list>
 
