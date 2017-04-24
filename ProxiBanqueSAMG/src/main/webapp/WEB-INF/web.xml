@@ -49,6 +49,9 @@
 	<listener>
 		<listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
 	</listener>
+	 <listener>
+    <listener-class>com.sun.faces.config.ConfigureListener</listener-class>
+  </listener>
 
 	<!-- - Fichiers XML de configuration, à charger par le ContextLoaderListener -->
 	<!-- <context-param> -->

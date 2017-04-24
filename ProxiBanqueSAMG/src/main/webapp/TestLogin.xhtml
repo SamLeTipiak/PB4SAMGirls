@@ -35,20 +35,21 @@
 				<!-- 				</b:navbarLinks> -->
 				<h:form styleClass="navbar-form navbar-right">
 					<div class="form-group">
-						<b:inputText placeholder="Login" fieldSize="sm" />
-						<!--input type="text" class="form-control" placeholder="Search"/-->
+						<p:inputText placeholder="Login" value="#{userController.login}" />
 					</div>
 					<div class="form-group">
-						<b:inputText placeholder="Password" fieldSize="sm" />
+						<h:inputSecret value="#{userController.password}" />
 					</div>
-					
-					<b:button action="a" outcome="testButton" value="" icon="user">
+
+					<b:commandButton action="#{userController.checkPassword()}"
+						icon="user">
 						<f:param name="testId" value="33" />
-					</b:button>
+					</b:commandButton>
 				</h:form>
 			</b:navBar>
 		</ui:define>
-		
+
+
 		<ui:define name="navBar"></ui:define>
 
 
@@ -65,9 +66,14 @@
 						<p>La banque proche de ses clients</p>
 					</b:carouselCaption>
 				</b:carouselItem>
-				<b:carouselItem caption="Valladolid has a nice central park.">
-					<img src="Valladolid2.png" alt="Valladolid"
-						style="width: 800px; height: 600px" />
+				<b:carouselItem>
+					<img
+						src="https://www.businessmarches.com/wp-content/uploads/2014/10/join-our-team-recrutement.jpg"
+						alt="Valladolid" style="width: 800px; height: 600px" />
+					<b:carouselCaption>
+						<h3>"Rejoignez nos équipes."</h3>
+					</b:carouselCaption>
+
 				</b:carouselItem>
 
 

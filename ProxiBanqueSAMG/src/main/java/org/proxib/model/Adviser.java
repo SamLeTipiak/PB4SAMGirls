@@ -42,8 +42,40 @@ public class Adviser {
 	private List<Client> clients = new ArrayList<Client>();
 
 	
+	private String login, password;
+
+	public String getLogin() {
+		return login;
+	}
+
+	public void setLogin(String login) {
+		this.login = login;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
 	
+	public Adviser(String firstName, String lastName, List<Client> clients, String login, String password) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.clients = clients;
+		this.login = login;
+		this.password = password;
+	}
+
 	
+	public Adviser(String login, String password) {
+		super();
+		this.login = login;
+		this.password = password;
+	}
+
 	public String getFirstName() {
 		return firstName;
 	}
@@ -72,12 +104,12 @@ public class Adviser {
 		this.clients = clients;
 	}
 	
-	public Adviser(String firstName, String lastName) {
-		super();
-		this.firstName = firstName;
-		this.lastName = lastName;
-	}
-	
+//	public Adviser(String firstName, String lastName) {
+//		super();
+//		this.firstName = firstName;
+//		this.lastName = lastName;
+//	}
+//	
 	public Adviser() {
 		super();
 	}
