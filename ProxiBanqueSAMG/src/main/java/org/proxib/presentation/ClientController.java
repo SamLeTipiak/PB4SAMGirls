@@ -74,11 +74,15 @@ public class ClientController implements Serializable {
 		try {
 	
 			
-			this.currentAccount = new CurrentAccount(balanceCurrent);
-			this.savingAccount = new SavingAccount(balanceSaving);
-			
-			client.addCurrentAccountToClient(currentAccount);
-			client.addSavingAccountToClient(savingAccount);
+			if (this.balanceCurrent > 0) {
+				this.currentAccount = new CurrentAccount(balanceCurrent);
+				client.addCurrentAccountToClient(currentAccount);
+			}
+				
+			if (this.balanceSaving != 0) {
+				this.savingAccount = new SavingAccount(balanceSaving);
+				client.addSavingAccountToClient(savingAccount);
+			}
 			
 			clientService.persist(this.client);
 			refreshList();
