@@ -22,9 +22,6 @@ import org.springframework.stereotype.Component;
 @SessionScoped
 public class AdviserController implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	private static Logger LOGGER = LoggerFactory.getLogger(ClientController.class);

@@ -24,9 +24,6 @@ import org.springframework.stereotype.Component;
 @SessionScoped
 public class VirementController implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	private static Logger LOGGER = LoggerFactory.getLogger(ClientController.class);
@@ -77,7 +74,6 @@ public class VirementController implements Serializable {
 			this.listClientSelected.addAll(listClient);
 			this.listAccount.addAll(accountService.findAll());
 			this.listAccountSelected.addAll(listAccount);
-			// this.listClientUpdate.addAll(clientService.findAll());
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -164,8 +160,6 @@ public class VirementController implements Serializable {
 	public void notificationError(Exception e, String operation) {
 
 		LOGGER.error("Error");
-		// Logger.getLogger(this.getClass().getName()).log(Level.ERROR,
-		// "Operation "+operation+" Error ",e);
 		FacesMessage msg = null;
 		msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Notification", "Une erreur est survenue");
 		FacesContext.getCurrentInstance().addMessage(null, msg);

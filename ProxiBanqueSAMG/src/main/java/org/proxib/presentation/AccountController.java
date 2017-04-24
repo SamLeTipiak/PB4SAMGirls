@@ -19,9 +19,6 @@ import org.springframework.stereotype.Component;
 @ViewScoped
 public class AccountController implements Serializable {
 
-	/**
-	 *  
-	 */
 	private static final long serialVersionUID = 1L;
 
 	@Autowired
@@ -58,7 +55,6 @@ public class AccountController implements Serializable {
 
 	public List<Account> getListAccount() {
 		loadAccount();
-		System.out.println("******************************************************************" + listAccount);
 		return listAccount;
 	}
 
@@ -76,8 +72,6 @@ public class AccountController implements Serializable {
 		try {
 			Client c = clientService.findById(idClient);
 			int nbAccount = 0;
-			// nbAccount = c.getComptes().size(); // a verifier syntaxe une fois
-			// les comtpes branchés au client
 			if (nbAccount == 2) {
 				return "Le client a déjà 1 compte courant et un compte épargne. Vous ne pouvez pas en créer plus.";
 			} else {
