@@ -5,30 +5,35 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui" xmlns:b="http://bootsfaces.net/ui">
+<f:metadata>
+	<f:event type="preRenderView"
+		listener="#{accountController.loadClientsOverdraft()}" />
+</f:metadata>
 <body>
 	<ui:composition>
 
 		<b:panel title="Menu">
 			<b:listLinks>
-				<b:navLink header="Actions conseillers" />
-				<b:navLink outcome="/accueil_directeur.xhtml" value="Liste des conseillers"
-					icon="list" iconAlign="left" />
-				<b:navLink></b:navLink>
-				<b:navLink header="Clients" />
-				<b:navLink outcome="/listOverdraftDir.xhtml" value="Découverts"
-					icon="signal"></b:navLink>
-				<b:navLink></b:navLink>
+
 				<b:navLink header="Bilan" />
-				<b:navLink outcome="/dateGraph.xhtml" value="Synthèse de l'agence"
+				<b:navLink outcome="/bilan.xhtml" value="Synthèse de l'agence"
 					icon="calendar"></b:navLink>
+				<h:form>
+					<b:navLink tooltip="#{accountController.taille}"
+						tooltip-position="left" outcome="/listOverdraftDir.xhtml"
+						value="Découverts" icon="signal"></b:navLink>
+				</h:form>
 				<b:navLink></b:navLink>
+				<b:navLink header="Effectifs" />
+				<b:navLink outcome="/accueil_directeur.xhtml"
+					value="Liste des conseillers" icon="list" iconAlign="left" />
+				<b:navLink></b:navLink>
+
 				<b:messages />
 
 			</b:listLinks>
+
 		</b:panel>
-
-
-
 
 	</ui:composition>
 

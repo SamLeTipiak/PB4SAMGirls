@@ -19,7 +19,7 @@
 	<ui:composition template="/WEB-INF/template/template.xhtml">
 		<ui:define name="content">
 
-			<h3 style="margin-top: 0">Virement</h3>
+						<h3 style="margin-top: 0">Virement</h3>
 			<p:separator />
 
 			<h4 style="margin-top: 0">Compte à débiter</h4>
@@ -29,21 +29,19 @@
 
 				<p:growl id="messages" showDetail="true" life="3000" />
 				<p:dataTable id="tempclients" var="tempclientDebit"
-					value="#{clientController.listClient}" styleClass="et_datatable"
-					emptyMessage="Empty..." editable="true" paginator="true" rows="10"
-					paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-					rowsPerPageTemplate="5,10,15" selectionMode="single"
+					value="#{virementController.listClient}" styleClass="et_datatable"
+					selectionMode="single" editable="true"
 					rowKey="#{tempclientDebit.idClient}"
-					filteredValue="#{virementController.listClient}">
+					filteredValue="#{virementController.listClientSelected}">
 
-					<p:column headerText="Nom" sortBy="#{tempclientDebit.lastName}"
-						filterBy="#{tempclientDebit.lastName}" filterMatchMode="contains">
-						<h:outputText value="#{tempclientDebit.lastName}" />
-					</p:column>
-
-					<p:column headerText="Prénom" sortBy="#{tempclientDebit.firstName}"
+					<p:column headerText="Nom" sortBy="#{tempclientDebit.firstName}"
 						filterBy="#{tempclientDebit.firstName}" filterMatchMode="contains">
 						<h:outputText value="#{tempclientDebit.firstName}" />
+					</p:column>
+
+					<p:column headerText="Prénom" sortBy="#{tempclientDebit.lastName}"
+						filterBy="#{tempclientDebit.lastName}" filterMatchMode="contains">
+						<h:outputText value="#{tempclientDebit.lastName}" />
 					</p:column>
 
 					<p:column headerText="Solde">
@@ -100,20 +98,15 @@
 
 				</p:dataTable>
 
-
-				<!-- Panel de Synthèse -->
 				<p:separator />
 				<h4 style="margin-top: 0">Synthèse</h4>
 				<p:separator />
-
-
 				<p:panel header="Comptes selectionnés" style="margin-bottom:20px">
 					<h:panelGrid id="syntheseDebit" columns="4" cellpadding="4"
 						style="margin:0 auto;">
 						<h:outputText value="Compte à débiter"
 							style="padding-left: 30px; padding-right: 30px;  font-weight:bold" />
 						<h:outputText value="#{virementController.selectedClientDebit}" />
-
 						<h:outputText value="Solde"
 							style="padding-left: 30px; padding-right: 30px;  font-weight:bold" />
 						<h:outputText
@@ -131,14 +124,11 @@
 							value="#{virementController.selectedClientCredit.currentAccount}" />
 					</h:panelGrid>
 
-
-					<!-- Saisie du montant -->
 					<b:row styleClass="show-grid">
 						<br />
 						<b:column col-md="3" offset="3">
 							<b:inputText type="number" id="montant" placeholder="0"
 								value="#{virementController.montant}" required="true">
-								<f:validateLongRange minimum="0" />
 								<f:facet name="append">
 									<h:outputText value="€" />
 								</f:facet>
@@ -152,12 +142,19 @@
 							<b:commandButton id="btn_refresh" value="Refresh"
 								action="#{virementController.refreshListTransfer}" />
 						</b:buttonGroup>
-						<b:message for="montant" />
+
 					</b:row>
+
+
+
 				</p:panel>
 
 
-				<!-- Boites de dialogue -->
+
+
+
+
+
 				<p:dialog header="Client à débiter" widgetVar="confirmDeleteDlg"
 					resizable="false" width="400" height="100" showEffect="clip"
 					hideEffect="clip" modal="true">
@@ -174,13 +171,14 @@
 							style="padding-left: 30px; padding-right: 30px; font-weight:bold" />
 						<h:outputText
 							value="#{virementController.selectedClientDebit.firstName}" />
+
 					</h:panelGrid>
 
 					<p:outputPanel layout="block" style="text-align:center">
 						<br />
 						<p:commandButton value="Confirmer"
 							update=":form1:messages,:form1:tempclientsCredit,:form1:syntheseDebit"
-							actionListener="#{virementController.update}"
+							actionListener="#{virementController.refreshListTransfer}"
 							oncomplete="PF('confirmDeleteDlg').hide()" />
 						<p:commandButton value="Annuler"
 							onclick="PF('confirmDeleteDlg').hide()" type="button" />
@@ -212,13 +210,14 @@
 						<br />
 						<p:commandButton value="Valider"
 							update=":form1:messages,:form1:syntheseCredit"
+							actionListener="#{virementController.refreshListTransfer}"
 							oncomplete="PF('confirmDebitDlg').hide()" />
 						<p:commandButton value="Annuler"
 							onclick="PF('confirmDebitDlg').hide()" type="button" />
 					</p:outputPanel>
 				</p:dialog>
 			</h:form>
-
+			
 
 		</ui:define>
 	</ui:composition>

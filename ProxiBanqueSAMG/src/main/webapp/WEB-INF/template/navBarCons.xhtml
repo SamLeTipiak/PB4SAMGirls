@@ -5,34 +5,38 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui" xmlns:b="http://bootsfaces.net/ui">
+
+<f:metadata>
+	<f:event type="preRenderView"
+		listener="#{accountController.loadClientsOverdraft()}" />
+</f:metadata>
 <body>
 	<ui:composition>
+		<h:form>
+			<b:panel title="Menu">
+				<b:listLinks>
+					<b:navLink header="Actions clients" />
+					<b:navLink outcome="/accueil_conseiller.xhtml"
+						value="Liste des clients" icon="list" iconAlign="left" />
+					<b:navLink outcome="/new_client.xhtml" value="Ajouter un client"
+						icon="plus-sign" iconAlign="left" />
+					<b:navLink></b:navLink>
+					<b:navLink header="Transactions" />
+					<b:navLink outcome="/Virement3.xhtml" value="Virement"
+						icon="transfer"></b:navLink>
+					<b:navLink></b:navLink>
+					<b:navLink header="Bilan" />
 
-		<b:panel title="Menu">
-			<b:listLinks>
-				<b:navLink header="Actions clients" />
-				<b:navLink outcome="/accueil_conseiller2.xhtml" value="Liste des clients"
-					icon="list" iconAlign="left" />
-				<b:navLink outcome="/new_client.xhtml" value="Ajouter un client"
-					icon="plus-sign" iconAlign="left" />
-				<b:navLink></b:navLink>
-				<b:navLink header="Transactions" />
-				<b:navLink outcome="/Virement3.xhtml" value="Virement"
-					icon="transfer"></b:navLink>
-				<b:navLink></b:navLink>
-				<b:navLink header="Bilan" />
-				<b:navLink outcome="/listOverdraft.xhtml" value="Découverts"
-					icon="signal"></b:navLink>
-				<b:navLink></b:navLink>
-				<b:messages />
+					<b:navLink tooltip="#{accountController.taille}"
+						tooltip-position="left" outcome="/listOverdraft.xhtml"
+						value="Découverts" icon="signal"></b:navLink>
+					<b:navLink></b:navLink>
+					<b:messages />
 
-			</b:listLinks>
-		</b:panel>
-
-
-
+				</b:listLinks>
+			</b:panel>
+		</h:form>
 
 	</ui:composition>
-
 </body>
 </html>
