@@ -38,7 +38,7 @@ public class UserController {
 				session.setAttribute("loggedUser", u);
 				return "accueil_conseiller2";
 			} else if ("directeur".equals(u.getLogin())) {
-				return "accueil_directeur";
+				return "bilan";
 			}
 		}
 
@@ -61,7 +61,7 @@ public class UserController {
 	public String logout() {
 		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
 
-		return "/TestLogin.xhtml";
+		return "login";
 	}
 
 	public String getLogin() {
