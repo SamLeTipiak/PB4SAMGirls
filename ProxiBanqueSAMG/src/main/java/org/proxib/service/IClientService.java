@@ -28,9 +28,6 @@ public interface IClientService {
 
 	List<Client> findByProperty(String prop, Object val) throws Exception;
 
-	// List<Client> findInRange(int firstResult, int maxResults) throws
-	// Exception;
-	//
-	// long count() throws Exception;
+	
 
 }

@@ -68,6 +68,14 @@ public class ServiceAccount implements IAccountService {
 		return accountDao.findAll();
 	}
 
+	
+	
+	/* 
+	 * La méthode transfer permet de faire des virements de compte à compte 
+	 * @param  Account accountToWithdraw : le compte à débiter
+	 * @param  Account accountToCredit : le compte à créditer
+	 * @param sum : le montant du virement 
+	 */
 	@Override
 	public String transfer(Account accountToWithdraw, Account accountToCredit, double sum) {
 
@@ -76,11 +84,11 @@ public class ServiceAccount implements IAccountService {
 
 		if (sum <= 0.0) {
 
-			throw new RuntimeException("La somme est inférieure ou égale à 0");
+			throw new RuntimeException("Erreur : La somme est inférieure ou égale à 0");
 		} else if (accountToWithdraw == accountToCredit) {
-			throw new RuntimeException("Memes comptes ! ");
+			throw new RuntimeException("Erreur : memes comptes ");
 		} else if (sum >= accountToWithdraw.getBalance()-authorizedOverdraft) {
-			throw new RuntimeException("Somme supérieure au montant de votre compte en banque !");
+			throw new RuntimeException("Erreur : Somme supérieure au montant de votre compte en banque !");
 		} else {
 			accountToWithdraw.setBalance(-sum);
 			accountToCredit.setBalance(sum);
@@ -97,14 +105,17 @@ public class ServiceAccount implements IAccountService {
 
 				return "Virement effectué";
 			} catch (Exception e) {
-				System.out.println("Exception dans virement dans serviceAccount");
-				e.printStackTrace();
 				return "probleme Exception dans virement dans serviceAccount";
 			}
 
 		}
 	}
 
+	
+	/* 
+	 * La méthode doAudit permet de vérifier quels comptes sont en situation de découvert.
+	 * @param overdraft : la valeur du découvert autorisé 
+	 */
 	@Override
 	public List<Client> doAudit(double overdraft) {
 

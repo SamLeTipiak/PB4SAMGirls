@@ -26,11 +26,6 @@ public interface IAdviserService {
 
 	List<Adviser> findAll() throws Exception;
 	
-//	List<Adviser> findByProperty(String prop, Object val) throws Exception;
-	
-//	List<Adviser> findInRange(int firstResult, int maxResults) throws Exception;
-//	
-//	long count() throws Exception;
 	
 
 }
