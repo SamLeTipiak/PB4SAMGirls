@@ -37,7 +37,7 @@
 				<p:dataTable id="tempclients" var="tempclientDebit"
 					value="#{virementController.listClient}" styleClass="et_datatable"
 					selectionMode="single" editable="true"
-					rowKey="#{tempclientDebit.id}"
+					rowKey="#{tempclientDebit.idClient}"
 					filteredValue="#{virementController.listClientSelected}">
 
 					<p:column headerText="Nom" sortBy="#{tempclientDebit.firstName}"
@@ -73,7 +73,7 @@
 					value="#{virementController.listClientUpdate}"
 					emptyMessage="Sélectionner un compte à débiter"
 					styleClass="et_datatable" selectionMode="single" editable="true"
-					rowKey="#{tempclientCredit.id}"
+					rowKey="#{tempclientCredit.idClient}"
 					filteredValue="#{virementController.listClientUpdate}">
 
 					<p:column headerText="Nom" sortBy="#{tempclientCredit.lastName}"
