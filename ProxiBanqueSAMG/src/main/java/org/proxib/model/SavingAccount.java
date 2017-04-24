@@ -23,21 +23,25 @@ public class SavingAccount extends Account {
 	@JoinColumn(name = "account_id")
 	private Client client;
 
-	public SavingAccount() {
-		super();
+	
+	// Constructeurs 
+	
+	public SavingAccount(double balance, double rate) {
+		super(balance);
+		super.rate = rate;
 	}
-
 	
 	public SavingAccount(double balance) {
 		super(balance);
 		super.rate = SAVINGRATE;
 	}
 
-
-	public SavingAccount(double balance, double rate) {
-		super(balance);
-		super.rate = rate;
+	public SavingAccount() {
+		super();
 	}
+
+
+	// Getters Setters
 
 	public double getrate() {
 		return rate;

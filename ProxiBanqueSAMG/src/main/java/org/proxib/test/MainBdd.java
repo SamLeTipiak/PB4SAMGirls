@@ -84,10 +84,10 @@ public class MainBdd {
 				
 		// Création de conseillers
 				
-		Adviser ad1 = new Adviser("Bernard", "Lermite");
-		Adviser ad2 = new Adviser("Roger", "Laffite");
-		Adviser ad3 = new Adviser("Mathieu", "Martin");
-		Adviser ad4 = new Adviser("Jonas", "Rottin");
+		Adviser ad1 = new Adviser("Bernard", "Lermite", "conseiller", "toto");
+		Adviser ad2 = new Adviser("Roger", "Laffite", "conseiller", "toto");
+		Adviser ad3 = new Adviser("Mathieu", "Martin", "conseiller", "toto");
+		Adviser ad4 = new Adviser("Jonas", "Rottin", "conseiller", "toto");
 		
 		ad1.addClientToAdviser(c1);
 		ad1.addClientToAdviser(c4);
@@ -95,7 +95,6 @@ public class MainBdd {
 		ad2.addClientToAdviser(c2);
 		ad2.addClientToAdviser(c3);
 		ad2.addClientToAdviser(c9);
-		
 		
 		ad3.addClientToAdviser(c5);
 		ad3.addClientToAdviser(c7);

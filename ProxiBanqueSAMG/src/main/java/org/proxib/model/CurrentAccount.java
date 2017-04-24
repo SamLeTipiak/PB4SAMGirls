@@ -18,7 +18,6 @@ import javax.persistence.OneToOne;
 public class CurrentAccount extends Account{
 	
 	private static float CURRENTRATE=0.00f;
-
 	
 	@OneToOne(mappedBy="currentAccount", cascade = CascadeType.ALL)
 	@JoinColumn(name = "account_id")
@@ -26,20 +25,24 @@ public class CurrentAccount extends Account{
 	
 	
 	
-	public CurrentAccount() {
-		super();
+	// Constructeurs
+	
+	public CurrentAccount(double balance, double rate) {
+		super(balance);
+		super.rate = rate;
 	}
 
 	public CurrentAccount(double balance) {
 		super(balance);
 		super.rate = CURRENTRATE;
 	}
-
-
-	public CurrentAccount(double balance, double rate) {
-		super(balance);
-		super.rate = rate;
+	
+	public CurrentAccount() {
+		super();
 	}
+
+
+	// Getters Setters
 
 	public double getrate() {
 		return rate;

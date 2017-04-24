@@ -67,22 +67,6 @@ public class EntityDaoImpl<E> implements IEntityDao<E> {
 				.createQuery("select x from " + getEntityClass().getSimpleName() + " x where x." + prop + " = ?1")
 				.setParameter(1, val).getResultList();
 	}
-	//
-	// @Transactional(readOnly = true)
-	// @SuppressWarnings("unchecked")
-	// public List<E> findInRange(int firstResult, int maxResults) throws
-	// Exception {
-	// return getEntityManager().createQuery("Select t from " +
-	// getEntityClass().getSimpleName() + " t")
-	// .setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
-	// }
-	//
-	// @Transactional(readOnly = true)
-	// public long count() throws Exception {
-	// return (Long) getEntityManager().createQuery("Select count(t) from " +
-	// getEntityClass().getSimpleName() + " t")
-	// .getSingleResult();
-	// }
 
 	public EntityManager getEntityManager() {
 		return entityManager;
