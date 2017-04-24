@@ -38,7 +38,7 @@ public class UserController {
 				HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext()
 						.getSession(true);
 				session.setAttribute("loggedUser", u);
-				return "accueil_conseiller2";
+				return "accueil_conseiller";
 
 			}
 

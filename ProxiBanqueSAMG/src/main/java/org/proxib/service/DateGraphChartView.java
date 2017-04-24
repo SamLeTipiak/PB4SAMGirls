@@ -63,7 +63,6 @@ public class DateGraphChartView implements Serializable {
 		dateModel = new LineChartModel();
 		LineChartSeries series1 = new LineChartSeries();
 		LineChartSeries series2 = new LineChartSeries();
-		LineChartSeries series3 = new LineChartSeries();
 		series1.setLabel(" Total des sommes transférées par jour en k€");
 		series2.setLabel(" Nombre de virements par jour");
 		
@@ -107,12 +106,10 @@ public class DateGraphChartView implements Serializable {
 		}
 
 
-		series3.setLabel(" Total des sommes virées : "+totalAmounts +"€");
 
 		
 		dateModel.addSeries(series1);
 		dateModel.addSeries(series2);
-		dateModel.addSeries(series3);
 
 		dateModel.setTitle("Nombre et somme des virements par jour  (Zoomer pour voir en détail)");
 		dateModel.setZoom(true);

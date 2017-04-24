@@ -18,7 +18,7 @@ import javax.persistence.OneToOne;
  * <p>
  * Chaque client est caractérisé par les informations suivantes :
  * <ul>
- * <li>id : un identifiant généré automatiquement (par incrémentation à partir
+ * <li>idClient : un identifiant généré automatiquement (par incrémentation à partir
  * de 1) par la base de données</li>
  * <li>firstName : son prénom</li>
  * <li>lastName : son nom de famille</li>

@@ -23,9 +23,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class accountAmountsChartView implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	private PieChartModel pieModel;
