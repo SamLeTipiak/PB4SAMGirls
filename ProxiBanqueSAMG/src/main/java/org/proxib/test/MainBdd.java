@@ -56,7 +56,7 @@ public class MainBdd {
 		CurrentAccount a10 = new CurrentAccount(562);
 		
 		 
-		
+		 
 		c1.addCurrentAccountToClient(a1);
 		c2.addCurrentAccountToClient(a2);
 		c3.addCurrentAccountToClient(a3);
