@@ -1,12 +1,8 @@
 package org.proxib.config;
 
-import java.time.LocalDate;
-
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
-import org.proxib.model.Account;
-import org.proxib.model.Transaction;
 import org.proxib.service.ITransactionService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

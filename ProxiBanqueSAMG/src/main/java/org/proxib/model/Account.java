@@ -12,21 +12,26 @@ import javax.persistence.ManyToOne;
 
 /**
  * <b>Account représente les comptes bancaires ouverts chez ProxiBanque.</b>
- * <p>Chaque compte est caractérisé par les informations suivantes :
+ * <p>
+ * Chaque compte est caractérisé par les informations suivantes :
  * <ul>
- * <li>id : un identifiant généré automatiquement au niveau de la base de données</li>
+ * <li>id : un identifiant généré automatiquement au niveau de la base de
+ * données</li>
  * <li>balance : le solde du compte</li>
  * <li>rate : la rémunération du compte</li>
  * </ul>
  * </p>
- * <p>Chaque compte est aussi associé à un client.</p>
- * @author Soulabaille Maëva - Potier Aurélie - Bouchet Samuel - Ghania Bouzemame
+ * <p>
+ * Chaque compte est aussi associé à un client.
+ * </p>
+ * 
+ * @author Soulabaille Maëva - Potier Aurélie - Bouchet Samuel - Ghania
+ *         Bouzemame
  * @version 1.0
  *
  */
-@Inheritance(strategy=InheritanceType.JOINED)
+@Inheritance(strategy = InheritanceType.JOINED)
 @Entity
-//@Component
 public class Account {
 
 	@Id
@@ -35,27 +40,29 @@ public class Account {
 	protected double balance;
 	protected double rate;
 
-	
-	@ManyToOne( cascade = { CascadeType.ALL }, fetch = FetchType.EAGER)
-//	@JoinColumn(name="client_id")
+	@ManyToOne(cascade = { CascadeType.ALL }, fetch = FetchType.EAGER)
 	private Client client;
 
-
-	public Account() {
-		super();
-	}
+	
+	// Constructeurs
 
 	public Account(double balance, double rate) {
 		super();
 		this.balance = balance;
 		this.rate = rate;
 	}
-	
+
 	public Account(double balance) {
 		super();
 		this.balance = balance;
 	}
-	
+
+	public Account() {
+		super();
+	}
+
+	// Getters Setters
+
 	public Long getId() {
 		return id;
 	}
@@ -66,7 +73,7 @@ public class Account {
 
 	public double getBalance() {
 		return balance;
-	} 
+	}
 
 	public void setBalance(double balance) {
 		this.balance += balance;
@@ -80,8 +87,6 @@ public class Account {
 		this.rate = rate;
 	}
 
-
-
 	public Client getClient() {
 		return client;
 	}
@@ -90,13 +95,10 @@ public class Account {
 		this.client = client;
 	}
 
-	//No modif allowed
+	// No modif allowed
 	@Override
 	public String toString() {
-		return " " + balance ;
+		return " " + balance;
 	}
 
-
-
-	
 }

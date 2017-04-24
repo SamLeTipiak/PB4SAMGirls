@@ -55,8 +55,8 @@ public class MainBdd {
 		CurrentAccount a9 = new CurrentAccount(77007);
 		CurrentAccount a10 = new CurrentAccount(562);
 		
-		
-		
+		 
+		 
 		c1.addCurrentAccountToClient(a1);
 		c2.addCurrentAccountToClient(a2);
 		c3.addCurrentAccountToClient(a3);
@@ -84,10 +84,10 @@ public class MainBdd {
 				
 		// Création de conseillers
 				
-		Adviser ad1 = new Adviser("Bernard", "Lermite");
-		Adviser ad2 = new Adviser("Roger", "Laffite");
-		Adviser ad3 = new Adviser("Mathieu", "Martin");
-		Adviser ad4 = new Adviser("Jonas", "Rottin");
+		Adviser ad1 = new Adviser("Bernard", "Lermite", "conseiller1", "toto1");
+		Adviser ad2 = new Adviser("Roger", "Laffite", "conseiller2", "toto2");
+		Adviser ad3 = new Adviser("Mathieu", "Martin", "conseiller", "toto");
+		Adviser ad4 = new Adviser("Jonas", "Rottin", "conseiller", "toto");
 		
 		ad1.addClientToAdviser(c1);
 		ad1.addClientToAdviser(c4);
@@ -95,7 +95,6 @@ public class MainBdd {
 		ad2.addClientToAdviser(c2);
 		ad2.addClientToAdviser(c3);
 		ad2.addClientToAdviser(c9);
-		
 		
 		ad3.addClientToAdviser(c5);
 		ad3.addClientToAdviser(c7);
@@ -160,7 +159,7 @@ public class MainBdd {
 			
 			
 			// faire des transferts a la date d'aujourd'hui
-			accountService.transfer(a4, a3, 200);
+			accountService.transfer(a2, a3, 200);
 			
 			
 		} catch (Exception e) {

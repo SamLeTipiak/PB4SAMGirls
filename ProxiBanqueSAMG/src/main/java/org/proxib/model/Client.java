@@ -37,7 +37,6 @@ import javax.persistence.OneToOne;
  *
  */
 @Entity
-// @Component
 public class Client implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -63,6 +62,32 @@ public class Client implements Serializable {
 	@JoinColumn(name = "currentAccount_id")
 	private CurrentAccount currentAccount;
 
+	
+
+	// Méthodes 
+
+	/**
+	 * addCurrentAccountToClient() permet d'associer un compte courant à un
+	 * client donné.
+	 * 
+	 * @param account
+	 */
+	public void addCurrentAccountToClient(CurrentAccount account) {
+		account.setClient(this);
+		this.setCurrentAccount(account);
+	}
+
+	/**
+	 * addSavingtAccountToClient() permet d'associer un compte épargne à un
+	 * client donné.
+	 * 
+	 * @param account
+	 */
+	public void addSavingAccountToClient(SavingAccount account) {
+		account.setClient(this);
+		this.setSavingAccount(account);
+	}
+	
 	
 	// Constructeurs
 	
@@ -99,8 +124,8 @@ public class Client implements Serializable {
 	}
 
 	
-	// Getters Setters
 	
+	// Getters Setters
 	
 	
 	public String getFirstName() {
@@ -147,8 +172,6 @@ public class Client implements Serializable {
 		return idClient;
 	}
 
-
-
 	public String getAddress() {
 		return address;
 	}
@@ -174,29 +197,6 @@ public class Client implements Serializable {
 	}
 
 
-	// Méthodes particulières
-
-	/**
-	 * addCurrentAccountToClient() permet d'associer un compte courant à un
-	 * client donné.
-	 * 
-	 * @param account
-	 */
-	public void addCurrentAccountToClient(CurrentAccount account) {
-		account.setClient(this);
-		this.setCurrentAccount(account);
-	}
-
-	/**
-	 * addSavingtAccountToClient() permet d'associer un compte épargne à un
-	 * client donné.
-	 * 
-	 * @param account
-	 */
-	public void addSavingAccountToClient(SavingAccount account) {
-		account.setClient(this);
-		this.setSavingAccount(account);
-	}
 	
 	@Override
 	public String toString() {

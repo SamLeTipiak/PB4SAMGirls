@@ -16,9 +16,11 @@ import javax.persistence.OneToMany;
  * <b>Adviser représente les différents conseillers d'une agence.</b>
  * <p>Chaque conseiller est caractérisé par :</p>
  * <ul>
- * <li>id : un identifiant généré automatiquement (par incrémentation) au niveau de la base de données.</li>
+ * <li>idAviser : un identifiant généré automatiquement (par incrémentation) au niveau de la base de données.</li>
  * <li>firstName : son prénom</li>
  * <li>lastName : son nom de famille</li>
+ * <li>login : son login</li>
+ * <li>password : son mot de passe</li>
  * </ul>
  * <p>De plus, chaque conseiller a aussi une liste de clients.
  * </p>
@@ -27,7 +29,6 @@ import javax.persistence.OneToMany;
  *
  */
 @Entity
-//@Component
 public class Adviser {
 	
 	@Id
@@ -36,6 +37,7 @@ public class Adviser {
 	private Long idAdviser;
 	private String firstName;
 	private String lastName;
+	private String login, password;
 	
 
 	@OneToMany(mappedBy="adviser",cascade={CascadeType.ALL}, fetch=FetchType.EAGER)
@@ -43,6 +45,62 @@ public class Adviser {
 
 	
 	
+	// Méthodes 
+	
+	public void addClientToAdviser(Client client) {
+		client.setAdviser(this);
+		clients.add(client);
+	}
+
+
+	
+	// Constructeurs 
+	
+	public Adviser(String firstName, String lastName, List<Client> clients, String login, String password) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.clients = clients;
+		this.login = login;
+		this.password = password;
+	}
+	
+	public Adviser(String firstName, String lastName, String login, String password) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.login = login;
+		this.password = password;
+	}
+	
+	public Adviser(String login, String password) {
+		super();
+		this.login = login;
+		this.password = password;
+	}
+	
+	public Adviser() {
+		super();
+	}
+
+	
+	// Getters Setters
+	
+	public String getLogin() {
+		return login;
+	}
+
+	public void setLogin(String login) {
+		this.login = login;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
 	
 	public String getFirstName() {
 		return firstName;
@@ -65,22 +123,7 @@ public class Adviser {
 	public Long getIdAdviser() {
 		return idAdviser;
 	}
-	public Adviser(String firstName, String lastName, List<Client> clients) {
-		super();
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.clients = clients;
-	}
-	
-	public Adviser(String firstName, String lastName) {
-		super();
-		this.firstName = firstName;
-		this.lastName = lastName;
-	}
-	
-	public Adviser() {
-		super();
-	}
+
 	
 	@Override
 	public String toString() {
@@ -90,9 +133,5 @@ public class Adviser {
 
 	
 
-	public void addClientToAdviser(Client client) {
-		client.setAdviser(this);
-		clients.add(client);
-	}
 
 }
