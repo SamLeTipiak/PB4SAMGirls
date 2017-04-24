@@ -45,6 +45,8 @@ public class ServiceAccount implements IAccountService {
 		accountDao.persist(account);
 	}
 
+	public static double authorizedOverdraft=100;
+	
 	@Override
 	public void merge(Account account) throws Exception {
 		accountDao.merge(account);
@@ -77,7 +79,7 @@ public class ServiceAccount implements IAccountService {
 			throw new RuntimeException("La somme est inférieure ou égale à 0");
 		} else if (accountToWithdraw == accountToCredit) {
 			throw new RuntimeException("Memes comptes ! ");
-		} else if (sum >= accountToWithdraw.getBalance()) {
+		} else if (sum >= accountToWithdraw.getBalance()-authorizedOverdraft) {
 			throw new RuntimeException("Somme supérieure au montant de votre compte en banque !");
 		} else {
 			accountToWithdraw.setBalance(-sum);
@@ -111,7 +113,7 @@ public class ServiceAccount implements IAccountService {
 			List<Client> clients = clientDao.findAll();
 			for (Client client : clients) {
 				if (client.getCurrentAccount() != null) {
-					if (client.getCurrentAccount().getBalance() <= overdraft) {
+					if (client.getCurrentAccount().getBalance() < overdraft) {
 						clientsOverdraft.add(client);
 					}
 				}
