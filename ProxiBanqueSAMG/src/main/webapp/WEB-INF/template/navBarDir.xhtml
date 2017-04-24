@@ -13,23 +13,23 @@
 	<ui:composition>
 
 		<b:panel title="Menu">
+
 			<b:listLinks>
 
 				<b:navLink header="Bilan" />
 				<b:navLink outcome="/bilan.xhtml" value="Synthèse de l'agence"
 					icon="calendar"></b:navLink>
-				<h:form>
-					<b:navLink tooltip="#{accountController.taille}"
-						tooltip-position="left" outcome="/listOverdraftDir.xhtml"
-						value="Découverts" icon="signal"></b:navLink>
-				</h:form>
+				<b:navLink tooltip="#{accountController.taille}"
+					tooltip-position="left" outcome="/listOverdraftDir.xhtml"
+					value="Découverts" icon="signal"></b:navLink>
+
 				<b:navLink></b:navLink>
 				<b:navLink header="Effectifs" />
 				<b:navLink outcome="/accueil_directeur.xhtml"
 					value="Liste des conseillers" icon="list" iconAlign="left" />
 				<b:navLink></b:navLink>
 
-				<b:messages />
+
 
 			</b:listLinks>
 
