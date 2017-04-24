@@ -63,6 +63,46 @@ public class Client implements Serializable {
 	@JoinColumn(name = "currentAccount_id")
 	private CurrentAccount currentAccount;
 
+	
+	// Constructeurs
+	
+	public Client(String lastName, String firstName, String address, String email, Adviser adviser,
+			List<Account> accounts) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.address = address;
+		this.email = email;
+		this.adviser = adviser;
+	}
+
+	public Client(String lastName, String firstName, String address, String email) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.address = address;
+		this.email = email;
+	}
+
+	 public Client(String lastName, String firstName, String address, String
+	 email, SavingAccount savingAccount) {
+	 super();
+	 this.firstName = firstName;
+	 this.lastName = lastName;
+	 this.address = address;
+	 this.email = email;
+	 this.savingAccount = savingAccount;
+	 }
+
+	public Client() {
+		super();
+	}
+
+	
+	// Getters Setters
+	
+	
+	
 	public String getFirstName() {
 		return firstName;
 	}
@@ -107,11 +147,7 @@ public class Client implements Serializable {
 		return idClient;
 	}
 
-//	@Override
-//	public String toString() {
-//		return "Client [firstName=" + firstName + ", lastName=" + lastName + "address=" + address + ", email=" + email
-//				+ ", adviser=" + adviser + ", accounts=" + accounts + "]";
-//	}
+
 
 	public String getAddress() {
 		return address;
@@ -126,7 +162,6 @@ public class Client implements Serializable {
 	}
 
 	public void setSavingAccount(SavingAccount savingAccount) {
-		// savingAccount.setClient(this);
 		this.savingAccount = savingAccount;
 	}
 
@@ -135,46 +170,11 @@ public class Client implements Serializable {
 	}
 
 	public void setCurrentAccount(CurrentAccount currentAccount) {
-		// currentAccount.setClient(this);
 		this.currentAccount = currentAccount;
 	}
 
-	public Client(String firstName, String lastName, String address, String email, Adviser adviser,
-			List<Account> accounts) {
-		super();
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.address = address;
-		this.email = email;
-		this.adviser = adviser;
-	}
 
-	public Client(String firstName, String lastName, String address, String email) {
-		super();
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.address = address;
-		this.email = email;
-	}
-
-	 public Client(String firstName, String lastName, String address, String
-	 email, SavingAccount savingAccount) {
-	 super();
-	 this.firstName = firstName;
-	 this.lastName = lastName;
-	 this.address = address;
-	 this.email = email;
-	 this.savingAccount = savingAccount;
-	 }
-
-	public Client() {
-		super();
-	}
-
-	@Override
-	public String toString() {
-		return firstName + " " + lastName;
-	}
+	// Méthodes particulières
 
 	/**
 	 * addCurrentAccountToClient() permet d'associer un compte courant à un
@@ -196,6 +196,11 @@ public class Client implements Serializable {
 	public void addSavingAccountToClient(SavingAccount account) {
 		account.setClient(this);
 		this.setSavingAccount(account);
+	}
+	
+	@Override
+	public String toString() {
+		return firstName + " " + lastName;
 	}
 
 }
