@@ -132,7 +132,9 @@
 								<f:facet name="append">
 									<h:outputText value="€" />
 								</f:facet>
+								<f:validateLongRange minimum="0"/>
 							</b:inputText>
+							
 						</b:column>
 
 						<b:buttonGroup>
@@ -142,17 +144,9 @@
 							<b:commandButton id="btn_refresh" value="Refresh"
 								action="#{virementController.refreshList}" />
 						</b:buttonGroup>
-
+						<p:message for="montant"></p:message>
 					</b:row>
-
-
-
 				</p:panel>
-
-
-
-
-
 
 
 				<p:dialog header="Client à débiter" widgetVar="confirmDeleteDlg"
@@ -184,8 +178,6 @@
 							onclick="PF('confirmDeleteDlg').hide()" type="button" />
 					</p:outputPanel>
 				</p:dialog>
-
-
 
 				<p:dialog header="Client à créditer" widgetVar="confirmDebitDlg"
 					resizable="false" width="400" height="100" showEffect="clip"
