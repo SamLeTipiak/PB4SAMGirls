@@ -54,12 +54,12 @@ public class ClientController3 implements Serializable {
 		this.listClientSelected = new ArrayList<>();
 
 		try {
-			Adviser u = new Adviser();
-			HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
-			if (session.getAttribute("loggedUser").equals(u)) {
-				this.listClient.addAll(adviserService.findById(u.getIdAdviser()).getClients());
-				this.listClientSelected.addAll(adviserService.findById(u.getIdAdviser()).getClients());
-			}
+//			Adviser u = new Adviser();
+//			HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
+//			if (session.getAttribute("loggedUser").equals(u)) {
+				this.listClient.addAll(adviserService.findById(1l).getClients());
+				this.listClientSelected.addAll(adviserService.findById(1l).getClients());
+//			}
 			;
 
 		} catch (Exception e) {

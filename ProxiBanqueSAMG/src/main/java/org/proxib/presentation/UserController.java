@@ -18,7 +18,7 @@ import org.springframework.stereotype.Component;
 public class UserController {
 
 	private static Logger LOGGER = LoggerFactory.getLogger(UserController.class);
-	
+
 	private String login, password;
 	private Adviser adviser = new Adviser();
 
@@ -29,17 +29,20 @@ public class UserController {
 		users.put("directeur", new Adviser("directeur", "tata"));
 	}
 
-	
-	// Méthodes 
-	
+	// Méthodes
+
 	public String checkPassword() {
 		Adviser u = users.get(login);
 		if (u != null && password.equals(u.getPassword())) {
 			if ("conseiller".equals(u.getLogin())) {
-				HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
+				HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext()
+						.getSession(true);
 				session.setAttribute("loggedUser", u);
 				return "accueil_conseiller2";
-			} else if ("directeur".equals(u.getLogin())) {
+
+			}
+
+			else if ("directeur".equals(u.getLogin())) {
 				return "bilan";
 			}
 		}
@@ -51,8 +54,9 @@ public class UserController {
 
 	public void notificationError(String operation) {
 
-//		LOGGER.error("Error");
-//		Logger.getLogger(this.getClass().getName()).log(Level.ERROR, "Operation "+operation+" Error ",e);
+		// LOGGER.error("Error");
+		// Logger.getLogger(this.getClass().getName()).log(Level.ERROR,
+		// "Operation "+operation+" Error ",e);
 		FacesMessage msg = null;
 		msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Notification", "Une erreur est survenue");
 		FacesContext.getCurrentInstance().addMessage(null, msg);
@@ -64,20 +68,19 @@ public class UserController {
 
 		return "login";
 	}
-	
+
 	// Constructeur
-	
+
 	public UserController(String login, String password) {
 		super();
 		this.login = login;
 		this.password = password;
 	}
-	
+
 	public UserController() {
 		super();
 	}
-	
-	
+
 	// Getters Setters
 
 	public String getLogin() {
@@ -111,7 +114,5 @@ public class UserController {
 	public static void setLOGGER(Logger lOGGER) {
 		LOGGER = lOGGER;
 	}
-	
-
 
 }
