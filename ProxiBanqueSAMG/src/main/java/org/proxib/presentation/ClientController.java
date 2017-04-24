@@ -60,6 +60,7 @@ public class ClientController implements Serializable {
 		this.balanceSaving = 0;
 		this.selectedClient = new Client();
 		this.listClient = new ArrayList<>();
+		this.listClient.clear();
 		this.listClientSelected = new ArrayList<>();
 
 		try {

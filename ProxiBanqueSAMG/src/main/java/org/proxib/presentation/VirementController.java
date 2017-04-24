@@ -40,43 +40,32 @@ public class VirementController implements Serializable {
 	private Client client;
 	private Client selectedClientDebit;
 	private Client selectedClientCredit;
-	private Account account;
+
 	private double montant;
 
 	private List<Client> listClient;
 	private List<Client> listClientUpdate;
 	private List<Client> listClientSelected;
-	private List<Account> listAccountSelected;
-	private List<Account> listAccount;
-
-	public List<Account> getListAccount() {
-		return listAccount;
-	}
-
-	public void setListAccount(List<Account> listAccount) {
-		this.listAccount = listAccount;
-	}
 
 	@PostConstruct
 	public void init() {
-		refreshList();
+		refreshListTransfer();
 	}
 
-	public void refreshList() {
+	public void refreshListTransfer() {
 		this.client = new Client();
 		this.selectedClientDebit = new Client();
 		this.selectedClientCredit = new Client();
 		this.listClient = new ArrayList<>();
 		this.listClientSelected = new ArrayList<>();
-		this.listAccountSelected = new ArrayList<>();
+
 		this.listClientUpdate = new ArrayList<>();
-		this.listAccount = new ArrayList<>();
-		this.montant =0;
+
+		this.montant = 0;
 		try {
 			this.listClient.addAll(clientService.findAll());
+			System.err.println(listClient);
 			this.listClientSelected.addAll(listClient);
-			this.listAccount.addAll(accountService.findAll());
-			this.listAccountSelected.addAll(listAccount);
 			// this.listClientUpdate.addAll(clientService.findAll());
 
 		} catch (Exception e) {
@@ -84,48 +73,12 @@ public class VirementController implements Serializable {
 		}
 	}
 
-	public void updateList() {
-		this.client = new Client();
-		this.selectedClientDebit = new Client();
-		this.listClient = new ArrayList<>();
-		this.listClientSelected = new ArrayList<>();
-
-		try {
-			this.listClient.addAll(clientService.findAll());
-			this.listClientSelected.addAll(listClient);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
-	public void save() {
-		try {
-			clientService.persist(this.client);
-			refreshList();
-			notificationSuccess("Client ajouté");
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
 	public void update() {
-		try {
-			clientService.merge(this.selectedClientDebit);
-			refreshList();
-			notificationSuccess("Client mis à jour");
-		} catch (Exception e) {
-			notificationError(e, "Mise à jour client");
-		}
-	}
-
-	public void refresh() {
 		try {
 			this.listClientUpdate = new ArrayList<>();
 			this.listClientUpdate.addAll(listClient);
 			boolean isdeleted = this.listClientUpdate.remove(this.selectedClientDebit);
-			System.out.println(selectedClientDebit);
-			System.out.println(selectedClientCredit);
-			notificationSuccess("Client supprimé");
+			System.out.println("d");
 		} catch (Exception e) {
 			notificationError(e, "suppression Client");
 		}
@@ -137,18 +90,18 @@ public class VirementController implements Serializable {
 			accountService.transfer(selectedClientDebit.getCurrentAccount(), selectedClientCredit.getCurrentAccount(),
 					montant);
 			notificationSuccess("Virement Effectué");
-			refreshList();
+			refreshListTransfer();
 		} catch (Exception e) {
 			notificationError(e, "suppression Client");
 		}
 	}
 
 	public void onCancel(RowEditEvent event) {
-		refreshList();
+		refreshListTransfer();
 	}
 
 	public void reset() {
-		refreshList();
+		refreshListTransfer();
 		RequestContext.getCurrentInstance().reset("form1:panel");
 	}
 
@@ -221,22 +174,6 @@ public class VirementController implements Serializable {
 
 	public void setListClientUpdate(List<Client> listClientUpdate) {
 		this.listClientUpdate = listClientUpdate;
-	}
-
-	public Account getAccount() {
-		return account;
-	}
-
-	public void setAccount(Account account) {
-		this.account = account;
-	}
-
-	public List<Account> getListAccountSelected() {
-		return listAccountSelected;
-	}
-
-	public void setListAccountSelected(List<Account> listAccountSelected) {
-		this.listAccountSelected = listAccountSelected;
 	}
 
 	public Client getSelectedClientCredit() {
