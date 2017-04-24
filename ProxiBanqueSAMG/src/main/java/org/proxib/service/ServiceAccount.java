@@ -75,7 +75,7 @@ public class ServiceAccount implements IAccountService {
 	 * @param  accountToWithdraw : le compte à débiter
 	 * @param  accountToCredit : le compte à créditer
 	 * @param sum : le montant du virement 
-	 **/
+	 */
 	@Override
 	public String transfer(Account accountToWithdraw, Account accountToCredit, double sum) {
 
@@ -115,7 +115,7 @@ public class ServiceAccount implements IAccountService {
 	/**
 	 * La méthode doAudit permet de vérifier quels comptes sont en situation de découvert.
 	 * @param overdraft : la valeur du découvert autorisé 
-	 **/
+	 */
 	@Override
 	public List<Client> doAudit(double overdraft) {
 

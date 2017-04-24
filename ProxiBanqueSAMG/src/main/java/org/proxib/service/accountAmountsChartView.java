@@ -55,7 +55,7 @@ public class accountAmountsChartView implements Serializable {
 	}
 	
 	/**
-	 * createPieModel() est une méthode qui défini les valeurs rentrées 
+	 * createPieModel() est une méthode qui définit les valeurs rentrées 
 	 * pour obtenir le camembert ainsi que les options d'affichage.
 	 * 
 	 */
@@ -93,7 +93,7 @@ public class accountAmountsChartView implements Serializable {
 		pieModel.set( "Entre 10 000€ et 50 000€", inf50000);
 		pieModel.set(" Supérieur à 50 000€", sup50000);
 		
-		pieModel.setSeriesColors(" da8768, dcfbcc, 9191ea , eccce3");
+		pieModel.setSeriesColors("da8768, dcfbcc, 9191ea , eccce3");
 
 		pieModel.setTitle("Répartition des comptes en fonction du solde");
 		pieModel.setLegendPosition("e");
