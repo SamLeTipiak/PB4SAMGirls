@@ -11,6 +11,15 @@ import org.proxib.model.Account;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+/**
+ * La classe accountAmountsChartView permet de visualiser sous forme de graphe 
+ * des bilans financiers de la banque
+ * 
+ * @author Soulabaille Maëva - Potier Aurélie - Bouchet Samuel - Ghania
+ *         Bouzemame
+ * @version 1.0
+ *
+ */
 @Component
 public class accountAmountsChartView implements Serializable {
 
@@ -24,15 +33,30 @@ public class accountAmountsChartView implements Serializable {
 	@Autowired
 	private IAccountService accountService;
 
+	
+	
+	// Constructeurs 
+	
+	public accountAmountsChartView(PieChartModel pieModel, IAccountService accountService) {
+		super();
+		this.pieModel = pieModel;
+		this.accountService = accountService;
+	}
+	
+
+	public accountAmountsChartView() {
+		super();
+	}
+	
+	
+	// Méthodes 
+
+
 	@PostConstruct
 	public void init() {
 		createPieModel();
 	}
-
-	public PieChartModel getPieModel() {
-		return pieModel;
-	}
-
+	
 	private void createPieModel() {
 		pieModel = new PieChartModel();
 
@@ -52,12 +76,8 @@ public class accountAmountsChartView implements Serializable {
 
 			if (amount < 0) {
 				inf0++;
-//			} else if (amount < 1000) {
-//				inf1000++;
 			} else if (amount < 5000) {
 				inf5000++;
-//			} else if (amount < 10000) {
-//				inf10000++;
 			} else if (amount < 50000) {
 				inf50000++;
 			} else {
@@ -67,12 +87,9 @@ public class accountAmountsChartView implements Serializable {
 		}
 
 		pieModel.set(" Inférieur à 0 €", inf0);
-//		pieModel.set("Entre 0 et 1000", inf1000);
 		pieModel.set(" Entre 1 000€ et 5 000€", inf5000);
-//		pieModel.set("Entre 5000 et 10000", inf10000);
 		pieModel.set( "Entre 10 000€ et 50 000€", inf50000);
 		pieModel.set(" Supérieur à 50 000€", sup50000);
-		
 		
 		pieModel.setSeriesColors(" da8768, dcfbcc, 9191ea , eccce3");
 
@@ -84,5 +101,15 @@ public class accountAmountsChartView implements Serializable {
         pieModel.setMouseoverHighlight(true);
 
 	}
+	
+
+	
+	// Getters Setters 
+	
+	public PieChartModel getPieModel() {
+		return pieModel;
+	}
+
+
 
 }
