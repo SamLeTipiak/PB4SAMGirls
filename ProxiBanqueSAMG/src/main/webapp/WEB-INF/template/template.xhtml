@@ -48,27 +48,23 @@
 
 		<hr></hr>
 
- <b:row>
-		<b:column span="3">
-			<ui:insert name="navBar">
-				<ui:include src="/WEB-INF/template/navBarCons.xhtml" />
-			</ui:insert>
-		</b:column>
-
-		<b:column span="9">
-			<div class="container-fluid" style="min-height: 300px">
-				<!-- Content Facelets -->
-				<ui:insert name="content">
-
+		<b:row>
+			<b:column span="3">
+				<ui:insert name="navBar">
+					<ui:include src="/WEB-INF/template/navBarCons.xhtml" />
 				</ui:insert>
-			</div>
-		</b:column>
+			</b:column>
+
+			<b:column span="9">
+				<div class="container-fluid" style="min-height: 300px">
+					<!-- Content Facelets -->
+					<ui:insert name="content">
+
+					</ui:insert>
+				</div>
+			</b:column>
 		</b:row>
-		<ui:insert name="content2">
-			<ui:include src="/WEB-INF/template/footer.xhtml" />
-		</ui:insert>
-		
-		
+
 		<!-- Footer Facelets -->
 		<ui:insert name="footer">
 			<ui:include src="/WEB-INF/template/footer.xhtml" />

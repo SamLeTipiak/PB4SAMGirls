@@ -8,9 +8,11 @@ import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
 
 import org.primefaces.context.RequestContext;
 import org.primefaces.event.RowEditEvent;
+import org.proxib.model.Adviser;
 import org.proxib.model.Client;
 import org.proxib.service.IAdviserService;
 import org.proxib.service.IClientService;
@@ -39,28 +41,27 @@ public class ClientController3 implements Serializable {
 
 	private List<Client> listClient;
 	private List<Client> listClientSelected;
-	
+
 	@PostConstruct
 	public void init() {
 		refreshList();
 	}
 
-	
 	public void refreshList() {
 		this.client = new Client();
 		this.selectedClient = new Client();
 		this.listClient = new ArrayList<>();
 		this.listClientSelected = new ArrayList<>();
-	
-		try {
-			this.listClient.addAll(adviserService.findById(1l).getClients());
-			this.listClientSelected.addAll(adviserService.findById(1l).getClients());
-			
 
-			System.out.println("******************");
-			System.out.println(listClient);
-			System.out.println("******************");
-			System.out.println("*");
+		try {
+//			Adviser u = new Adviser();
+//			HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
+//			if (session.getAttribute("loggedUser").equals(u)) {
+				this.listClient.addAll(adviserService.findById(1l).getClients());
+				this.listClientSelected.addAll(adviserService.findById(1l).getClients());
+//			}
+			;
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

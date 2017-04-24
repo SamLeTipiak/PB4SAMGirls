@@ -84,8 +84,8 @@ public class MainBdd {
 				
 		// Création de conseillers
 				
-		Adviser ad1 = new Adviser("Bernard", "Lermite", "conseiller", "toto");
-		Adviser ad2 = new Adviser("Roger", "Laffite", "conseiller", "toto");
+		Adviser ad1 = new Adviser("Bernard", "Lermite", "conseiller1", "toto1");
+		Adviser ad2 = new Adviser("Roger", "Laffite", "conseiller2", "toto2");
 		Adviser ad3 = new Adviser("Mathieu", "Martin", "conseiller", "toto");
 		Adviser ad4 = new Adviser("Jonas", "Rottin", "conseiller", "toto");
 		

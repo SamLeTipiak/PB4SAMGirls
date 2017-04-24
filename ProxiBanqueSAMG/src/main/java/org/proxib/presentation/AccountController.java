@@ -32,8 +32,17 @@ public class AccountController implements Serializable {
 
 	private static List<Account> listAccount;
 	private static List<Client> clientsOverdraft = new ArrayList<>();
+	private int taille;
 
 	private UIData dataTable;
+
+	public int getTaille() {
+		return taille;
+	}
+
+	public void setTaille(int taille) {
+		this.taille = taille;
+	}
 
 	public UIData getDataTable() {
 		return dataTable;
@@ -90,9 +99,13 @@ public class AccountController implements Serializable {
 		clientsOverdraft.clear();
 		try {
 			clientsOverdraft = accountService.doAudit(0.0);
+			taille = clientsOverdraft.size();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
+	
+
+	
 
 }
