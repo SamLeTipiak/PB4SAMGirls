@@ -17,10 +17,10 @@
 </h:head>
 <h:body>
 
-
-<h:commandButton value="director" action="/accueil_directeur.xhtml"></h:commandButton>
+<h:form>
+<h:commandButton value="director" action="accueil_directeur"></h:commandButton>
 <h:commandButton value="adviser" action="/accueil_conseiller2"></h:commandButton>
-
+</h:form>
 
 	<s:authorize ifAnyGranted="ROLE_ADVISER">
 			toto

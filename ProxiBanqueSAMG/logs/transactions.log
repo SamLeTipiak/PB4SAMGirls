@@ -40,6 +40,15 @@ Compte débité n° : 557057
 Compte crédité n° : 557056
 
 
+<<<<<<< HEAD
+Nature de la transaction : Virement compte à compte
+Date : 2017-04-24 09:23:20.0
+Montant : 200.0€
+Compte débité n° : 2
+Compte crédité n° : 1
+
+
+=======
 Nature de la transaction : Virement compte à compte
 Date : 2017-04-24 08:26:20.0
 Montant : 200.0€
@@ -61,3 +70,4 @@ Compte débité n° : 32769
 Compte crédité n° : 32768
 
 
+>>>>>>> 6cba43c107037293dd68b9584526b3f546e19a14

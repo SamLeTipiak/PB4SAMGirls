@@ -18,7 +18,7 @@
 		</encoder>
 	</appender>
 
-	<logger name="org.formation.spring.AspectConfig" level="WARN" />
+	<logger name="org.formation.spring.AspectConfig" level="WARN"/>
 
 	<root level="warn">
 		<appender-ref ref="file" />
