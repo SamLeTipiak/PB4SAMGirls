@@ -13,7 +13,7 @@
 <h:head>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>Mon petit cllient</title>
+	<title>Ajout d'un client</title>
 </h:head>
 
 <h:body>
@@ -64,7 +64,7 @@
 						<h:outputText value="Compte courant"
 							style="padding-left: 30px; padding-right: 30px;" />
 						<p:inputText type="number" style="text-align: right" id="currentAccount" 
-							value="#{clientController.balanceCurrent}" label="CC" />
+							value="#{clientController.balanceCurrent}" label="CC" required="true"/>
 						<p:message for="currentAccount"></p:message>
 
 						<h:outputText value="Compte épargne "

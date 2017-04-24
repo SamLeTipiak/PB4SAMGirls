@@ -69,10 +69,10 @@ public class TestMain {
 			clientService.persist(c2);
 			clientService.persist(c1);
 
-			System.out.println(accountService.transfer(a4, a3, 200));
-
-			System.out.println(accountService.transfer(a4, a3, -200));
-			System.out.println(accountService.doAudit(0));
+//			System.out.println(accountService.transfer(a4, a3, 200));
+//
+//			System.out.println(accountService.transfer(a4, a3, -200));
+//			System.out.println(accountService.doAudit(0));
 
 			
 		} catch (Exception e) {
