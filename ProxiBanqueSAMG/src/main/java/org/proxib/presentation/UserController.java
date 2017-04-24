@@ -35,9 +35,7 @@ public class UserController {
 		Adviser u = users.get(login);
 		if (u != null && password.equals(u.getPassword())) {
 			if ("conseiller".equals(u.getLogin())) {
-				HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext()
-						.getSession(true);
-				session.setAttribute("loggedUser", u);
+
 				return "accueil_conseiller";
 
 			}
@@ -64,8 +62,6 @@ public class UserController {
 
 		LOGGER.error("Error");
 		LOGGER.info(operation);
-		// Logger.getLogger(this.getClass().getName()).log(Level.ERROR,
-		// "Operation "+operation+" Error ",e);
 		FacesMessage msg = null;
 		msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Notification", "Une erreur est survenue");
 		FacesContext.getCurrentInstance().addMessage(null, msg);
@@ -73,7 +69,6 @@ public class UserController {
 	}
 
 	public String logout() {
-		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
 
 		return "login";
 	}

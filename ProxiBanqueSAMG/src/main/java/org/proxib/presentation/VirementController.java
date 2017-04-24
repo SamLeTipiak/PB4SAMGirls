@@ -22,7 +22,7 @@ import org.springframework.stereotype.Component;
 
 @Component(value = "virementController")
 @SessionScoped
-public class VirementController2 implements Serializable {
+public class VirementController implements Serializable {
 
 	/**
 	 * 
