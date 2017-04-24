@@ -12,8 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
- * La classe accountAmountsChartView permet de visualiser sous forme de graphe 
- * des bilans financiers de la banque
+ * La classe accountAmountsChartView permet de visualiser sous forme d'un camembert 
+ * (ou diagramme circulaire) qui trie les comptes en fonction de leur solde en 4 parties.
  * 
  * @author Soulabaille Maëva - Potier Aurélie - Bouchet Samuel - Ghania
  *         Bouzemame
@@ -54,6 +54,11 @@ public class accountAmountsChartView implements Serializable {
 		createPieModel();
 	}
 	
+	/**
+	 * createPieModel() est une méthode qui défini les valeurs rentrées 
+	 * pour obtenir le camembert ainsi que les options d'affichage.
+	 * 
+	 */
 	private void createPieModel() {
 		pieModel = new PieChartModel();
 

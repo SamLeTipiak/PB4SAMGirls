@@ -18,6 +18,16 @@ import org.proxib.model.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+
+/**
+ * La classe DateGraphChartView permet de visualiser sous forme d'un graphique avec des lignes  
+ * qui décrit le nombre et la somme total des virements par jour sur les trentes derniers jours.
+ * 
+ * @author Soulabaille Maëva - Potier Aurélie - Bouchet Samuel - Ghania
+ *         Bouzemame
+ * @version 1.0
+ *
+ */
 @Component
 public class DateGraphChartView implements Serializable {
 
@@ -40,7 +50,12 @@ public class DateGraphChartView implements Serializable {
 		return dateModel;
 	}
 
-
+	/**
+	 * createDateModel() est une méthode qui défini les valeurs rentrées 
+	 * pour obtenir le graphique ainsi que les options d'affichage.
+	 * 
+	 */
+	
 	private void createDateModel() {
 		
 		double totalAmounts = 0;

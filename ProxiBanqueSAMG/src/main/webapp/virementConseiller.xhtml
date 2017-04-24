@@ -19,7 +19,7 @@
 	<ui:composition template="/WEB-INF/template/template.xhtml">
 		<ui:define name="content">
 
-						<h3 style="margin-top: 0">Virement</h3>
+			<h3 style="margin-top: 0">Virement</h3>
 			<p:separator />
 
 			<h4 style="margin-top: 0">Compte à débiter</h4>
@@ -140,7 +140,7 @@
 								resetValues="montant" action="#{virementController.transfer}" />
 							<b:commandButton id="btn_reset" value="Reset" type="reset" />
 							<b:commandButton id="btn_refresh" value="Refresh"
-								action="#{virementController.refreshListTransfer}" />
+								action="#{virementController.refreshList}" />
 						</b:buttonGroup>
 
 					</b:row>
@@ -178,7 +178,7 @@
 						<br />
 						<p:commandButton value="Confirmer"
 							update=":form1:messages,:form1:tempclientsCredit,:form1:syntheseDebit"
-							actionListener="#{virementController.refreshListTransfer}"
+							actionListener="#{virementController.refresh}"
 							oncomplete="PF('confirmDeleteDlg').hide()" />
 						<p:commandButton value="Annuler"
 							onclick="PF('confirmDeleteDlg').hide()" type="button" />
@@ -210,14 +210,14 @@
 						<br />
 						<p:commandButton value="Valider"
 							update=":form1:messages,:form1:syntheseCredit"
-							actionListener="#{virementController.refreshListTransfer}"
+							actionListener="#{virementController.refresh}"
 							oncomplete="PF('confirmDebitDlg').hide()" />
 						<p:commandButton value="Annuler"
 							onclick="PF('confirmDebitDlg').hide()" type="button" />
 					</p:outputPanel>
 				</p:dialog>
 			</h:form>
-			
+
 
 		</ui:define>
 	</ui:composition>
