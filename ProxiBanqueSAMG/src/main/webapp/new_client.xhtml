@@ -64,14 +64,19 @@
 						<h:outputText value="Compte courant"
 							style="padding-left: 30px; padding-right: 30px;" />
 						<p:inputText type="number" style="text-align: right" id="currentAccount" 
-							value="#{clientController.balanceCurrent}" label="CC" required="true"/>
+							value="#{clientController.balanceCurrent}" label="Compte Courant" required="true" >
+							<f:validateLongRange minimum="1" />
+							</p:inputText>
+							
 						<p:message for="currentAccount"></p:message>
 
 						<h:outputText value="Compte épargne "
 							style="padding-left: 30px; padding-right: 30px;" />
 						<p:inputText type="number" style="text-align: right"
 							id="savingAccount" name="savingAccount"
-							value="#{clientController.balanceSaving}" />
+							value="#{clientController.balanceSaving}"  label="Compte Epargne" >
+							<f:validateLongRange minimum="0" maximum="12000" />
+							</p:inputText>
 						<p:message for="savingAccount"></p:message>
 
 					</h:panelGrid>
