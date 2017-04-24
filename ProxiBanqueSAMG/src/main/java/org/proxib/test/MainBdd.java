@@ -49,9 +49,9 @@ public class MainBdd {
 		CurrentAccount a3 = new CurrentAccount(200);
 		CurrentAccount a4 = new CurrentAccount(-50);
 		CurrentAccount a5 = new CurrentAccount(217);
-		CurrentAccount a6 = new CurrentAccount(-100);
+		CurrentAccount a6 = new CurrentAccount(-1000);
 		CurrentAccount a7 = new CurrentAccount(757);
-		CurrentAccount a8 = new CurrentAccount(-2);
+		CurrentAccount a8 = new CurrentAccount(-200);
 		CurrentAccount a9 = new CurrentAccount(77007);
 		CurrentAccount a10 = new CurrentAccount(562);
 		
