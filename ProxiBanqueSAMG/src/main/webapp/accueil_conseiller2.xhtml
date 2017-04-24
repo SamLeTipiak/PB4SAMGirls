@@ -102,23 +102,32 @@
 					width="750" height="400" showEffect="clip" hideEffect="clip"
 					modal="true">
 
-					<h:panelGrid id="display" columns="2" cellpadding="4"
+					<h:panelGrid id="display" columns="3" cellpadding="4"
 						style="margin:0 auto;">
 
 						<h:outputText value="Nom"
 							style="padding-left: 30px; padding-right: 30px;" />
-						<p:inputText value="#{clientController.selectedClient.lastName}" />
+						<p:inputText  id="nom"  label = "Nom" required="true"
+							value="#{clientController.selectedClient.lastName}" />
+						<p:message for="nom" />
 
 						<h:outputText value="Prénom"
 							style="padding-left: 30px; padding-right: 30px;" />
-						<p:inputText value="#{clientController.selectedClient.firstName}" />
+						<p:inputText id="prenom" label="Prenom" required="true"
+							value="#{clientController.selectedClient.firstName}" />
+						<p:message for="prenom" />
 
 						<h:outputText value="Adresse"
 							style="padding-left: 30px; padding-right: 30px;" />
-						<p:inputText value="#{clientController.selectedClient.address}" />
+						<p:inputText id = "address" label="address" required="true"
+							value="#{clientController.selectedClient.address}" />
+						<p:message for="address" />
 
-						<h:outputText value="Email" style="width:1200px" />
-						<p:inputText value="#{clientController.selectedClient.email}" />
+						<h:outputText value="Email"
+							 style="padding-left: 30px; padding-right: 30px;" />
+						<p:inputText id="email" required="true"   label="Email"
+							value="#{clientController.selectedClient.email}" />
+						<p:message for="email" />
 
 					</h:panelGrid>
 
