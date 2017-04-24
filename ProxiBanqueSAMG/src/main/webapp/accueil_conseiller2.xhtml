@@ -31,7 +31,7 @@
 					emptyMessage="Empty..." editable="true" paginator="true" rows="10"
 					paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 					rowsPerPageTemplate="5,10,15" selectionMode="single"
-					rowKey="#{tempclient.id}"
+					rowKey="#{tempclient.idClient}"
 					filteredValue="#{clientController.listClientSelected}">
 
 					<p:column headerText="Prénom" sortBy="#{tempclient.firstName}"
