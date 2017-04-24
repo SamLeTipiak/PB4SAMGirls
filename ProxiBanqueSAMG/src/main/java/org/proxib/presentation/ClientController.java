@@ -100,7 +100,7 @@ public class ClientController implements Serializable {
 
 	public void delete() {
 		try {
-			clientService.remove(this.selectedClient.getId());
+			clientService.remove(this.selectedClient.getIdClient());
 			refreshList();
 			notificationSuccess("Client supprimé");
 		} catch (Exception e) {
