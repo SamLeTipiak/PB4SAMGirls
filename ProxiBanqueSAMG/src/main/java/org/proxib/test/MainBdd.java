@@ -45,13 +45,15 @@ public class MainBdd {
 				
 		// Création de comptes 
 		CurrentAccount a1 = new CurrentAccount(1000);
-		CurrentAccount a2 = new CurrentAccount(100);
+		CurrentAccount a2 = new CurrentAccount(51000);
 		CurrentAccount a3 = new CurrentAccount(200);
 		CurrentAccount a4 = new CurrentAccount(-50);
 		CurrentAccount a5 = new CurrentAccount(217);
 		CurrentAccount a6 = new CurrentAccount(-100);
 		CurrentAccount a7 = new CurrentAccount(757);
 		CurrentAccount a8 = new CurrentAccount(-2);
+		CurrentAccount a9 = new CurrentAccount(77007);
+		CurrentAccount a10 = new CurrentAccount(562);
 		
 		
 		
@@ -62,7 +64,9 @@ public class MainBdd {
 		c5.addCurrentAccountToClient(a5);
 		c6.addCurrentAccountToClient(a6);
 		c7.addCurrentAccountToClient(a7);
-		c7.addCurrentAccountToClient(a8);
+		c8.addCurrentAccountToClient(a8);
+		c9.addCurrentAccountToClient(a9);
+		c10.addCurrentAccountToClient(a10);
 		
 		SavingAccount s1 = new SavingAccount(10000);
 		SavingAccount s2 = new SavingAccount(29000);
@@ -133,16 +137,6 @@ public class MainBdd {
 		// Persistences des clients et tout le reste
 		
 		try {
-//			clientService.persist(c1);
-//			clientService.persist(c2);
-//			clientService.persist(c3);
-//			clientService.persist(c4);
-//			clientService.persist(c5);
-//			clientService.persist(c6);
-//			clientService.persist(c7);
-//			clientService.persist(c8);
-//			clientService.persist(c9);
-//			clientService.persist(c10);
 			
 			adviserService.persist(ad1);
 			adviserService.persist(ad2);
@@ -170,7 +164,9 @@ public class MainBdd {
 			
 			
 		} catch (Exception e) {
+			//TODO : Logger
 			e.printStackTrace();
+		
 		}
 
 

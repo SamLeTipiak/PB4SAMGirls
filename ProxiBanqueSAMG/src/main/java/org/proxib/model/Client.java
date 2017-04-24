@@ -200,6 +200,9 @@ public class Client implements Serializable {
 	
 	@Override
 	public String toString() {
+		if (firstName == null) {
+			return "";
+		}
 		return firstName + " " + lastName;
 	}
 

@@ -18,8 +18,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-//@Component(value = "adviserController")
-//@SessionScoped
+@Component(value = "adviserController")
+@SessionScoped
 public class AdviserController implements Serializable {
 
 	/**
@@ -29,7 +29,7 @@ public class AdviserController implements Serializable {
 
 	private static Logger LOGGER = LoggerFactory.getLogger(ClientController.class);
 
-//	@Autowired
+	@Autowired
 	IAdviserService adviserService;
 
 	private Adviser adviser;
@@ -44,8 +44,8 @@ public class AdviserController implements Serializable {
 		this.adviser = new Adviser();
 		this.listAdviser = new ArrayList<>();
 		try {
-
 			this.listAdviser.addAll(adviserService.findAll());
+			System.err.println(listAdviser);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
