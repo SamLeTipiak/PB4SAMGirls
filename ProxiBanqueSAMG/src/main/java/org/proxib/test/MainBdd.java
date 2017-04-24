@@ -1,9 +1,10 @@
 package org.proxib.test;
 
-import java.time.LocalDate;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 import org.proxib.config.ApplicationConfig;
-import org.proxib.dao.ITransactionDao;
 import org.proxib.model.Adviser;
 import org.proxib.model.Client;
 import org.proxib.model.CurrentAccount;
@@ -34,15 +35,15 @@ public class MainBdd {
 		Client c2 = new Client("Paula", "Lis", "1 rue du paradis 75010 Paris", "paula.lis@gmail.com");
 		Client c3 = new Client("bob", "marley", "10 rue des nénuphars paris", "bob@marley");
 		Client c4 = new Client("bobby", "marley", "1 rue des rateaux paris", "bobby@marley");
-		Client c5 = new Client("Jean", "Dujardin", "5 avenue des champs élysées 75007 Paris", "jean.dujardin@gmail.com");
+		Client c5 = new Client("Jean", "Dujardin", "5 avenue des champs Elysées 75007 Paris", "jean.dujardin@gmail.com");
 		Client c6 = new Client("Alexandra", "Lamy", "86 boulevard des batignolles 75007 Paris", "a.lamy@gmail.com");
 		Client c7 = new Client("Alexandre", "Le grand", "Alexandrie", "a.legrand@gmail.com");
 		Client c8 = new Client("Riccu", "Ricci", "Italia", "ricuu.r@gmail.com");
-		Client c9 = new Client("Harry", "Potter", "Italia", "ricuu.r@gmail.com");
-		Client c10 = new Client("Riccu", "Ricci", "Italia", "ricuu.r@gmail.com");
+		Client c9 = new Client("Harry", "Potter", "Grande Bretagne", "harry.potter@gmail.com");
+		Client c10 = new Client("Richard", "Coeur de Lion", "Gaulle", "r.lion.r@gmail.com");
 		
 				
-		// Création de comptes aux clients
+		// Création de comptes 
 		CurrentAccount a1 = new CurrentAccount(1000);
 		CurrentAccount a2 = new CurrentAccount(100);
 		CurrentAccount a3 = new CurrentAccount(200);
@@ -85,36 +86,95 @@ public class MainBdd {
 		Adviser ad4 = new Adviser("Jonas", "Rottin");
 		
 		ad1.addClientToAdviser(c1);
-				
+		ad1.addClientToAdviser(c4);
+		
+		ad2.addClientToAdviser(c2);
+		ad2.addClientToAdviser(c3);
+		ad2.addClientToAdviser(c9);
+		
+		
+		ad3.addClientToAdviser(c5);
+		ad3.addClientToAdviser(c7);
+		ad3.addClientToAdviser(c10);
+		
+		ad4.addClientToAdviser(c6);
+		ad4.addClientToAdviser(c8);
+
 				
 		// Création de transations  
 
-				
+		
+		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+
+		Transaction trans1=null,trans2=null,trans3=null,trans4=null,trans5=null,trans6=null,trans7=null,trans8=null,trans9=null,trans10=null,trans11=null,trans12=null,trans13=null;
+		
+		try {
+			trans1=new Transaction(1L,2L,dateFormat.parse("2017/04/14"),150);
+			trans2=new Transaction(1L,3L,dateFormat.parse("2017/04/29"),1150);
+			trans3=new Transaction(1L,4L,dateFormat.parse("2017/04/10"),15);
+			trans4=new Transaction(2L,3L,dateFormat.parse("2017/03/20"),1510);
+			trans5=new Transaction(2L,4L,dateFormat.parse("2017/03/27"),50);
+			trans6=new Transaction(2L,1L,dateFormat.parse("2017/04/03"),1580);
+			trans7=new Transaction(3L,2L,dateFormat.parse("2017/04/15"),850);
+			trans8=new Transaction(3L,1L,dateFormat.parse("2017/04/23"),4150);
+			trans9=new Transaction(3L,4L,dateFormat.parse("2017/04/29"),40);
+			trans10=new Transaction(4L,2L,dateFormat.parse("2017/04/01"),6150);
+			trans11=new Transaction(4L,2L,dateFormat.parse("2017/04/12"),60);
+			trans12=new Transaction(4L,1L,dateFormat.parse("2017/04/16"),750);
+			trans13=new Transaction(4L,3L,dateFormat.parse("2017/04/26"),1530);
+			
+			
+		} catch (ParseException e1) {
+			e1.printStackTrace();
+		}
 				
 
 		
 		// Persistences des clients et tout le reste
 		
 		try {
-			clientService.persist(c2);
-			clientService.persist(c1);
-			
+//			clientService.persist(c1);
+//			clientService.persist(c2);
+//			clientService.persist(c3);
+//			clientService.persist(c4);
+//			clientService.persist(c5);
+//			clientService.persist(c6);
+//			clientService.persist(c7);
+//			clientService.persist(c8);
+//			clientService.persist(c9);
+//			clientService.persist(c10);
 			
 			adviserService.persist(ad1);
 			adviserService.persist(ad2);
+			adviserService.persist(ad3);
+			adviserService.persist(ad4);
 
 
+			txnService.persist(trans1);
+			txnService.persist(trans2);
+			txnService.persist(trans3);
+			txnService.persist(trans4);
+			txnService.persist(trans5);
+			txnService.persist(trans6);
+			txnService.persist(trans7);
+			txnService.persist(trans8);
+			txnService.persist(trans9);
+			txnService.persist(trans10);
+			txnService.persist(trans11);
+			txnService.persist(trans12);
+			txnService.persist(trans13);
+			
+			
+			// faire des transferts a la date d'aujourd'hui
+			accountService.transfer(a4, a3, 200);
+			
 			
 		} catch (Exception e) {
-//			e.printStackTrace();
-		}
-//		Transaction txn = new Transaction(LocalDate.now());
-//		System.out.println("**********************************************" +LocalDate.now() + "*********************************");
-
+			e.printStackTrace();
 		}
 
 
 
 	}
-
+}
 
