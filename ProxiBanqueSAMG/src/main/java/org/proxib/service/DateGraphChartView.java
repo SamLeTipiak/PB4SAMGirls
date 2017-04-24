@@ -76,14 +76,11 @@ public class DateGraphChartView implements Serializable {
 			numberOfTransfer = 0;
 			amounts = 0;
 			
-			System.out.println(date);
-			
 			for (Transaction transaction : listeTransaction) {
 
 				if (memeJour(date, transaction.getDate())) {
 					numberOfTransfer++;
 					amounts += transaction.getAmount();
-					System.out.println("dans le if nOT:" + numberOfTransfer + "amounts: "+amounts);
 				}
 
 			}
