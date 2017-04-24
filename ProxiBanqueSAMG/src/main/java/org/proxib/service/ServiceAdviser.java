@@ -51,9 +51,5 @@ public class ServiceAdviser implements IAdviserService {
 		return adviserDao.findAll();
 	}
 
-//	@Override
-//	public List<Client> findByProperty(String prop, Object val) throws Exception {
-//		return adviserDao.findByProperty(prop, val);
-//	}
 
 }
