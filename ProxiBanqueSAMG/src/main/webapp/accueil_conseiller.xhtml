@@ -16,7 +16,6 @@
 
 
 <h:head>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>Accueil conseiller</title>
 </h:head>
@@ -27,11 +26,11 @@
 
 			<h3 style="margin-top: 0">Liste des clients</h3>
 			<p:separator />
-
+<h:form>
 			<b:panel title="Clients à découverts">
 				<b:icon name="alert"> Vous avez #{accountController.taille} clients à découvert </b:icon>
 			</b:panel>
-
+</h:form>
 			<h:form id="form1">
 
 				<p:growl id="messages" showDetail="true" life="3000" />
@@ -148,22 +147,6 @@
 
 		</ui:define>
 	</ui:composition>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 </h:body>
 

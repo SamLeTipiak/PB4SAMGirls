@@ -87,9 +87,9 @@ public class ServiceAccount implements IAccountService {
 
 			throw new RuntimeException("Erreur : La somme est inférieure ou égale à 0");
 		} else if (accountToWithdraw == accountToCredit) {
-			throw new RuntimeException("Erreur : memes comptes ");
-		} else if (sum >= accountToWithdraw.getBalance()-authorizedOverdraft) {
-			throw new RuntimeException("Erreur : Somme supérieure au montant de votre compte en banque !");
+			throw new RuntimeException("Erreur : Sélectionner des comptes différent ");
+		} else if (sum >= accountToWithdraw.getBalance()+authorizedOverdraft) {
+			throw new RuntimeException("Erreur : La somme saisie est supérieure au montant de découvert autorisé");
 		} else {
 			accountToWithdraw.setBalance(-sum);
 			accountToCredit.setBalance(sum);

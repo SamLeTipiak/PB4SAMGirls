@@ -98,7 +98,7 @@ public class VirementController implements Serializable {
 		try {
 			clientService.persist(this.client);
 			refreshList();
-			notificationSuccess("Client ajouté");
+			notificationSuccess("Client créé");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -119,9 +119,7 @@ public class VirementController implements Serializable {
 			this.listClientUpdate = new ArrayList<>();
 			this.listClientUpdate.addAll(listClient);
 			boolean isdeleted = this.listClientUpdate.remove(this.selectedClientDebit);
-			System.out.println(selectedClientDebit);
-			System.out.println(selectedClientCredit);
-			notificationSuccess("Client supprimé");
+			notificationSuccess("Client ajouté");
 		} catch (Exception e) {
 			notificationError(e, "suppression Client");
 		}
@@ -132,10 +130,10 @@ public class VirementController implements Serializable {
 		try {
 			accountService.transfer(selectedClientDebit.getCurrentAccount(), selectedClientCredit.getCurrentAccount(),
 					montant);
-			notificationSuccess("Virement Effectué");
+			notificationSuccess("Virement effectué");
 			refreshList();
 		} catch (Exception e) {
-			notificationError(e, "suppression Client");
+			notificationError(e, "Echec du virement");
 		}
 	}
 
@@ -152,7 +150,7 @@ public class VirementController implements Serializable {
 
 		LOGGER.info("Operation " + operation + " success");
 		FacesMessage msg = null;
-		msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Notification", "Success");
+		msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Notification", operation);
 		FacesContext.getCurrentInstance().addMessage(null, msg);
 
 	}
@@ -161,7 +159,7 @@ public class VirementController implements Serializable {
 
 		LOGGER.error("Error");
 		FacesMessage msg = null;
-		msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Notification", "Une erreur est survenue");
+		msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Notification", e.getMessage());
 		FacesContext.getCurrentInstance().addMessage(null, msg);
 
 	}

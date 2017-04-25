@@ -96,7 +96,7 @@ public class ClientController implements Serializable {
 			refreshList();
 			notificationSuccess("Client mis à jour");
 		} catch (Exception e) {
-			notificationError(e, "Mise à jour client");
+			notificationError(e, "Erreur de mise à jour client");
 		}
 	}
 
@@ -123,7 +123,7 @@ public class ClientController implements Serializable {
 
 		LOGGER.info("Operation " + operation + " success");
 		FacesMessage msg = null;
-		msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Notification", "Success");
+		msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Notification", operation);
 		FacesContext.getCurrentInstance().addMessage(null, msg);
 
 	}
@@ -132,7 +132,7 @@ public class ClientController implements Serializable {
 
 		LOGGER.error("Error");
 		FacesMessage msg = null;
-		msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Notification", "Une erreur est survenue");
+		msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Notification", operation);
 		FacesContext.getCurrentInstance().addMessage(null, msg);
 
 	}
