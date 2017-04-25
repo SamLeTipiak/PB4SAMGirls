@@ -31,17 +31,18 @@
 				<p:dataTable id="tempclients" var="tempclientDebit"
 					value="#{virementController.listClient}" styleClass="et_datatable"
 					selectionMode="single" editable="true"
+					paginator="true" rows="10" rowsPerPageTemplate="5,10,15"
 					rowKey="#{tempclientDebit.idClient}"
 					filteredValue="#{virementController.listClientSelected}">
 
-					<p:column headerText="Nom" sortBy="#{tempclientDebit.firstName}"
-						filterBy="#{tempclientDebit.firstName}" filterMatchMode="contains">
-						<h:outputText value="#{tempclientDebit.firstName}" />
-					</p:column>
-
-					<p:column headerText="Prénom" sortBy="#{tempclientDebit.lastName}"
+					<p:column headerText="Nom" sortBy="#{tempclientDebit.lastName}"
 						filterBy="#{tempclientDebit.lastName}" filterMatchMode="contains">
 						<h:outputText value="#{tempclientDebit.lastName}" />
+					</p:column>
+					
+					<p:column headerText="Prénom" sortBy="#{tempclientDebit.firstName}"
+						filterBy="#{tempclientDebit.firstName}" filterMatchMode="contains">
+						<h:outputText value="#{tempclientDebit.firstName}" />
 					</p:column>
 
 					<p:column headerText="Solde">
@@ -67,6 +68,7 @@
 					value="#{virementController.listClientUpdate}"
 					emptyMessage="Sélectionner un compte à débiter"
 					styleClass="et_datatable" selectionMode="single" editable="true"
+					paginator="true" rows="10" rowsPerPageTemplate="5,10,15"
 					rowKey="#{tempclientCredit.idClient}"
 					filteredValue="#{virementController.listClientUpdate}">
 

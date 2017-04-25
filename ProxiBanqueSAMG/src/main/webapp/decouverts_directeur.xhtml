@@ -38,14 +38,14 @@
 				save-state="#{dataTableSettingsBean.saveState}" searching="true"
 				select="true" selectionMode="single" striped="false">
 
-				<b:dataTableColumn value="#{tempoverdraft.firstName}"
+				<b:dataTableColumn value="#{tempoverdraft.lastName}"
 					searchable="true">
 					<f:facet name="header" searching="true">
 						<h:outputText value="Nom" />
 					</f:facet>
 				</b:dataTableColumn>
 
-				<b:dataTableColumn value="#{tempoverdraft.lastName}">
+				<b:dataTableColumn value="#{tempoverdraft.firstName}">
 					<f:facet name="header">
 						<h:outputText value="Prénom" />
 					</f:facet>

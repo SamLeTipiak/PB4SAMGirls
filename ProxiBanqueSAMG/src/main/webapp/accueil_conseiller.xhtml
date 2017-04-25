@@ -26,11 +26,11 @@
 
 			<h3 style="margin-top: 0">Liste des clients</h3>
 			<p:separator />
-<h:form>
-			<b:panel title="Clients à découverts">
-				<b:icon name="alert"> Vous avez #{accountController.taille} clients à découvert </b:icon>
-			</b:panel>
-</h:form>
+			<h:form>
+				<b:panel title="Clients à découverts">
+					<b:icon name="alert"> Vous avez #{accountController.taille} clients à découvert </b:icon>
+				</b:panel>
+			</h:form>
 			<h:form id="form1">
 
 				<p:growl id="messages" showDetail="true" life="3000" />
@@ -42,15 +42,14 @@
 					rowKey="#{tempclient.idClient}"
 					filteredValue="#{clientController.listClientSelected}">
 
-					<p:column headerText="Prénom" sortBy="#{tempclient.firstName}"
-						filterBy="#{tempclient.firstName}" filterMatchMode="contains">
-						<h:outputText value="#{tempclient.firstName}" />
-					</p:column>
-
-
 					<p:column headerText="Nom" sortBy="#{tempclient.lastName}"
 						filterBy="#{tempclient.lastName}" filterMatchMode="contains">
 						<h:outputText value="#{tempclient.lastName}" />
+					</p:column>
+
+					<p:column headerText="Prénom" sortBy="#{tempclient.firstName}"
+						filterBy="#{tempclient.firstName}" filterMatchMode="contains">
+						<h:outputText value="#{tempclient.firstName}" />
 					</p:column>
 
 					<p:column headerText="CC" sortBy="#{tempclient.currentAccount}"
@@ -125,7 +124,8 @@
 							style="padding-left: 30px; padding-right: 30px;" />
 						<p:inputText value="#{clientController.selectedClient.address}" />
 
-						<h:outputText value="Email" style="padding-left: 30px; padding-right: 30px;" />
+						<h:outputText value="Email"
+							style="padding-left: 30px; padding-right: 30px;" />
 						<p:inputText value="#{clientController.selectedClient.email}" />
 
 					</h:panelGrid>

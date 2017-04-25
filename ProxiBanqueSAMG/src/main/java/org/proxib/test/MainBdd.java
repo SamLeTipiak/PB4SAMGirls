@@ -31,16 +31,16 @@ public class MainBdd {
 
 		// Création de clients 
 		
-		Client c1 = new Client("Paul", "Leroy", "17 rue des oliviers 75001 Paris", "paul.leroy@gmail.com" );
-		Client c2 = new Client("Paula", "Lis", "1 rue du paradis 75010 Paris", "paula.lis@gmail.com");
-		Client c3 = new Client("bob", "marley", "10 rue des nénuphars paris", "bob@marley");
-		Client c4 = new Client("bobby", "marley", "1 rue des rateaux paris", "bobby@marley");
-		Client c5 = new Client("Jean", "Dujardin", "5 avenue des champs Elysées 75007 Paris", "jean.dujardin@gmail.com");
-		Client c6 = new Client("Alexandra", "Lamy", "86 boulevard des batignolles 75007 Paris", "a.lamy@gmail.com");
-		Client c7 = new Client("Alexandre", "Le grand", "Alexandrie", "a.legrand@gmail.com");
-		Client c8 = new Client("Riccu", "Ricci", "Italia", "ricuu.r@gmail.com");
-		Client c9 = new Client("Harry", "Potter", "Grande Bretagne", "harry.potter@gmail.com");
-		Client c10 = new Client("Richard", "Coeur de Lion", "Gaulle", "r.lion.r@gmail.com");
+		Client c1 = new Client("Leroy", "Paul", "17 rue des oliviers 75001 Paris", "paul.leroy@gmail.com" );
+		Client c2 = new Client("Luis", "Paula", "1 rue du paradis 75010 Paris", "paula.lis@gmail.com");
+		Client c3 = new Client("Marley", "Bob", "10 rue des nénuphars paris", "bob@marley");
+		Client c4 = new Client("De Savoie", "Lila", "1 rue des rateaux paris", "bobby@marley");
+		Client c5 = new Client("Dujardin", "Jean", "5 avenue des champs Elysées 75007 Paris", "jean.dujardin@gmail.com");
+		Client c6 = new Client("Lamy", "Alex", "86 boulevard des batignolles 75007 Paris", "a.lamy@gmail.com");
+		Client c7 = new Client("Le Grand", "Alexandre", "Alexandrie", "a.legrand@gmail.com");
+		Client c8 = new Client("Yoann", "Le Jardinier", "rue des rosier", "yox@gmail.com");
+		Client c9 = new Client("Potter", "Harry", "Grande Bretagne", "harry.potter@gmail.com");
+		Client c10 = new Client("Coeur de Lion", "Richard", "Gaulle", "r.lion.r@gmail.com");
 		
 				
 		// Création de comptes 
